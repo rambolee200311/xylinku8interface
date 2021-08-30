@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ufinterface sender="" receiver="" roottag="v_aa_hr_hi_person" docid="916480660" proc="add" codeexchanged="N" exportneedexch="N" paginate="0" display="人员档案" family="基础档案" dynamicdate="5/22/2020" maxdataitems="20000" bignoreextenduserdefines="n" needpage="1" totalpagenum="1" needpaginate="y" timestamp="0x00000000009F6968" lastquerydate="2020-05-22 22:28:58">
+  <v_aa_hr_hi_person>
+    <cPsn_Num>001</cPsn_Num>
+    <cPsn_Name>赖晏</cPsn_Name>
+    <cPsn_NameEN/>
+    <JobNumber/>
+    <cpsnproperty/>
+    <rsex>2</rsex>
+    <rEmployState>10</rEmployState>
+    <rpersontype>101</rpersontype>
+    <EmploymentForm>001</EmploymentForm>
+    <cdutyclass/>
+    <cjobcode/>
+    <cjobgradecode/>
+    <cjobrankcode/>
+    <rIDType>0</rIDType>
+    <vIDNo/>
+    <bpsnperson>1</bpsnperson>
+    <cdept_num>10</cdept_num>
+    <cpsnbankcode/>
+    <cpsnaccount/>
+    <dbirthdate/>
+    <cpsnmobilephone/>
+    <cpsnfphone/>
+    <cpsnophone/>
+    <cpsninphone/>
+    <cpsnemail/>
+    <cpsnfaddr/>
+    <cpsnpostcode/>
+    <cpsnpostaddr/>
+    <cpsnqqcode/>
+    <cpsnurl/>
+    <cpsnoseat/>
+    <cdepcode>10</cdepcode>
+    <fcreditquantity/>
+    <icredate/>
+    <ccregrade/>
+    <dpvaliddate>2018-12-01 00:00:00</dpvaliddate>
+    <dpinvaliddate/>
+    <rNativePlace/>
+    <rNational/>
+    <rhealthStatus/>
+    <rMarriStatus/>
+    <MPicture></MPicture>
+    <rPerResidence/>
+    <vAliaName/>
+    <dJoinworkDate/>
+    <dEnterDate/>
+    <dRegularDate/>
+    <vSSNo/>
+    <dEnterUnitDate/>
+    <bProbation>0</bProbation>
+  </v_aa_hr_hi_person>
+</ufinterface>
