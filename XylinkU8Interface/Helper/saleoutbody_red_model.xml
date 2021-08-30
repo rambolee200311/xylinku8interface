@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<data>
+  <id></id>
+  <cinvcode>[cinvcode]</cinvcode>
+  <cinvname></cinvname>
+  <inquantity>[iquantity]</inquantity>
+  <cinvccode></cinvccode>
+  <cinvm_unit></cinvm_unit>
+  <iquantity>[iquantity]</iquantity>
+  <autoid></autoid>
+  <cinvdefine8>{是}</cinvdefine8>
+  <idlsid>[idlsid]</idlsid>
+  <cbdlcode>[cdlcode]</cbdlcode>
+  <bgsp>{0}</bgsp>
+  <scrapufts></scrapufts>
+  <cdemandmemo></cdemandmemo>
+  <iordertype>{1}</iordertype>
+  <iorderdid>[isosid]</iorderdid>
+  <iordercode>[cordercode]</iordercode>
+  <iorderseq>{2}</iorderseq>
+  <isotype>{0}</isotype>
+  <corufts>{}</corufts>
+  <bcosting>{True}</bcosting>
+  <bvmiused>{False}</bvmiused>
+  <iuninvsncount>[iquantity]</iuninvsncount>
+  <iexpiratdatecalcu>{0}</iexpiratdatecalcu>
+  <cbinvsn></cbinvsn>
+  <irowno>{1}</irowno>
+  <ipesotype>{0}</ipesotype>
+  <cbsysbarcode></cbsysbarcode>
+  <bsaleoutcreatebill>{False}</bsaleoutcreatebill>
+  <biacreatebill>{False}</biacreatebill>
+  <bneedbill>{False}</bneedbill>
+  <avaInQuantity>{0}</avaInQuantity>
+  <avaInNum>{0}</avaInNum>
+  <avaOutQuantity>{0}</avaOutQuantity>
+  <avaOutNum>{0}</avaOutNum>
+  <taskguid></taskguid>
+  <editprop></editprop>
+  <cbdefine21>[cbdefine21]</cbdefine21>
+</data>
