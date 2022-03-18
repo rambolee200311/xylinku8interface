@@ -29,7 +29,7 @@ namespace XylinkU8Interface.UFIDA
             string orireqid = "";
             string strSql = "";
             companycode = so.companycode;
-            U8Login.clsLoginClass m_ologin = U8LoginEntity.getU8LoginEntity(companycode);
+            U8Login.clsLoginClass m_ologin = U8LoginEntity.getU8LoginDateEntity(companycode,so.head.ddate);
             //U8Login.clsLogin m_ologin = U8LoginEntity.getU8LoginEntityInterop(so.companycode);
             //ADODB.Connection conn = new Connection();
             if (m_ologin == null)
@@ -110,7 +110,8 @@ namespace XylinkU8Interface.UFIDA
                 {
                     errMsg = doel.nodeName.ToString().Trim();
                     string ccuscode = Ufdata.getDataReader(m_ologin.UfDbName, "select ccuscode from customer where ccusname='" + so.head.cust_name + "'");
-                    string cdepcode = Ufdata.getDataReader(m_ologin.UfDbName, "select cdepcode from department where cdepname='" + so.head.dept_name + "'");
+                    //string cdepcode = Ufdata.getDataReader(m_ologin.UfDbName, "select cdepcode from department where cdepname='" + so.head.dept_name + "'");
+                    string cdepcode = Ufdata.getDataReader(m_ologin.UfDbName, "select cDepCode from Person where cPersonName='" + so.head.person_name + "'");
                     string cpersoncode = Ufdata.getDataReader(m_ologin.UfDbName, "select cpersoncode from person where cpersonname='" + so.head.person_name + "'");
                     if (!string.IsNullOrEmpty(doel.text))
                     {
@@ -165,7 +166,9 @@ namespace XylinkU8Interface.UFIDA
                                     return re;
                                 }
                                 break;
-                            
+                            case "csocode":
+                                dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem(doel.nodeName.ToString()).text = Ufdata.getDataReader(m_ologin.UfDbName, "select c.cSOCode from SO_SODetails a inner join SO_SODetails_extradefine b on a.isosid=b.isosid inner join SO_SOMain c on a.ID=c.ID where cinvcode='" + so.body[0].cinv_code + "' and b.cbdefine21='" + so.body[0].ori_req_id + "'");
+                                break;
                             default:
                                 dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem(doel.nodeName.ToString()).text = getItemValue(doel.text, so.head);
                                 break;
@@ -187,7 +190,7 @@ namespace XylinkU8Interface.UFIDA
                     dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("breturnflag").text = "0";
                 }
 
-                dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("chdefine1").text = so.body[0].cord_code.ToString();
+                //dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("chdefine1").text = so.body[0].cord_code.ToString();
 
                 dom_head.save(AppDomain.CurrentDomain.BaseDirectory+"Logs\\dispatchreturn_head111.xml");
 
@@ -235,7 +238,10 @@ namespace XylinkU8Interface.UFIDA
                                 iquantity = sob.iquantity;
                             }
                             decimal isum = iquantity * sob.itaxunitprice;
-                            cwhcode = Ufdata.getDataReader(m_ologin.UfDbName, "select cwhcode from warehouse where cwhname='" + sob.cwhname + "'"); ;
+                            if (string.IsNullOrEmpty(sob.cwhname))
+                            { cwhcode = "04"; }
+                            else
+                            { cwhcode = Ufdata.getDataReader(m_ologin.UfDbName, "select cwhcode from warehouse where cwhname='" + sob.cwhname + "'"); }
                             if (!string.IsNullOrEmpty(doel.text))
                             {
                                 switch (doel.nodeName.ToString().Trim())
@@ -244,21 +250,21 @@ namespace XylinkU8Interface.UFIDA
                                     //    xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = Ufdata.getDataReader(m_ologin.UfDbName, "select id from so_somain where csocode='"+sob.cord_code+"'");
                                     //    break;
                                     case "isosid":
-                                        ordercode = sob.cord_code;
+                                        //ordercode = sob.cord_code;
                                         orireqid = sob.ori_req_id;
-                                        LogHelper.WriteLog(typeof(DispatchReturnEntity), "select a.isosid from SO_SODetails a inner join SO_SODetails_extradefine b on a.isosid=b.isosid where ID in (select id from so_somain where cdefine10='" + sob.cord_code + "') and cinvcode='" + sob.cinv_code + "' and b.cbdefine21='" + sob.ori_req_id + "'");
-                                        xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = Ufdata.getDataReader(m_ologin.UfDbName, "select a.isosid from SO_SODetails a inner join SO_SODetails_extradefine b on a.isosid=b.isosid where ID in (select id from so_somain where cdefine10='" + sob.cord_code + "') and cinvcode='" + sob.cinv_code + "' and b.cbdefine21='"+sob.ori_req_id+"'");                                        
+                                        LogHelper.WriteLog(typeof(DispatchReturnEntity), "select a.isosid from SO_SODetails a inner join SO_SODetails_extradefine b on a.isosid=b.isosid where cinvcode='" + sob.cinv_code + "' and b.cbdefine21='" + sob.ori_req_id + "'");
+                                        xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = Ufdata.getDataReader(m_ologin.UfDbName, "select a.isosid from SO_SODetails a inner join SO_SODetails_extradefine b on a.isosid=b.isosid where cinvcode='" + sob.cinv_code + "' and b.cbdefine21='"+sob.ori_req_id+"'");                                        
                                         break;
                                     //case "dlid":
                                     //    xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = Ufdata.getDataReader(m_ologin.UfDbName, "select dlid from dispatchlist where cdlcode='" + sob.cdsp_code + "'");
                                     //    break;
                                     //case "idlsid":
-                                    case "icorid":
-                                        xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = Ufdata.getDataReader(m_ologin.UfDbName, "select idlsid from dispatchlists where dlid in (select dlid from dispatchlist where cdlcode='" + sob.cdsp_code + "') and cinvcode='" + sob.cinv_code + "'");
-                                        break;
+                                    //case "icorid":
+                                    //    xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = Ufdata.getDataReader(m_ologin.UfDbName, "select idlsid from dispatchlists where dlid in (select dlid from dispatchlist where cdlcode='" + sob.cdsp_code + "') and cinvcode='" + sob.cinv_code + "'");
+                                    //    break;
                                     case "cordercode":
                                     case "csocode":
-                                        xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = Ufdata.getDataReader(m_ologin.UfDbName, "select csocode from so_somain where cdefine10='" + sob.cord_code + "'");
+                                        xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = Ufdata.getDataReader(m_ologin.UfDbName, "select c.cSOCode from SO_SODetails a inner join SO_SODetails_extradefine b on a.isosid=b.isosid inner join SO_SOMain c on a.ID=c.ID where cinvcode='" + sob.cinv_code + "' and b.cbdefine21='" + sob.ori_req_id + "'");
                                         break;
                                     case "iquantity":
                                         xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = iquantity.ToString();
@@ -271,9 +277,9 @@ namespace XylinkU8Interface.UFIDA
                                     case "inatsum":
                                         xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = isum.ToString();
                                         break;
-                                    case "ccorcode":
-                                        xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = Ufdata.getDataReader(m_ologin.UfDbName, "select csocode from so_somain where cdefine10='" + sob.cord_code + "'");
-                                        break;
+                                    //case "ccorcode":
+                                    //    xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = Ufdata.getDataReader(m_ologin.UfDbName, "select csocode from so_somain where cdefine10='" + sob.cord_code + "'");
+                                    //    break;
                                     default:
                                         xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = getItemValue(doel.text, sob);
                                         break;
@@ -286,9 +292,9 @@ namespace XylinkU8Interface.UFIDA
 
 
                         }
-                        invcodereqidsn = sob.cinv_code + sob.req_id + sob.sn;
+                        //invcodereqidsn = sob.cinv_code + sob.req_id + sob.sn;
                         guid = Guid.NewGuid().ToString();
-                        getPortfolio(sob.cinv_code, iquantity, ref dom_body,ref xnNow, m_ologin,cwhcode,ordercode,orireqid,sob.sn,guid );
+                        getPortfolio(sob.cinv_code, iquantity, ref dom_body,ref xnNow, m_ologin,cwhcode,ordercode,orireqid,"",guid );
                     }
                     //else//sn不同继续
                     //{                        
@@ -367,7 +373,9 @@ namespace XylinkU8Interface.UFIDA
                 if (string.IsNullOrEmpty(result))
                 {
                     re.recode = "0";
-                    re.u8code ="销售发货单/退货单："+Ufdata.getDataReader(m_ologin.UfDbName,"select cdlcode from DispatchList where DLID=" +vNewIDRet);
+                    re.remsg ="销售发货单/退货单："+Ufdata.getDataReader(m_ologin.UfDbName,"select cdlcode from DispatchList where DLID=" +vNewIDRet);
+                    re.u8code =  Ufdata.getDataReader(m_ologin.UfDbName, "select cdlcode from DispatchList where DLID=" + vNewIDRet);
+                    LogHelper.WriteLog(typeof(DispatchReturnEntity), "select cdlcode from DispatchList where DLID=" + vNewIDRet);
                     verify_so(so,ref re, vNewIDRet, dom_head, dom_body, companycode,cexchan);
                 }
                 else
@@ -384,7 +392,7 @@ namespace XylinkU8Interface.UFIDA
             {
                 re.oacode = so.head.ccode;
                 re.recode = "999";
-                re.remsg = ex.Message;
+                re.remsg ="error:["+errMsg+"]"+ ex.Message;
                 LogHelper.WriteLog(typeof(DispatchReturnEntity), ex);
             }
             finally
@@ -499,8 +507,8 @@ namespace XylinkU8Interface.UFIDA
                     //xnNow.attributes.getNamedItem("ipartid").text = dr["cInvCode"].ToString();
                     xnNowClone.attributes.getNamedItem("fchildqty").text = dr["baseQty"].ToString();
                     xnNowClone.attributes.getNamedItem("fchildrate").text = dr["fchildrate"].ToString();
-                    LogHelper.WriteLog(typeof(DispatchReturnEntity), "select a.isosid from SO_SODetails a inner join SO_SODetails_extradefine b on a.isosid=b.isosid where ID in (select id from so_somain where cdefine10='" + ordercode + "') and cinvcode='" + dr["cInvCode"].ToString() + "' and b.cbdefine21='" +orireqid + "'");
-                    xnNowClone.attributes.getNamedItem("isosid").text = Ufdata.getDataReader(m_ologin.UfDbName, "select a.isosid from SO_SODetails a inner join SO_SODetails_extradefine b on a.isosid=b.isosid where ID in (select id from so_somain where cdefine10='" + ordercode + "') and cinvcode='" + dr["cInvCode"].ToString() + "' and b.cbdefine21='" + orireqid + "'");
+                    //LogHelper.WriteLog(typeof(DispatchReturnEntity), "select a.isosid from SO_SODetails a inner join SO_SODetails_extradefine b on a.isosid=b.isosid where ID in (select id from so_somain where cdefine10='" + ordercode + "') and cinvcode='" + dr["cInvCode"].ToString() + "' and b.cbdefine21='" +orireqid + "'");
+                    xnNowClone.attributes.getNamedItem("isosid").text = Ufdata.getDataReader(m_ologin.UfDbName, "select a.isosid from SO_SODetails a inner join SO_SODetails_extradefine b on a.isosid=b.isosid where a.cinvcode='" + dr["cInvCode"].ToString() + "' and b.cbdefine21='" + orireqid + "'");
                     //if Ufdata.getDataReader(m_ologin.UfDbName,"select bService from inventory where cinvcode='"+dr["cInvCode"].ToString()"'")
                     if (dr["bservice"].ToString()=="1")
                     {
@@ -510,6 +518,18 @@ namespace XylinkU8Interface.UFIDA
                     {
                         xnNowClone.attributes.getNamedItem("cwhcode").text = cwhcode;
                     }
+                    xnNowClone.attributes.getNamedItem("iquotedprice").text = "0";
+                    xnNowClone.attributes.getNamedItem("itaxunitprice").text = "0";
+                    xnNowClone.attributes.getNamedItem("iunitprice").text = "0";
+                    xnNowClone.attributes.getNamedItem("imoney").text = "0";
+                    xnNowClone.attributes.getNamedItem("itax").text = "0";
+                    xnNowClone.attributes.getNamedItem("idiscount").text = "0";
+                    xnNowClone.attributes.getNamedItem("inatunitprice").text = "0";
+                    xnNowClone.attributes.getNamedItem("inatmoney").text = "0";
+                    xnNowClone.attributes.getNamedItem("inattax").text = "0";
+                    xnNowClone.attributes.getNamedItem("inatdiscount").text = "0";
+                    xnNowClone.attributes.getNamedItem("isum").text = "0";
+                    xnNowClone.attributes.getNamedItem("inatsum").text = "0";
                     dom_body.selectSingleNode("//rs:data").appendChild(xnNowClone);
                 }
             }
@@ -608,9 +628,9 @@ namespace XylinkU8Interface.UFIDA
                     if (string.IsNullOrEmpty(result))
                     {
                         re.recode = "0";
-                        re.u8code += ",审核成功";
-                        if (so.head.cexchan != "换货")
-                        { SaleOutEntity.Add_so(ref re, cexchan, m_ologin, vNewIDRet, so); }
+                        re.remsg += ",审核成功";
+                        //if (so.head.cexchan != "换货")
+                       // { SaleOutEntity.Add_so(ref re, cexchan, m_ologin, vNewIDRet, so); }
                     }
                     else
                     {

@@ -26,17 +26,18 @@ namespace XylinkU8Interface.UFIDA
             if (m_ologin != null)
             {
 
-                string sql = "select a.cInvCode invcode,g.cInvName invname,a.cDefine22 excomp,a.cDefine23 exnum,"
-                            + "b.cbdefine4 receiver,b.cbdefine5 recrmobi,b.cbdefine9 recraddress,b.cbdefine21 reqId,"
-                            + "f.cInvSN sncode,case when isnull(f.cInvSN,'')='' then a.iQuantity else 1 end num,"
-                            + "e.cSOCode u8code ,e.cDefine10 ccode "
-                            + "from rdrecords32 a "
-                            + "inner join rdrecords32_extradefine b on a.AutoID=b.AutoID "
-                            + "inner join DispatchLists c on a.iDLsID=c.iDLsID "
-                            + "inner join SO_SODetails d on c.iSOsID=d.iSOsID "
-                            + "inner join SO_SOMain e on d.ID=e.ID "
-                            + "left join ST_SNDetail_SaleOut f on a.AutoID=f.iVouchsID "
-                            + "inner join Inventory g on a.cInvCode=g.cInvCode";
+                string sql = @"select a.cInvCode invcode,g.cInvName invname,a.cDefine22 excomp,a.cDefine23 exnum,
+                            b.cbdefine4 receiver,b.cbdefine5 recrmobi,
+                            replace(isnull(b.cbdefine6,''),'/','')+replace(isnull(b.cbdefine7,''),'/','')+replace(isnull(b.cbdefine8,''),'/','')+replace(isnull(b.cbdefine9,''),'/','') recraddress,
+                            b.cbdefine21 reqId,f.cInvSN sncode,case when isnull(f.cInvSN,'')='' then a.iQuantity else case when a.iQuantity>0 then 1 else -1 end end num,
+                            e.cSOCode u8code ,e.cDefine10 ccode 
+                            from rdrecords32 a 
+                            inner join rdrecords32_extradefine b on a.AutoID=b.AutoID 
+                            inner join DispatchLists c on a.iDLsID=c.iDLsID 
+                            inner join SO_SODetails d on c.iSOsID=d.iSOsID 
+                            inner join SO_SOMain e on d.ID=e.ID 
+                            left join ST_SNDetail_SaleOut f on a.AutoID=f.iVouchsID 
+                            inner join Inventory g on a.cInvCode=g.cInvCode";
                 string condition = "";
                 foreach(LogisticQueryCode code in lq.codes)
                 {

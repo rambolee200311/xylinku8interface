@@ -21,7 +21,8 @@ namespace XylinkU8Interface.UFIDA
             }
             try
             {
-                string sql = "select a.cinvcCode,d.cinvcname,a.cInvMnemCode,a.cinvstd,a.cInvCode,a.cInvName,b.PartId,c.cidefine5,c.cidefine6,a.cInvDefine2,a.cInvDefine7,a.cInvDefine10,c.cidefine2,a.cInvDefine6,a.cInvDefine5,isnull(a.iTaxRate,0) iTaxRate,isnull(iInvSCost,0) hsbj,isnull(iInvSPrice,0) ckcb,a.cInvDefine3,0 dwz,a.cComUnitCode jbdw,e.cGroupName,f.cComUnitName, case when isnull(g.BomId,'')='' then '0' else '1' end has_u8,c.cidefine7"
+                string sql = "select * from (select row_number() OVER (ORDER BY a.cinvccode,a.cinvcode) n,a.cinvcCode,d.cinvcname,a.cInvMnemCode,a.cinvstd,a.cInvCode,a.cInvName,b.PartId,c.cidefine5,c.cidefine6,a.cInvDefine2,a.cInvDefine7,a.cInvDefine10,c.cidefine2,isnull(cidefine1,'否') cidefine1,"
+                            + "isnull(h.cvalue,'') cInvDefine6,a.cInvDefine5,isnull(a.iTaxRate,0) iTaxRate,isnull(iInvSCost,0) hsbj,isnull(iInvSPrice,0) ckcb,a.cInvDefine3,0 dwz,a.cComUnitCode jbdw,e.cGroupName,f.cComUnitName, case when isnull(g.BomId,'')='' then '0' else '1' end has_u8,c.cidefine7,a.bSerial"
                             + " from inventory a"
                             + " inner join bas_part b on a.cInvCode=b.InvCode"
                             + " left join Inventory_extradefine c on a.cInvCode=c.cInvCode"
@@ -29,12 +30,16 @@ namespace XylinkU8Interface.UFIDA
                             + " left join ComputationGroup e on a.cGroupCode=e.cGroupCode"
                             + " left join ComputationUnit f on a.cComUnitCode=f.cComunitCode"
                             + " left join bom_parent g on b.PartId=g.ParentId"
-                            + " where isnull(a.cinvdefine8,'')='是'"
-                            + " order by a.cinvccode,a.cinvcode";
+                            + " left join (select * from UserDefine where cid=54) h on a.cInvDefine6=h.cvalue"
+                            + " where isnull(a.cinvdefine8,'')='是') a"
+                            + " where a.n>="+((currentPage-1)*size+1).ToString()+" and a.n<="+(currentPage*size);
                 DataTable dt = Ufdata.getDatatableFromSql(m_ologin.UfDbName, sql);
-                ir.totalNumber = dt.Rows.Count;
-                DataTable dtt = GetPagedTable(dt, currentPage, size);
-                foreach (DataRow dr in dtt.Rows)
+
+                sql="select count(cinvcode) c from inventory a where isnull(a.cinvdefine8,'')='是'";
+                ir.totalNumber = Convert.ToInt32(Ufdata.getDataReader(m_ologin.UfDbName, sql));
+                //ir.totalNumber = dt.Rows.Count;
+                //DataTable dtt = GetPagedTable(dt, currentPage, size);
+                foreach (DataRow dr in dt.Rows)
                 {
                     Inventory inv = new Inventory();
                     inv.productCode = dr["cInvCode"].ToString();//    物料编码    
@@ -49,7 +54,7 @@ namespace XylinkU8Interface.UFIDA
 
                     inv.standardPrice = Convert.ToDecimal(dr["hsbj"]);//       参考售价    
 
-                    inv.priceGroup = dr["cInvDefine6"].ToString();//  产品周期单位 
+                    inv.priceGroup = dr["cInvDefine6"].ToString();//  报价分组
 
                     inv.taxRate = Convert.ToDecimal(dr["iTaxRate"]);//         taxRate          
 
@@ -71,6 +76,9 @@ namespace XylinkU8Interface.UFIDA
 
                     inv.remark = dr["cidefine7"].ToString();//产品描述
 
+                    inv.bvirtual = (dr["cidefine1"].ToString() == "是") ? 1 : 0; //是否虚拟产品  | 1:是，0:否
+
+                    inv.hasSequence = Convert.ToInt32(dr["bSerial"]);
                     ir.products.Add(inv);
                 }
             }
