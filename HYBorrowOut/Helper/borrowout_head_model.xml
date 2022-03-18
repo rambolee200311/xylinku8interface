@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<data>
+  <ID>{1000002559}</ID>
+  <ivtid>{131061}</ivtid>
+  <cCODE>{JCJY202009010023}</cCODE>
+  <cType>[ctype]</cType>
+  <bObjectCode>[cust_name]</bObjectCode>
+  <cpersoncode>[person_name]</cpersoncode>
+  <cdepcode>[dept_name]</cdepcode>
+  <cmemo>[cmemo]</cmemo>
+  <cMaker>{system}</cMaker>
+  <ddate>[ddate]</ddate>  
+  <dmDate>{2020-09-27}</dmDate>
+  <iStatus>{新建}</iStatus>
+  <bObjectName>[cust_name]</bObjectName>
+  <iswfcontrolled>{0}</iswfcontrolled>
+  <cdefine2>[recv_name]</cdefine2>
+  <cdefine3>[recv_phone]</cdefine3>
+  <cdefine11>[recv_address]</cdefine11>
+  <cdefine12>[ccode]</cdefine12>  
+  <cCreateType>{新增单据}</cCreateType>
+  <cfreight>{否}</cfreight>
+  <MycdefineT1>{借出借用单(JCJY202009010023)生单}</MycdefineT1>
+  <cdepname>[dept_name]</cdepname>
+  <cpersonname>[person_name]</cpersonname>
+  <cVoucherId>{1000002559}</cVoucherId>
+  <VoucherId>{1000002559}</VoucherId>
+  <VoucherCode>{JCJY202009010023}</VoucherCode>
+  <VoucherType>{HYJCGH001}</VoucherType>
+  <ccuscode>[cust_name]</ccuscode>
+  <cvencode></cvencode>
+  <cdepcode1></cdepcode1>
+  <cborrowouttype>{0}</cborrowouttype>
+  <type_id>{22}</type_id>  
+</data>

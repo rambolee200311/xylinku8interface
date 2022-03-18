@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XylinkU8Interface", "XylinkU8Interface\XylinkU8Interface.csproj", "{7C7EFB4B-6003-4CC0-86B8-EFB12A562308}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XylinkU8Interface.Tests", "XylinkU8Interface.Tests\XylinkU8Interface.Tests.csproj", "{B8A30540-B1C5-47D1-BAEE-C4968324B2B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HYBorrowOut", "HYBorrowOut\HYBorrowOut.csproj", "{3267E5E7-4F3E-4400-952E-F61D47A85924}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HYBorrowOut.Tests", "HYBorrowOut.Tests\HYBorrowOut.Tests.csproj", "{74CAE011-E0E4-4345-82B9-1F57C99FE697}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "U8toOAInterface", "U8toOAInterface\U8toOAInterface.csproj", "{DC806832-D1D1-4F46-AD38-8886B8AF18F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C7EFB4B-6003-4CC0-86B8-EFB12A562308}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C7EFB4B-6003-4CC0-86B8-EFB12A562308}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C7EFB4B-6003-4CC0-86B8-EFB12A562308}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C7EFB4B-6003-4CC0-86B8-EFB12A562308}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8A30540-B1C5-47D1-BAEE-C4968324B2B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8A30540-B1C5-47D1-BAEE-C4968324B2B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8A30540-B1C5-47D1-BAEE-C4968324B2B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8A30540-B1C5-47D1-BAEE-C4968324B2B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3267E5E7-4F3E-4400-952E-F61D47A85924}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3267E5E7-4F3E-4400-952E-F61D47A85924}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3267E5E7-4F3E-4400-952E-F61D47A85924}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3267E5E7-4F3E-4400-952E-F61D47A85924}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74CAE011-E0E4-4345-82B9-1F57C99FE697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74CAE011-E0E4-4345-82B9-1F57C99FE697}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74CAE011-E0E4-4345-82B9-1F57C99FE697}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74CAE011-E0E4-4345-82B9-1F57C99FE697}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC806832-D1D1-4F46-AD38-8886B8AF18F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC806832-D1D1-4F46-AD38-8886B8AF18F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC806832-D1D1-4F46-AD38-8886B8AF18F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC806832-D1D1-4F46-AD38-8886B8AF18F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

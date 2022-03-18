@@ -586,6 +586,6 @@
 	<rs:data>
 		<z:row id="1000000019" cinvcode="72090-00251-090" cinvname="小鱼易连AE90主机" inquantity="1.0000000000" cinvccode="0102" cinvm_unit="个" iquantity="1.0000000000" autoid="1000000036" cinvdefine8="是" idlsid="1000000064" cbdlcode="XSFH202011270016" scrapufts="" cdemandmemo="" iordertype="1" iorderdid="1000000084" iordercode="DD2020112700000007" iorderseq="3" isotype="0" corufts="" bcosting="True" bvmiused="False" 
            iinvsncount="1" iuninvsncount=".0000000000" iexpiratdatecalcu="0" 
-           cbinvsn="" irowno="1" ipesodid="1000000084" ipesotype="1" cpesocode="DD2020112700000007" ipesoseq="3" cbsysbarcode="||st32|XSCK202011270004|1" bsaleoutcreatebill="False" biacreatebill="False" bneedbill="True" avaInQuantity="0" avaInNum="0" avaOutQuantity="0" avaOutNum="0" taskguid="" editprop="" cbdefine4="张三" cbdefine5="18276546378" cbdefine6="北京市" cbdefine7="市辖区" cbdefine8="朝阳区" cbdefine9="北京市市辖区朝阳区朝阳公园" cbdefine21="177"/>
+           cbinvsn="" irowno="1" ipesodid="1000000084" ipesotype="1" cpesocode="DD2020112700000007" ipesoseq="3" cbsysbarcode="||st32|XSCK202011270004|1" bsaleoutcreatebill="False" biacreatebill="False" bneedbill="True" avaInQuantity="0" avaInNum="0" avaOutQuantity="0" avaOutNum="0" taskguid="" editprop="" cbdefine4="张三" cbdefine5="18276546378" cbdefine6="北京市" cbdefine7="市辖区" cbdefine8="朝阳区" cbdefine9="北京市市辖区朝阳区朝阳公园" bgsp="" cbdefine1="177" cbdefine21="177"/>
 	</rs:data>
 </xml>

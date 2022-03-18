@@ -22,7 +22,7 @@
   <itax>{.0000000000}</itax>
   <idiscount></idiscount>
   <dlid>{1000046104}</dlid>
-  <icorid>[cord_code]</icorid>
+  <icorid></icorid>
   <inatunitprice>[itaxunitprice]</inatunitprice>
   <inatmoney></inatmoney>
   <inattax></inattax>
@@ -72,7 +72,7 @@
   <binvquality>{False}</binvquality>
   <cmassunit>{}</cmassunit>
   <itaxrate>{0.0000000000}</itaxrate>
-  <isosid>[cord_code]</isosid>
+  <isosid>{False}</isosid>
   <idlsid></idlsid>
   <iretquantity>{.000000000}</iretquantity>
   <fensettlequan>{.000000}</fensettlequan>
@@ -111,7 +111,7 @@
   <iexpiratdatecalcu>{0}</iexpiratdatecalcu>
   <fretqtywkp>{.000000000}</fretqtywkp>
   <fretqtyykp>{.000000000}</fretqtyykp>
-  <cordercode>[cord_code]</cordercode>
+  <cordercode>{False}</cordercode>
   <iorderrowno>{1}</iorderrowno>
   <bcosting>{True}</bcosting>
   <bneedsign>{0}</bneedsign>
@@ -145,7 +145,7 @@
   <cbdefine7></cbdefine7>
   <cbdefine8></cbdefine8>
   <cbdefine9></cbdefine9>
-  <cbdefine21>[requestid]</cbdefine21>
+  <cbdefine21>[req_id]</cbdefine21>
   <keyextend_b_idlsid_dispatchlists_extradefine_idlsid>{1000188046}</keyextend_b_idlsid_dispatchlists_extradefine_idlsid>
   <editprop>{A}</editprop>  
 </data>

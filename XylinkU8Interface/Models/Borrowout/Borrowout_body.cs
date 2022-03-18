@@ -7,6 +7,7 @@ namespace XylinkU8Interface.Models.Borrowout
 {
     public class Borrowout_body
     {
+        public string req_id { get; set; }//明细唯一标识
         public string cinv_code { get; set; }//产品编码-存货编码
         public string cinv_name { get; set; }//产品名称-存货名称
         public string unit_name { get; set; }//单位-单位

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ufinterface sender="995" receiver="u8" roottag="HY_JCGH005" docid="874080836" proc="Query" codeexchanged="n" exportneedexch="n" paginate="0" display="借出还回单" family="库存管理">
+  <HY_JCGH005 importfile="" exportfile="d:\hyjcgh005.xml" code="011" bincrementout="n">
+    <field display="单据ID" name="ID" operation="=" value="1000000005" logic="" />
+  </HY_JCGH005>
+</ufinterface>

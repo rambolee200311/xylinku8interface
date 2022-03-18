@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<data>
+  <ID>{1000002559}</ID>
+  <AutoID>{1000009514}</AutoID>
+  <cinvcode>[cinv_code]</cinvcode>
+  <iquantity>[iquantity]</iquantity>
+  <cinvname>[cinv_name]</cinvname>
+  <cinvstd></cinvstd>
+  <igrouptype>[cinv_name]</igrouptype>
+  <cgroupcode>[cinv_name]</cgroupcode>
+  <cgroupname>[cinv_name]</cgroupname>
+  <ccomunitcode>[cinv_name]</ccomunitcode>
+  <ccomunitname>[cinv_name]</ccomunitname>
+  <bsalepricefree1>{0}</bsalepricefree1>
+  <bsalepricefree2>{0}</bsalepricefree2>
+  <bsalepricefree3>{0}</bsalepricefree3>
+  <bsalepricefree4>{0}</bsalepricefree4>
+  <bsalepricefree5>{0}</bsalepricefree5>
+  <bsalepricefree6>{0}</bsalepricefree6>
+  <bsalepricefree7>{0}</bsalepricefree7>
+  <bsalepricefree8>{0}</bsalepricefree8>
+  <bsalepricefree9>{0}</bsalepricefree9>
+  <bsalepricefree10>{0}</bsalepricefree10>
+  <backdate>[ddate]</backdate>
+  <cinvdefine8>{是}</cinvdefine8>
+  <cbsysbarcode>{||stjc|JCJY202009010023|1}</cbsysbarcode>
+  <keyextend_b_autoid_hy_dz_borrowouts_extradefine_autoid>{1000009514}</keyextend_b_autoid_hy_dz_borrowouts_extradefine_autoid>
+  <editprop>{A}</editprop>
+  <cbdefine4>[recv_name]</cbdefine4>
+  <cbdefine5>[recv_phone]</cbdefine5>
+  <cbdefine9>[recv_address]</cbdefine9>
+  <cbdefine21>[req_id]</cbdefine21>
+  <cmemo>[cmemo]</cmemo>
+</data>

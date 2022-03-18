@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ufinterface>
+  <url>http://39.105.96.42:80/api/esb/execute</url>
+  <appkey>64caed2d-ab47-4116-b1be-6caec02a2fa1</appkey>
+  <username></username>
+  <password></password>
+  <timestamp></timestamp>
+  <format>json</format>
+  <eventkey>U8WriteSn</eventkey>
+  <params></params>
+</ufinterface>
+<!--
+#用户名密码非加密传输
+POST /api/esb/execute?appkey=应用标识&username=用户名&password=密码&timestamp=时间戳format=json&eventkey=U8WriteSn&params={"sn_data":[{"snm":"?","shrdh":"?","shxxdz":"?","cpbm":"?","kdgs":"?","sfkt":"?","shr":"?","cpmc":"?","u8ddh":"?","kddh":"?","oaddh":"?"}]} HTTP/1.1
+Cache-Control: no-cache
+Host: 39.105.96.42:80
+-->

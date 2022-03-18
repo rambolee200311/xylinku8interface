@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<setting>
+  <URL>
+    http://39.105.96.42/api/cube/restful/interface/saveOrUpdateModeData/U8addProduct
+  </URL>
+  <header>
+    <systemid>U8</systemid>
+    <MD5>F00CC4106B784FE9A28613059F2A8C09</MD5>
+  </header>
+  <maintable>
+    <id>[cinvcode]</id>
+    <wlbm>[cinvcode]</wlbm>
+    <wlmc>[cinvname]</wlmc>
+    <zjm>[cinvmnemcode]</zjm>
+    <jbdw>{0}</jbdw>
+    <sftj>{0}</sftj>
+    <sfyj>{0}</sfyj>
+    <crmbxs>{0}</crmbxs>
+    <cpfl>{0}</cpfl>
+  </maintable>
+</setting>
+

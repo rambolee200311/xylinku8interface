@@ -25,5 +25,8 @@ namespace XylinkU8Interface.Models.Inventory
         public string hasU8 { get; set; }//有无子件
 
         public string remark { get; set; }//产品描述
+        public int bvirtual { get; set; }//是否虚拟产品 1:是，0:否 
+
+        public int hasSequence { get; set; }//是否序列号管理  1:是，0:否 
     }
 }

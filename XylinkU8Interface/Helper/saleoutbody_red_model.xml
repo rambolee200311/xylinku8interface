@@ -15,8 +15,8 @@
   <scrapufts></scrapufts>
   <cdemandmemo></cdemandmemo>
   <iordertype>{1}</iordertype>
-  <iorderdid>[isosid]</iorderdid>
-  <iordercode>[cordercode]</iordercode>
+  <iorderdid></iorderdid>
+  <iordercode></iordercode>
   <iorderseq>{2}</iorderseq>
   <isotype>{0}</isotype>
   <corufts>{}</corufts>

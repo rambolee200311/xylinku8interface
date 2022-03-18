@@ -17,12 +17,12 @@ namespace XylinkU8Interface.Models.Dispatchreturn
         public decimal itaxunitprice { get; set; }//折后单价-含税单价
         public decimal isum { get; set; }//折后金额-价税合计
         public string cwhname { get; set; }//仓库名称-仓库名称
-        public string cord_code { get; set; }//订单号-订单号
-        public string cdsp_code { get; set; }//发货单号-原发货单号"
+        //public string cord_code { get; set; }//订单号-订单号
+        //public string cdsp_code { get; set; }//发货单号-原发货单号"
         public string creason { get; set; }//退货原因-退货原因
 
-        public string requestid { get; set; }
-        public string sn { get; set; }//产品序列号
+        //public string requestid { get; set; }
+        //public string sn { get; set; }//产品序列号
 
     }
 }

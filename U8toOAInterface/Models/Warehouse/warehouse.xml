@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mod="http://localhost/services/ModeDateService">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <mod:saveModeData>
+      <mod:in0>
+        <![CDATA[
+                
+                <?xml version="1.0" encoding="UTF-8"?>
+				<ROOT>
+                    <header>
+                        <userid>1</userid>
+                        <modeid>3</modeid>
+                        <id></id>
+                    </header>
+                    <search>
+                        <condition />
+                        <right>Y</right>
+                    </search>
+                    <data id="">
+                        <maintable>
+                            <field>
+                                <filedname>ckbm</filedname>
+                                <filedlabel>仓库编码</filedlabel>
+                                <fileddbtype>varchar(256)</fileddbtype>
+                                <filedvalue>1234567890</filedvalue>
+                                <fieldshowname>仓库编码</fieldshowname>
+                            </field>
+                            <field>
+                                <filedname>ckmc</filedname>
+                                <filedlabel>仓库名称</filedlabel>
+                                <fileddbtype>varchar(256)</fileddbtype>
+                                <filedvalue>1234567890</filedvalue>
+                                <fieldshowname>仓库名称</fieldshowname>
+                            </field>
+                            <field>
+                                <filedname>bmmc</filedname>
+                                <filedlabel>部门名称</filedlabel>
+                                <fileddbtype>varchar(256)</fileddbtype>
+                                <filedvalue>1234567890</filedvalue>
+                                <fieldshowname>部门名称</fieldshowname>
+                            </field>
+                            <field>
+                                <filedname>ckdz</filedname>
+                                <filedlabel>仓库地址</filedlabel>
+                                <fileddbtype>varchar(256)</fileddbtype>
+                                <filedvalue>1234567890</filedvalue>
+                                <fieldshowname>仓库地址</fieldshowname>
+                            </field>
+                            <field>
+                                <filedname>dh</filedname>
+                                <filedlabel>电话</filedlabel>
+                                <fileddbtype>varchar(256)</fileddbtype>
+                                <filedvalue>1234567890</filedvalue>
+                                <fieldshowname>电话</fieldshowname>
+                            </field>
+                            <field>
+                                <filedname>fzr</filedname>
+                                <filedlabel>负责人</filedlabel>
+                                <fileddbtype>varchar(256)</fileddbtype>
+                                <filedvalue>1234567890</filedvalue>
+                                <fieldshowname>负责人</fieldshowname>
+                            </field>
+                            <field>
+                                <filedname>jjfs</filedname>
+                                <filedlabel>计价方式</filedlabel>
+                                <fileddbtype>varchar(256)</fileddbtype>
+                                <filedvalue>1234567890</filedvalue>
+                                <fieldshowname>计价方式</fieldshowname>
+                            </field>
+                        </maintable>
+                        <detail></detail>
+                    </data>
+                </ROOT>]]>
+      </mod:in0>
+    </mod:saveModeData>
+  </soapenv:Body>
+</soapenv:Envelope>
