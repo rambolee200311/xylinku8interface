@@ -38,7 +38,7 @@ namespace XylinkU8Interface.UFIDA
                 //第五步：API参数赋值
 
                 //给普通参数sVouchType赋值。此参数的数据类型为System.String，此参数按值传递，表示单据类型：32
-                broker.AssignNormalValue("sVouchType", "32");
+                broker.AssignNormalValue("svouchtype", "32");
 
                 //给BO表头参数DomHead赋值，此BO参数的业务类型为销售出库单，属表头参数。BO参数均按引用传递
                 //提示：给BO表头参数DomHead赋值有两种方法
@@ -471,8 +471,8 @@ namespace XylinkU8Interface.UFIDA
 
 
 
-                //dom_head.save(AppDomain.CurrentDomain.BaseDirectory + "Logs\\saleouthead111.xml");
-                broker.AssignNormalValue("domhead", dom_head);
+                dom_head.save(AppDomain.CurrentDomain.BaseDirectory + "Logs\\saleouthead111.xml");
+                broker.AssignNormalValue("DomHead", dom_head);
                 #endregion
 
                 #region //body
@@ -551,25 +551,30 @@ namespace XylinkU8Interface.UFIDA
                 {
                     dom_body.selectSingleNode("//rs:data").removeChild(xnModel);
                 }
-                //dom_body.save(AppDomain.CurrentDomain.BaseDirectory + "Logs\\saleoutbody111.xml");
-                broker.AssignNormalValue("dombody", dom_body);
+                dom_body.save(AppDomain.CurrentDomain.BaseDirectory + "Logs\\saleoutbody111.xml");
+                broker.AssignNormalValue("domBody", dom_body);
                 #endregion
-
+                
                 #region//process
-                ////给普通参数domPosition赋值。此参数的数据类型为System.Object，此参数按引用传递，表示货位：传空
-                //broker.AssignNormalValue("domPosition", new System.Object());
+                //给普通参数domPosition赋值。此参数的数据类型为System.Object，此参数按引用传递，表示货位：传空
+                System.Object domPosition = null;
+                broker.AssignNormalValue("domPosition", domPosition);
 
-                ////该参数errMsg为OUT型参数，由于其数据类型为System.String，为一般值类型，因此不必传入一个参数变量。在API调用返回时，可以通过GetResult("errMsg")获取其值
+                //该参数errMsg为OUT型参数，由于其数据类型为System.String，为一般值类型，因此不必传入一个参数变量。在API调用返回时，可以通过GetResult("errMsg")获取其值
+                System.String errmsg = "";
+                broker.AssignNormalValue("errMsg", errmsg);
 
-                ////给普通参数cnnFrom赋值。此参数的数据类型为ADODB.Connection，此参数按引用传递，表示连接对象,如果由调用方控制事务，则需要设置此连接对象，否则传空
-                //broker.AssignNormalValue("cnnFrom", new ADODB.Connection());
+                //给普通参数cnnFrom赋值。此参数的数据类型为ADODB.Connection，此参数按引用传递，表示连接对象,如果由调用方控制事务，则需要设置此连接对象，否则传空
+                ADODB.Connection cnnForm = null;
+                broker.AssignNormalValue("cnnFrom", cnnForm);
 
-                ////该参数VouchId为INOUT型普通参数。此参数的数据类型为System.String，此参数按值传递。在API调用返回时，可以通过GetResult("VouchId")获取其值
-                //broker.AssignNormalValue("VouchId", "");
+                //该参数VouchId为INOUT型普通参数。此参数的数据类型为System.String，此参数按值传递。在API调用返回时，可以通过GetResult("VouchId")获取其值
+                System.String VouchId = "";
+                broker.AssignNormalValue("vouchid", VouchId);
 
                 //该参数domMsg为OUT型参数，由于其数据类型为MSXML2.IXMLDOMDocument2，非一般值类型，因此必须传入一个参数变量。在API调用返回时，可以直接使用该参数
-                MSXML2.DOMDocumentClass domMsg = new MSXML2.DOMDocumentClass();
-                broker.AssignNormalValue("dommsg", domMsg);
+                MSXML2.IXMLDOMDocument2 domMsg = new MSXML2.DOMDocument30();
+                broker.AssignNormalValue("domMsg", domMsg);
                 //给普通参数bCheck赋值。此参数的数据类型为System.Boolean，此参数按值传递，表示是否控制可用量。
                 broker.AssignNormalValue("bCheck", false);
 
@@ -581,13 +586,13 @@ namespace XylinkU8Interface.UFIDA
                 {
                     broker.AssignNormalValue("bIsRedVouch", false);
                 }
-                else if (cexchan == "red")
+                else //if (cexchan == "red")
                 {
                     broker.AssignNormalValue("bIsRedVouch", true);
                 }
 
                 //给普通参数sAddedState赋值。此参数的数据类型为System.String，此参数按值传递，表示传空字符串
-                broker.AssignNormalValue("sAddedState", "");
+                broker.AssignNormalValue("sAddedState", VouchId);
 
                 //给普通参数bReMote赋值。此参数的数据类型为System.Boolean，此参数按值传递，表示是否远程：转入false
                 broker.AssignNormalValue("bReMote", false);

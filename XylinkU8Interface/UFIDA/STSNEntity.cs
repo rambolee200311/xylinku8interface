@@ -374,7 +374,9 @@ namespace XylinkU8Interface.UFIDA
             {
                 domHead = getOtherInDom(m_ologin, VouchIdRet, "domhead");
                 domBody = getOtherInDom(m_ologin, VouchIdRet, "dombody");
-                string ufts = Ufdata.getDataReader(m_ologin.UfDbName, "select convert(money,ufts) ufts from rdrecord08 where ccode='" + VouchIdRet + "'");
+                strSql ="select convert(money,ufts) ufts from rdrecord08 where ccode='" + VouchIdRet + "'";
+                LogHelper.WriteLog(typeof(STSNEntity),strSql);
+                string ufts = Ufdata.getDataReader(m_ologin.UfDbName, strSql);
                 domHead.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("ufts").text = ufts;
 
                 foreach (MSXML2.IXMLDOMNode xn in domSN.selectSingleNode("//rs:data").childNodes)
@@ -399,13 +401,16 @@ namespace XylinkU8Interface.UFIDA
                             strSql = "select a.autoid from RdRecords08 a left join HY_DZ_BorrowOutBacks b on a.iDebitIDs=b.AutoID"
                                     + " left join HY_DZ_BorrowOuts c on b.UpAutoID=c.AutoID"
                                     + " left join HY_DZ_BorrowOuts_extradefine d on c.AutoID=d.AutoID"
-                                    + " where a.id=" + vouchid + " and a.cinvcode='" + detail.cinv_code + "' and d.cbdefine21='" + body.ori_req_id + "'";
+                                    + " where a.id=" + vouchid + " and a.cinvcode='" + detail.cinv_code + "' and d.cbdefine21='" + body.ori_req_id + "'";                            
+                            LogHelper.WriteLog(typeof(STSNEntity), strSql);
                             xnNow.attributes.getNamedItem("ivouchsid").text = Ufdata.getDataReader(m_ologin.UfDbName, strSql);
                             xnNow.attributes.getNamedItem("irowno").text = rowno.ToString();
                             xnNow.attributes.getNamedItem("cinvcode").text = detail.cinv_code;
                             //xnNow.attributes.getNamedItem("cinvname").text = dr["cinvname"].ToString();
-                            xnNow.attributes.getNamedItem("cwhcode").text = Ufdata.getDataReader(m_ologin.UfDbName,
-                                " select cWhCode from RdRecord08 where id=" + vouchid);
+                            strSql ="select cWhCode from RdRecord08 where id=" + vouchid;
+                            LogHelper.WriteLog(typeof(STSNEntity), strSql);
+                            xnNow.attributes.getNamedItem("cwhcode").text = Ufdata.getDataReader(m_ologin.UfDbName,strSql);
+                            
                             //xnNow.attributes.getNamedItem("cwhname").text = dr["cwhname"].ToString();
                             //xnNow.attributes.getNamedItem("idlsid").text = dr["idlsid"].ToString();
                             xnNow.attributes.getNamedItem("cinvsn").text = sncode.sncode;

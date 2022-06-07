@@ -21,6 +21,7 @@
   <cmaker>{system}</cmaker>
   <cverifier></cverifier>
   <cdefine7></cdefine7>
+<cdefine9>{crmnew}</cdefine9>		
   <cdefine10>[ccode]</cdefine10>
   <cdefine11></cdefine11>
   <ccccode></ccccode>

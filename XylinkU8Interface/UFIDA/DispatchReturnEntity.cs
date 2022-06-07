@@ -28,6 +28,10 @@ namespace XylinkU8Interface.UFIDA
             string ordercode = "";
             string orireqid = "";
             string strSql = "";
+            decimal taxrate = 0;
+            decimal kl = 0;
+            decimal dkl = 0;
+            decimal isum = 0;
             companycode = so.companycode;
             U8Login.clsLoginClass m_ologin = U8LoginEntity.getU8LoginDateEntity(companycode,so.head.ddate);
             //U8Login.clsLogin m_ologin = U8LoginEntity.getU8LoginEntityInterop(so.companycode);
@@ -237,7 +241,22 @@ namespace XylinkU8Interface.UFIDA
                             {
                                 iquantity = sob.iquantity;
                             }
-                            decimal isum = iquantity * sob.itaxunitprice;
+                            isum = iquantity * sob.itaxunitprice;
+                            taxrate = 0;
+                            if (sob.itaxrate != null)
+                            {
+                                taxrate = Convert.ToDecimal(sob.itaxrate);
+                            }
+                            kl = 100;
+                            if (sob.iquoteprice != 0)
+                            { kl = ((1 - ((sob.iquoteprice - (Convert.ToDecimal(sob.itaxunitprice))) / sob.iquoteprice))) * 100; }
+                            dkl = 0;
+                            dkl = (sob.iquoteprice * sob.iquantity - sob.isum);
+                            decimal itax = Convert.ToDecimal(isum) * taxrate / (100 + taxrate);
+                            decimal imoney = Convert.ToDecimal(isum) - itax;
+                            decimal iunitprice = imoney / iquantity;
+
+
                             if (string.IsNullOrEmpty(sob.cwhname))
                             { cwhcode = "04"; }
                             else
@@ -272,14 +291,38 @@ namespace XylinkU8Interface.UFIDA
                                     case "cwhcode":
                                         xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = cwhcode;
                                         break;
-                                    case "isum":
-                                    case "imoney":
+                                    case "isum":                                   
                                     case "inatsum":
                                         xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = isum.ToString();
                                         break;
-                                    //case "ccorcode":
-                                    //    xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = Ufdata.getDataReader(m_ologin.UfDbName, "select csocode from so_somain where cdefine10='" + sob.cord_code + "'");
-                                    //    break;
+                                    case "imoney":
+                                    case "inatmoney":
+                                        xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = imoney.ToString();
+                                        break;
+                                    case "itaxunitprice":                                    
+                                        xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = sob.itaxunitprice.ToString();
+                                        break;
+                                    case "iunitprice":
+                                    case "inatunitprice":
+                                        xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = iunitprice.ToString();
+                                        break;
+                                    case "iquotedprice":
+                                        xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = sob.iquoteprice.ToString();
+                                        break;
+                                    case "itax":
+                                    case "inattax":
+                                        xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = itax.ToString();
+                                        break;
+                                    case "itaxrate":
+                                        xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = taxrate.ToString();
+                                        break;
+                                    case "kl":
+                                        xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = kl.ToString();
+                                        break;
+                                    case "idiscount":
+                                    case "inatdiscount":
+                                        xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = dkl.ToString();
+                                        break;
                                     default:
                                         xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = getItemValue(doel.text, sob);
                                         break;

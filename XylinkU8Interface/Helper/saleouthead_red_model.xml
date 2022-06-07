@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <data>
   <id></id>
-  <brdflag>{0}</brdflag>
+<brdflag>{0}</brdflag>
   <cvouchtype>{32}</cvouchtype>
   <csysbarcode></csysbarcode>
   <cvouchname>{销售出库单}</cvouchname>
@@ -28,7 +28,7 @@
   <cdlcode>[cdlcode]</cdlcode>
   <cmaker>{yonyou}</cmaker>
   <cdefine7>[cdefine7]</cdefine7>
-  <cdefine9>{未打印}</cdefine9>
+  <cdefine9>{crmnew}</cdefine9>
   <cdefine10>[cdefine10]</cdefine10>
   <cdefine14>[cdefine14]</cdefine14>
   <ufts></ufts>
