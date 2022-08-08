@@ -24,10 +24,10 @@
   <dlid>{1000046104}</dlid>
   <icorid></icorid>
   <inatunitprice>[itaxunitprice]</inatunitprice>
-  <inatmoney></inatmoney>
-  <inattax></inattax>
+  <inatmoney>{.0000000000}</inatmoney>
+  <inattax>{.0000000000}</inattax>
   <inatsum>[isum]</inatsum>
-  <inatdiscount></inatdiscount>
+  <inatdiscount>{.0000000000}</inatdiscount>
   <isum>[isum]</isum>
   <iinvlscost></iinvlscost>
   <ibatch>{0}</ibatch>
@@ -65,7 +65,7 @@
   <bbatchproperty9>{False}</bbatchproperty9>
   <bbatchproperty10>{False}</bbatchproperty10>
   <cinvdefine8>{是}</cinvdefine8>
-  <kl></kl>
+  <kl>{0.0000000000}</kl>
   <kl2></kl2>
   <binvtype>{False}</binvtype>
   <itb>{正常}</itb>
@@ -78,7 +78,7 @@
   <fensettlequan>{.000000}</fensettlequan>
   <fensettlesum>{0}</fensettlesum>
   <csocode>{001}</csocode>
-  <dkl1></dkl1>
+  <dkl1>{0.0000000000}</dkl1>
   <dkl2></dkl2>
   <fsalecost>{.0000000000}</fsalecost>
   <fsaleprice>{.0000000000}</fsaleprice>

@@ -17,5 +17,6 @@ namespace XylinkU8Interface.Models.TrialSale
         public string recv_name { get; set; }//联系人-联系人
         public string recv_type { get; set; }//收发类别名称-入库类别(借出还回入库)
         public string ordcode { get; set; }//销售订单号
+        public string cwhname { get; set; }
     }
 }

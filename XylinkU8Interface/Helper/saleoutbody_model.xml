@@ -15,10 +15,10 @@
   <scrapufts></scrapufts>
   <cdemandmemo></cdemandmemo>
   <iordertype>{1}</iordertype>
-  <iorderdid></iorderdid>
-  <iordercode></iordercode>
-  <iorderseq>{2}</iorderseq>
-  <isotype>{0}</isotype>
+  <iorderdid>[isosid]</iorderdid>
+  <iordercode>[csocode]</iordercode>
+  <iorderseq>[iorderrowno]</iorderseq>
+  <isotype>{1}</isotype>
   <corufts>{}</corufts>
   <bcosting>{True}</bcosting>
   <bvmiused>{False}</bvmiused>
@@ -26,7 +26,10 @@
   <iexpiratdatecalcu>{0}</iexpiratdatecalcu>
   <cbinvsn></cbinvsn>
   <irowno>{1}</irowno>
-  <ipesotype>{0}</ipesotype>
+  <ipesotype>{1}</ipesotype>
+<cpesocode>[csocode]</cpesocode>
+<ipesodid>[isosid]</ipesodid>
+<ipesoseq>[iorderrowno]</ipesoseq>
   <cbsysbarcode></cbsysbarcode>
   <bsaleoutcreatebill>{False}</bsaleoutcreatebill>
   <biacreatebill>{False}</biacreatebill>

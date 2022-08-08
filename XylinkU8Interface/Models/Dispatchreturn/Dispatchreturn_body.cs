@@ -20,7 +20,7 @@ namespace XylinkU8Interface.Models.Dispatchreturn
         //public string cord_code { get; set; }//订单号-订单号
         //public string cdsp_code { get; set; }//发货单号-原发货单号"
         public string creason { get; set; }//退货原因-退货原因
-
+        public decimal itaxrate { get; set; }
         //public string requestid { get; set; }
         //public string sn { get; set; }//产品序列号
 
