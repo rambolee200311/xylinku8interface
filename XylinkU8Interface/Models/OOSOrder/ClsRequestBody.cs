@@ -19,6 +19,9 @@ namespace XylinkU8Interface.Models.OOSOrder
         //public string reqId { get; set; }//明细唯⼀标识
         public string old_sncode { get; set; }//原SN码
         public string new_sncode { get; set; }//新SN码
+        public string receiver { get; set; }// 收货⼈
+        public string recemobi { get; set; }// 收货⼈⼿机号
+        public string receaddress { get; set; }// 收货⼈地址
 
     }
 }

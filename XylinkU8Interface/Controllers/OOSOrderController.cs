@@ -31,7 +31,30 @@ namespace XylinkU8Interface.Controllers
         public ClsResponse Post([FromBody]ClsRequest req)
         {
             LogHelper.WriteLog(typeof(OOSOrderController), JsonHelper.ToJson(req));
-            ClsResponse rep = new ClsResponse();
+            ClsResponse rep=null;
+            ClsResponse rep1 = null;
+            if (req.head.category != "试⽤业务SN的调换")
+            {
+                 rep= OOSOrderEntity.postResquest(req);
+            }
+            else
+            {
+                req.head.category = "试⽤业务SN的调换-CRM入库";
+                rep = OOSOrderEntity.postResquest(req);
+                if (rep.recode == "0")
+                {
+                    req.head.category = "试⽤业务SN的调换-CRM出库";
+                    rep1= OOSOrderEntity.postResquest(req);
+                    if (rep1.recode == "0")
+                    {
+                        rep.u8code += "," + rep1.u8code;
+                    }
+                    else
+                    {
+                        rep = rep1;
+                    }
+                }
+            }
             LogHelper.WriteLog(typeof(OOSOrderController), JsonHelper.ToJson(rep));
             return rep;
         }

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data;
+
 using XylinkU8Interface.Models.TrialSale;
 using XylinkU8Interface.Models.DispatchReturnBack;
 using XylinkU8Interface.Models.Borrowoutback;
 using XylinkU8Interface.Models.Result;
+using XylinkU8Interface.Models.OOSOrder;
 using XylinkU8Interface.Helper;
 using XylinkU8Interface.UFIDA;
 using UFIDA.U8.MomServiceCommon;
@@ -18,6 +20,182 @@ namespace XylinkU8Interface.UFIDA
 {
     public class STSNEntity
     {
+        //其他出库单红字蓝字，售后换货出库-CRM入库 CRM出库
+        public static string add_STSN(U8Login.clsLoginClass m_ologin, ClsRequest req, string VouchIdRet)
+        {
+            string result = "";
+            string strSql = "";
+            UFSTSNCO.clsUFSTSNCOClass usn = new UFSTSNCO.clsUFSTSNCOClass();
+            ADODB.Connection conn = new ADODB.Connection();
+            MSXML2.IXMLDOMDocument2 domSN = new MSXML2.DOMDocument();
+            MSXML2.IXMLDOMDocument2 domHead = new MSXML2.DOMDocument();
+            MSXML2.IXMLDOMDocument2 domBody = new MSXML2.DOMDocument();
+            switch (req.head.category)
+            {
+                case "售后换货出库-CRM入库":
+                case "试⽤业务SN的调换-CRM入库":
+                    domSN.load(AppDomain.CurrentDomain.BaseDirectory + "Helper\\otherout_red_sn.xml");
+                    break;
+                case "售后换货出库-CRM出库":
+                case "试⽤业务SN的调换-CRM出库":
+                    domSN.load(AppDomain.CurrentDomain.BaseDirectory + "Helper\\otherout_blue_sn.xml");
+                    break;
+                default:
+                    domSN.load(AppDomain.CurrentDomain.BaseDirectory + "Helper\\otherout_red_sn.xml");
+                    break;
+            }
+            
+
+            try
+            {
+                domHead = getOtherOutDom(m_ologin, VouchIdRet, "domhead");
+                domBody = getOtherOutDom(m_ologin, VouchIdRet, "dombody");
+                string ufts = Ufdata.getDataReader(m_ologin.UfDbName, "select convert(money,ufts) ufts from rdrecord09 where ID=" + VouchIdRet);
+                domHead.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("ufts").text = ufts;
+                conn.Open(m_ologin.UfDbName);
+                usn.Init(m_ologin, conn, result);
+                MSXML2.IXMLDOMNode xnModel = domSN.selectSingleNode("//rs:data//z:row");
+                int rowno = 1;
+                foreach (ClsRequestBody reqBody in req.body)
+                {
+                    rowno = 1;
+                    if ((!string.IsNullOrEmpty(reqBody.sncode))||(!string.IsNullOrEmpty(reqBody.old_sncode)))
+                    {
+                        MSXML2.IXMLDOMNode xnNow = xnModel.cloneNode(true);
+                        xnNow.attributes.getNamedItem("ivouchid").text = VouchIdRet;
+                        
+                        xnNow.attributes.getNamedItem("irowno").text = rowno.ToString();
+                        xnNow.attributes.getNamedItem("cinvcode").text = reqBody.invcode;
+                        xnNow.attributes.getNamedItem("cwhcode").text = Ufdata.getDataReader(m_ologin.UfDbName,
+                            "select cwhcode from rdrecord09 where ID=" + VouchIdRet + "");
+                        xnNow.attributes.getNamedItem("editprop").text = "A";
+                        switch(req.head.category)
+                        {
+                            case "试⽤业务SN的调换-CRM出库":
+                                xnNow.attributes.getNamedItem("cinvsn").text = reqBody.new_sncode;  
+                                xnNow.attributes.getNamedItem("csource").text = "借出借用单";
+                                break;
+                            case "试⽤业务SN的调换-CRM入库":
+                                xnNow.attributes.getNamedItem("cinvsn").text = reqBody.old_sncode;
+                                xnNow.attributes.getNamedItem("csource").text = "借出借用单";
+                                break;
+                            default:
+                                xnNow.attributes.getNamedItem("cinvsn").text = reqBody.sncode;
+                                break;
+                        }
+                        xnNow.attributes.getNamedItem("ivouchsid").text = Ufdata.getDataReader(m_ologin.UfDbName,
+                           "select a.AutoID from rdrecords09 a inner join rdrecords09_extradefine b on a.AutoID=b.AutoID where a.ID="
+                           + VouchIdRet + " and b.cbdefine21='" + reqBody.reqId + "' and a.cInvCode='" + reqBody.invcode + "'");// and a.iquantity="+reqBody.iquantity.ToString());
+                        xnNow.attributes.getNamedItem("ufts").text = ufts;
+                        domSN.selectSingleNode("//rs:data").appendChild(xnNow);
+                        rowno++;
+                        
+                        /*
+                        if (req.head.category == "试⽤业务SN的调换")
+                        {
+                            MSXML2.IXMLDOMNode xnNowClone = xnNow.cloneNode(true);
+                            xnNowClone.attributes.getNamedItem("irowno").text = rowno.ToString();
+                            xnNowClone.attributes.getNamedItem("cinvsn").text = reqBody.new_sncode;
+                            xnNowClone.attributes.getNamedItem("ivouchsid").text = Ufdata.getDataReader(m_ologin.UfDbName,
+                           "select a.AutoID from rdrecords09 a inner join rdrecords09_extradefine b on a.AutoID=b.AutoID where a.ID="
+                           + VouchIdRet + " and b.cbdefine21='" + reqBody.reqId + "' and a.cInvCode='" + reqBody.invcode + "' and a.iquantity=" +(-1* reqBody.iquantity).ToString());
+                            xnNowClone.attributes.getNamedItem("isnprestate").text = "2";
+                            domSN.selectSingleNode("//rs:data").appendChild(xnNowClone);
+                            rowno++;
+                        }
+                        */
+                    }
+                }
+                domSN.selectSingleNode("//rs:data").removeChild(xnModel);
+                domSN.save(AppDomain.CurrentDomain.BaseDirectory + "Logs\\otherout_red_sn111.xml");
+                if (domSN.selectSingleNode("//rs:data").childNodes.length >= 1)
+                {
+                    bool bResult = usn.Save(conn, "09", "add", ref domHead, ref domBody, domSN, ref result, false);
+                    if (bResult)
+                    { result = ""; }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                result = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return result;
+        }
+        
+        //删除其他出库单SNdetail
+        public static string del_STSN(U8Login.clsLoginClass m_ologin, string VouchIdRet)
+        {
+            string result = "";
+            string strSql = "";
+            UFSTSNCO.clsUFSTSNCOClass usn = new UFSTSNCO.clsUFSTSNCOClass();
+            ADODB.Connection conn = new ADODB.Connection();
+            MSXML2.IXMLDOMDocument2 domSN = new MSXML2.DOMDocument();
+            MSXML2.IXMLDOMDocument2 domSN1 = new MSXML2.DOMDocument();
+            MSXML2.IXMLDOMDocument2 domHead = new MSXML2.DOMDocument();
+            MSXML2.IXMLDOMDocument2 domBody = new MSXML2.DOMDocument();
+
+            try
+            {
+                domHead = getOtherOutDom(m_ologin, VouchIdRet, "domhead");
+                domBody = getOtherOutDom(m_ologin, VouchIdRet, "dombody");
+                string ufts = Ufdata.getDataReader(m_ologin.UfDbName, "select convert(money,ufts) ufts from rdrecord09 where ID=" + VouchIdRet);
+                domHead.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("ufts").text = ufts;
+
+                conn.Open(m_ologin.UfDbName);
+                usn.Init(m_ologin, conn, result);
+
+                //usn.Load(conn, "09", ref domSN, ref domSN1, result, ref domHead, ref domBody, true, true);
+                //foreach (MSXML2.IXMLDOMNode doel in domSN.selectSingleNode("//rs:data").childNodes)
+                //{
+                //    doel.attributes.getNamedItem("editprop").text = "D";
+                //}
+                DataTable dt = Ufdata.getDatatableFromSql(m_ologin.UfDbName, 
+                    "select  autoid,ivouchsid,ivouchid,irowno,cinvcode,cwhcode,isnprestate,isnoperatecount,cinvsn from ST_SNDetail_OtherOut where ivouchid=" + VouchIdRet);
+                domSN.load(AppDomain.CurrentDomain.BaseDirectory + "Helper\\otherout_red_sn.xml");
+                MSXML2.IXMLDOMNode xmlModel = domSN.selectSingleNode("//rs:data//z:row");
+                foreach (DataRow dr in dt.Rows)
+                {
+                    MSXML2.IXMLDOMNode xmlNow = xmlModel.cloneNode(true);
+                    xmlNow.attributes.getNamedItem("editprop").text = "D";
+                    xmlNow.attributes.getNamedItem("ufts").text = ufts;
+                    xmlNow.attributes.getNamedItem("autoid").text =dr["autoid"].ToString();
+                    xmlNow.attributes.getNamedItem("ivouchsid").text = dr["ivouchsid"].ToString();
+                    xmlNow.attributes.getNamedItem("ivouchid").text = dr["ivouchid"].ToString();
+                    xmlNow.attributes.getNamedItem("irowno").text = dr["irowno"].ToString();
+                    xmlNow.attributes.getNamedItem("cinvcode").text = dr["cinvcode"].ToString();
+                    xmlNow.attributes.getNamedItem("cwhcode").text = dr["cwhcode"].ToString();
+                    xmlNow.attributes.getNamedItem("isnprestate").text = dr["isnprestate"].ToString();
+                    xmlNow.attributes.getNamedItem("isnoperatecount").text = dr["isnoperatecount"].ToString();
+                    xmlNow.attributes.getNamedItem("cinvsn").text = dr["cinvsn"].ToString();
+                    domSN.selectSingleNode("//rs:data").appendChild(xmlNow);
+                }
+                domSN.selectSingleNode("//rs:data").removeChild(xmlModel);
+                domSN.save(AppDomain.CurrentDomain.BaseDirectory + "Logs\\otherout_red_sn111.xml");
+                if (domSN.selectSingleNode("//rs:data").childNodes.length >= 1)
+                {
+                    bool bResult = usn.Save(conn, "09", "delete", ref domHead, ref domBody, domSN, ref result, false);
+                    if (bResult)
+                    { result = ""; }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                result = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return result;
+        }
+           
+
         //销售出库单红字
         public static void add_STSN(U8Login.clsLoginClass m_ologin,string cType,DispatchReturnBack so,string VouchIdRet)
         {
@@ -451,7 +629,7 @@ namespace XylinkU8Interface.UFIDA
 
             return re;
         }
-
+        //获取销售出库单数据
         public static MSXML2.DOMDocument getSaleOutDom(U8Login.clsLoginClass m_ologin, string VouchIdRet,string ctype)
         {
             MSXML2.DOMDocument domResult = new MSXML2.DOMDocument();
@@ -499,7 +677,7 @@ namespace XylinkU8Interface.UFIDA
             }
             return domResult;
         }
-    
+        //获取其他入库单数据
         public static MSXML2.DOMDocument getOtherInDom(U8Login.clsLoginClass m_ologin, string VouchIdRet,string ctype)
         {
              MSXML2.DOMDocument domResult = new MSXML2.DOMDocument();
@@ -545,6 +723,53 @@ namespace XylinkU8Interface.UFIDA
              }
             return domResult;
         }
+        //获取其他出库单数据
+        public static MSXML2.DOMDocument getOtherOutDom(U8Login.clsLoginClass m_ologin, string VouchIdRet, string ctype)
+        {
+            MSXML2.DOMDocument domResult = new MSXML2.DOMDocument();
+            try
+            {
+                //第二步：构造环境上下文对象，传入login，并按需设置其它上下文参数
+                U8EnvContext envContext = new U8EnvContext();
+                envContext.U8Login = m_ologin;
+
+                //第三步：设置API地址标识(Url)
+                //当前API：装载单据的地址标识为：U8API/otherin/Load
+                U8ApiAddress myApiAddress = new U8ApiAddress("U8API/otherout/Load");
+
+                //第四步：构造APIBroker
+                U8ApiBroker broker = new U8ApiBroker(myApiAddress, envContext);
+
+                //第五步：API参数赋值
+
+                //给普通参数sVouchType赋值。此参数的数据类型为System.String，此参数按值传递，表示单据类型:08
+                broker.AssignNormalValue("sVouchType", "09");
+
+                //给普通参数sWhere赋值。此参数的数据类型为System.String，此参数按值传递，表示条件串
+                broker.AssignNormalValue("sWhere", "id=" + VouchIdRet + "");
+
+                //该参数domPos为OUT型参数，由于其数据类型为MSXML2.IXMLDOMDocument2，非一般值类型，因此必须传入一个参数变量。在API调用返回时，可以直接使用该参数
+                MSXML2.IXMLDOMDocument2 domPos = new MSXML2.DOMDocument(); ;
+                broker.AssignNormalValue("domPos", domPos);
+
+                //该参数errMsg为OUT型参数，由于其数据类型为System.String，为一般值类型，因此不必传入一个参数变量。在API调用返回时，可以通过GetResult("errMsg")获取其值
+
+                //给普通参数bGetBlank赋值。此参数的数据类型为System.Boolean，此参数按值传递，表示是否获取空白单据:传入false
+                broker.AssignNormalValue("bGetBlank", false);
+
+                //给普通参数sBodyWhere_Order赋值。此参数的数据类型为System.String，此参数按值传递，表示表体排序方式字段
+                broker.AssignNormalValue("sBodyWhere_Order", "autoid");
+
+                bool bResult = broker.Invoke();
+                domResult = (MSXML2.DOMDocument)broker.GetResult(ctype);
+            }
+            catch (Exception ex)
+            {
+                //do nothing
+            }
+            return domResult;
+        }
+        
         //审核其他入库单
         public static void verifyOtherIn(U8Login.clsLoginClass m_ologin,string VouchIdRet)
         {

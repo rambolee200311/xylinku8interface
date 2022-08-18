@@ -29,6 +29,7 @@ namespace XylinkU8Interface.UFIDA
             string strSql = "";
             string PTOModel = "";
             string bService = "";
+            decimal taxrate = 0;
             companycode = so.companycode;
             U8Login.clsLoginClass m_ologin = U8LoginEntity.getU8LoginEntity(companycode);
             if (m_ologin == null)
@@ -131,6 +132,11 @@ namespace XylinkU8Interface.UFIDA
                 dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("breturnflag").text = "0";
                 //dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("chdefine1").text = so.body[0].cord_code.ToString();
                 dom_head.save(AppDomain.CurrentDomain.BaseDirectory + "Logs\\dispatchlist_head_111.xml");
+
+                strSql = "select cSOCode from SO_SOMain where cDefine10='" + so.head.ccode + "'";
+                dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("csocode").text = Ufdata.getDataReader(m_ologin.UfDbName, strSql);
+                dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("itaxrate").text = so.body[0].taxrate.ToString();
+
                 broker.AssignNormalValue("domHead", dom_head);
 
                 #endregion
@@ -139,9 +145,8 @@ namespace XylinkU8Interface.UFIDA
                 MSXML2.IXMLDOMDocument2 dom_body;
                 dom_body = new MSXML2.DOMDocument30();
                 dom_body.load(AppDomain.CurrentDomain.BaseDirectory + "Helper\\dispatchlist_body.xml");
-                MSXML2.IXMLDOMNode xnModel = dom_body.selectSingleNode("//rs:data//z:row");
-                
-                
+                MSXML2.IXMLDOMNode xnModel = dom_body.selectSingleNode("//rs:data//z:row");                
+               
 
                 int i = 0;
                 string invcodereqid = "";
@@ -154,13 +159,20 @@ namespace XylinkU8Interface.UFIDA
                     decimal iquantity = 0;
                     guid = Guid.NewGuid().ToString();
                     PTOModel = Ufdata.getDataReader(m_ologin.UfDbName, "select bPTOModel from inventory where cinvcode='" + sob.cinv_code + "'");
-                    invcodereqid = sob.cinv_code + sob.req_id;                        
-                           
+                    invcodereqid = sob.cinv_code + sob.req_id;
+                    taxrate = 0;
+                    if (sob.taxrate != null)
+                    {
+                        taxrate = Convert.ToDecimal(sob.taxrate);
+                    }       
                     iquantity = sob.iquantity;
                     decimal isum = iquantity * sob.itaxunitprice;
                     decimal isumQuote = iquantity * sob.iquoteprice;
                     decimal idiscount = isumQuote - isum;
                     decimal kl = 0;
+                    decimal itax = Convert.ToDecimal(sob.isum) * taxrate / (100 + taxrate);
+                    decimal imoney = Convert.ToDecimal(sob.isum) - itax;
+                    decimal iunitprice = imoney / Convert.ToDecimal(sob.iquantity);
                     if (sob.iquoteprice != 0)
                     { kl = ((1 - ((sob.iquoteprice - (Convert.ToDecimal(sob.itaxunitprice))) / sob.iquoteprice))) * 100; }
                     if (string.IsNullOrEmpty(sob.cwhname))
@@ -171,19 +183,20 @@ namespace XylinkU8Interface.UFIDA
                     xnNow.attributes.getNamedItem("iquotedprice").text =sob.iquoteprice.ToString();
                     xnNow.attributes.getNamedItem("itaxunitprice").text =sob.itaxunitprice.ToString();
                     xnNow.attributes.getNamedItem("inatunitprice").text = sob.itaxunitprice.ToString();
-                    xnNow.attributes.getNamedItem("iunitprice").text =sob.itaxunitprice.ToString();
-                    xnNow.attributes.getNamedItem("itax").text = "0";
-                    xnNow.attributes.getNamedItem("inattax").text = "0";
+                    xnNow.attributes.getNamedItem("iunitprice").text = iunitprice.ToString();
+                    xnNow.attributes.getNamedItem("itax").text = itax.ToString();
+                    xnNow.attributes.getNamedItem("inattax").text = itax.ToString();
                     xnNow.attributes.getNamedItem("idiscount").text = idiscount.ToString();
                     xnNow.attributes.getNamedItem("inatdiscount").text = idiscount.ToString();                    
                     xnNow.attributes.getNamedItem("kl").text = kl.ToString();
                     xnNow.attributes.getNamedItem("isum").text = isum.ToString();
-                    xnNow.attributes.getNamedItem("imoney").text = isum.ToString();
-                    xnNow.attributes.getNamedItem("inatmoney").text = isum.ToString();
+                    xnNow.attributes.getNamedItem("imoney").text = imoney.ToString();
+                    xnNow.attributes.getNamedItem("inatmoney").text = imoney.ToString();
                     xnNow.attributes.getNamedItem("inatsum").text = isum.ToString();
                     xnNow.attributes.getNamedItem("cinvcode").text = sob.cinv_code;
                     xnNow.attributes.getNamedItem("cbdefine21").text = sob.req_id;
                     xnNow.attributes.getNamedItem("cbdefine1").text = sob.ori_req_id;
+                    xnNow.attributes.getNamedItem("itaxrate").text = taxrate.ToString();
                     xnNow.attributes.getNamedItem("cwhcode").text = "";
                     strSql = "select a.isosid from SO_SODetails a inner join SO_SODetails_extradefine b on a.iSOsID=b.iSOsID where a.cinvcode='" + sob.cinv_code + "' and b.cbdefine21='" + sob.req_id + "'";
                     xnNow.attributes.getNamedItem("isosid").text = Ufdata.getDataReader(m_ologin.UfDbName,strSql);

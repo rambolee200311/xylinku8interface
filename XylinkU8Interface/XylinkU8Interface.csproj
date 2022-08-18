@@ -325,6 +325,7 @@
     <Compile Include="Models\Person\Person.cs" />
     <Compile Include="Models\Person\Persons.cs" />
     <Compile Include="Models\Result\Result.cs" />
+    <Compile Include="Models\Result\ResultDatas.cs" />
     <Compile Include="Models\Result\Results.cs" />
     <Compile Include="Models\RevokeOOSOrder\ClsRequest.cs" />
     <Compile Include="Models\RevokeOOSOrder\ClsRequestCode.cs" />
@@ -367,6 +368,7 @@
       <DependentUpon>OtherInDomHelper.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UFIDA\AuditOOSOrderEntity.cs" />
     <Compile Include="UFIDA\BomComponentEntity.cs" />
     <Compile Include="UFIDA\CustomerEntity.cs" />
     <Compile Include="UFIDA\DispatchReturnEntity.cs" />
@@ -376,12 +378,16 @@
     <Compile Include="UFIDA\ISStateEntity.cs" />
     <Compile Include="UFIDA\LogisticsInfoEntity.cs" />
     <Compile Include="UFIDA\MD5CryptoHelper.cs" />
+    <Compile Include="UFIDA\OOSLogisticsInfoEntity.cs" />
+    <Compile Include="UFIDA\OOSOrderEntity.cs" />
     <Compile Include="UFIDA\OOSOutInfoEntity.cs" />
     <Compile Include="UFIDA\OOSSaleSNInfoEntity.cs" />
     <Compile Include="UFIDA\OOSSaleSNInfoTimeEntity.cs" />
     <Compile Include="UFIDA\OOSSNInfoEntity.cs" />
+    <Compile Include="UFIDA\OOSStateEntity.cs" />
     <Compile Include="UFIDA\OOSU8ExtInfoEntity.cs" />
     <Compile Include="UFIDA\PersonEntity.cs" />
+    <Compile Include="UFIDA\RevokeOOSOrderEntity.cs" />
     <Compile Include="UFIDA\SaleBillVouchEntity.cs" />
     <Compile Include="UFIDA\SaleOrderEntity.cs" />
     <Compile Include="UFIDA\SaleOutEntity.cs" />
@@ -491,6 +497,12 @@
     </Content>
     <Content Include="Helper\dispatchlist_head_model.xml" />
     <Content Include="Helper\otherinsn.xml" />
+    <Content Include="Helper\otheroutbody_blue.xml" />
+    <Content Include="Helper\otheroutbody_red.xml" />
+    <Content Include="Helper\otherouthead_blue.xml" />
+    <Content Include="Helper\otherout_blue_sn.xml" />
+    <Content Include="Helper\otherouthead_red.xml" />
+    <Content Include="Helper\otherout_red_sn.xml" />
     <Content Include="Helper\salebillvouch_body.xml" />
     <Content Include="Helper\salebillvouch_body_model.xml" />
     <Content Include="Helper\salebillvouch_head.xml" />

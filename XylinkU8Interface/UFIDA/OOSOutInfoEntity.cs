@@ -22,7 +22,7 @@ namespace XylinkU8Interface.UFIDA
                 //20220728
                 ClsInfo infor = new ClsInfo();
                 infor.companycode = query.companycode;
-
+                infor.datas = new List<ClsInfoData>();
                 U8Login.clsLoginClass m_ologin = U8LoginEntity.getU8LoginEntity(query.companycode);
                 string strSql = "";
                 string autoId = "";
@@ -30,10 +30,7 @@ namespace XylinkU8Interface.UFIDA
                 DataTable dtSncode = null;
                 
                 try
-                {
-                    
-
-
+                {      
                     foreach (ClsQueryCode code in query.codes)
                     {
 

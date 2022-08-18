@@ -21,7 +21,7 @@ namespace XylinkU8Interface.UFIDA
             //20220728
             ClsInfo infor = new ClsInfo();
             infor.companycode = query.companycode;
-
+            infor.datas = new List<ClsInfoData>();
             U8Login.clsLoginClass m_ologin = U8LoginEntity.getU8LoginEntity(query.companycode);
             string strSql = "";
             string autoId = "";
@@ -39,13 +39,13 @@ namespace XylinkU8Interface.UFIDA
                     List<Param> myParams = new List<Param>();
 
                     Param param3 = new Param();
-                    param3.paramname = "@code";
+                    param3.paramname = "@code1";
                     param3.paramtype = OleDbType.VarChar;
                     param3.paramvalue = code.u8Code.ToString();
                     myParams.Add(param3);
 
                     Param param4 = new Param();
-                    param4.paramname = "@code";
+                    param4.paramname = "@code2";
                     param4.paramtype = OleDbType.VarChar;
                     param4.paramvalue = code.u8ExtCode.ToString();
                     myParams.Add(param4);
@@ -66,7 +66,7 @@ namespace XylinkU8Interface.UFIDA
                                     left join SO_SOMain som on sod.ID=som.ID
                                     left join Customer cus on som.cCusCode=cus.cCusCode
                                     inner join inventory d on b.cInvCode=d.cInvCode";
-                    strSql += " where c.cCode=? or som.cDefine10=?";
+                    strSql += " where som.cCode=? or som.cDefine10=?";
                     LogHelper.WriteLog(typeof(OOSU8ExtInfoEntity), strSql);
                     LogHelper.WriteLog(typeof(OOSU8ExtInfoEntity), JsonHelper.ToJson(myParams));
                     dtResult = Ufdata.getDatatableFromSql(m_ologin.UfDbName, strSql, myParams);
@@ -119,7 +119,7 @@ namespace XylinkU8Interface.UFIDA
                                     left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
                                     inner join inventory d on b.cInvCode=d.cInvCode
                                     left join Customer cus on bo.bObjectCode=cus.cCusCode";
-                    strSql += " where c.cCode=? or bo.cDefine12=?";
+                    strSql += " where bo.cCode=? or bo.cDefine12=?";
                     LogHelper.WriteLog(typeof(OOSU8ExtInfoEntity), strSql);
                     LogHelper.WriteLog(typeof(OOSU8ExtInfoEntity), JsonHelper.ToJson(myParams));
                     dtResult = Ufdata.getDatatableFromSql(m_ologin.UfDbName, strSql, myParams);

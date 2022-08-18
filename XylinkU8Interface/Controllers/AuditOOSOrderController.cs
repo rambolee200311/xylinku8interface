@@ -29,10 +29,10 @@ namespace XylinkU8Interface.Controllers
         //public void Post([FromBody]string value)
         //{
         //}
-        public Result Post([FromBody]ClsRequest req)
+        public ResultDatas Post([FromBody]ClsRequest req)
         {
             LogHelper.WriteLog(typeof(AuditOOSOrderController),JsonHelper.ToJson(req));
-            Result res = new Result();
+            ResultDatas res = AuditOOSOrderEntity.auditOOSOrder(req);
             LogHelper.WriteLog(typeof(AuditOOSOrderController), JsonHelper.ToJson(res));
             return res;
 

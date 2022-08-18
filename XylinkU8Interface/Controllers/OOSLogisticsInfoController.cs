@@ -31,7 +31,7 @@ namespace XylinkU8Interface.Controllers
         public ClsInfo Post([FromBody]ClsQuery query)
         {
             LogHelper.WriteLog(typeof(OOSLogisticsInfoController), JsonHelper.ToJson(query));
-            ClsInfo infor = new ClsInfo();
+            ClsInfo infor = OOSLogisticsInfoEntity.getInfo(query);
             LogHelper.WriteLog(typeof(OOSLogisticsInfoController), JsonHelper.ToJson(infor));
             return infor;
         }
