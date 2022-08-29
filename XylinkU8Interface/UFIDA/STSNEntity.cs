@@ -69,20 +69,20 @@ namespace XylinkU8Interface.UFIDA
                         xnNow.attributes.getNamedItem("cwhcode").text = Ufdata.getDataReader(m_ologin.UfDbName,
                             "select cwhcode from rdrecord09 where ID=" + VouchIdRet + "");
                         xnNow.attributes.getNamedItem("editprop").text = "A";
-                        switch(req.head.category)
-                        {
-                            case "试⽤业务SN的调换-CRM出库":
-                                xnNow.attributes.getNamedItem("cinvsn").text = reqBody.new_sncode;  
-                                xnNow.attributes.getNamedItem("csource").text = "借出借用单";
-                                break;
-                            case "试⽤业务SN的调换-CRM入库":
-                                xnNow.attributes.getNamedItem("cinvsn").text = reqBody.old_sncode;
-                                xnNow.attributes.getNamedItem("csource").text = "借出借用单";
-                                break;
-                            default:
+                        //switch(req.head.category)
+                        //{
+                            //case "试⽤业务SN的调换-CRM出库":
+                            //    xnNow.attributes.getNamedItem("cinvsn").text = reqBody.new_sncode;  
+                            //    xnNow.attributes.getNamedItem("csource").text = "借出借用单";
+                            //    break;
+                            //case "试⽤业务SN的调换-CRM入库":
+                            //    xnNow.attributes.getNamedItem("cinvsn").text = reqBody.old_sncode;
+                            //    xnNow.attributes.getNamedItem("csource").text = "借出借用单";
+                            //    break;
+                            //default:
                                 xnNow.attributes.getNamedItem("cinvsn").text = reqBody.sncode;
-                                break;
-                        }
+                        //        break;
+                        //}
                         xnNow.attributes.getNamedItem("ivouchsid").text = Ufdata.getDataReader(m_ologin.UfDbName,
                            "select a.AutoID from rdrecords09 a inner join rdrecords09_extradefine b on a.AutoID=b.AutoID where a.ID="
                            + VouchIdRet + " and b.cbdefine21='" + reqBody.reqId + "' and a.cInvCode='" + reqBody.invcode + "'");// and a.iquantity="+reqBody.iquantity.ToString());

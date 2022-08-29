@@ -68,9 +68,10 @@ namespace XylinkU8Interface.UFIDA
 
                     //销售出库
                     strSql = @"select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
-                                b.irowno rowid,cus.cCusName custname,'销售出库' businesstype
+                                b.irowno rowid,cus.cCusName custname,'销售出库' businesstype,ext.cbdefine21 reqid
                                 from ST_SNDetail_SaleOut a
                                 inner join RdRecords32 b on a.iVouchsID=b.AutoID 
+                                inner join RdRecords32_extradefine ext on b.AutoID=ext.AutoID 
                                 inner join RdRecord32 c on b.ID=c.ID 
                                 left join DispatchLists dts on b.iDLsID=dts.iDLsID
                                 left join DispatchList dt on dts.DLID=dt.DLID
@@ -99,6 +100,7 @@ namespace XylinkU8Interface.UFIDA
                             detail.u8ExtCode = dr["u8extcode"].ToString();
                             detail.u8InvCode = dr["u8invcode"].ToString();
                             detail.u8OutCode = dr["u8outcode"].ToString();
+                            detail.reqid = dr["reqid"].ToString();
                             detail.u8OutTime = Convert.ToDateTime(dr["u8outtime"]).ToShortDateString() + " " + Convert.ToDateTime(dr["u8outtime"]).ToLongTimeString();
 
                             infordata.detail.Add(detail);
@@ -109,11 +111,12 @@ namespace XylinkU8Interface.UFIDA
 
                     //其他出库
                     strSql = @"select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
-                                b.irowno rowid,cus.cCusName custname,'其他出库' businesstype
+                                b.irowno rowid,cus.cCusName custname,'其他出库' businesstype,ext.cbdefine21 reqid
                                 from ST_SNDetail_OtherOut a
                                 inner join RdRecords09 b on a.iVouchsID=b.AutoID 
                                 inner join RdRecord09 c on b.ID=c.ID 
                                 left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                left join HY_DZ_BorrowOuts_extradefine ext on bos.AutoID=ext.AutoID    
                                 left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
                                 inner join inventory d on a.cInvCode=d.cInvCode
                                 left join Customer cus on bo.bObjectCode=cus.cCusCode";
@@ -139,7 +142,7 @@ namespace XylinkU8Interface.UFIDA
                             detail.u8InvCode = dr["u8invcode"].ToString();
                             detail.u8OutCode = dr["u8outcode"].ToString();
                             detail.u8OutTime = Convert.ToDateTime(dr["u8outtime"]).ToShortDateString() + " " + Convert.ToDateTime(dr["u8outtime"]).ToLongTimeString();
-
+                            detail.reqid = dr["reqid"].ToString();
                             infordata.detail.Add(detail);
                         }
 

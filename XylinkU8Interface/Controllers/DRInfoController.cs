@@ -9,6 +9,9 @@ using XylinkU8Interface.UFIDA;
 
 namespace XylinkU8Interface.Controllers
 {
+    /*
+     * 接口根据CRM销售订单的req_id，查询母件产品编码，母件产品名称、母件已入库数量、入库单号
+     */
     public class DRInfoController : ApiController
     {
         // GET api/drinfo

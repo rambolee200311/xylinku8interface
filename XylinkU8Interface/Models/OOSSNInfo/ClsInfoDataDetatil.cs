@@ -17,6 +17,6 @@ namespace XylinkU8Interface.Models.OOSSNInfo
         public string u8Code { get; set; }//U8销售订单号
         public string u8ExtCode { get; set; }//CRM单据（U8外部订单号）
         public string custName { get; set; }//客户名称
-
+        public string reqid { get; set; }
     }
 }

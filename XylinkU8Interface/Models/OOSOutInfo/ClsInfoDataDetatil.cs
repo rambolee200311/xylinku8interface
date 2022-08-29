@@ -17,7 +17,7 @@ namespace XylinkU8Interface.Models.OOSOutInfo
         public string u8ExtCode { get; set; }//CRM单据（U8外部订单号）
         public string custName { get; set; }//客户名称
         public decimal num { get; set; }//数量
-
+        public string reqid { get; set; }
         public List<ClsInfoDataDetailSncode> sncodes { get; set; }//SN号
     }
 }

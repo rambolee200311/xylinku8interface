@@ -140,7 +140,8 @@ namespace XylinkU8Interface.UFIDA
                                 System.String VouchIdRet = broker.GetResult("VouchId") as System.String;
                                 re.recode = "0";
                                 //STSNEntity.add_STSN(m_ologin, "32", so, VouchIdRet);
-                                re.u8code = "其他出库单:" + code.code+ "审核成功"; 
+                                re.u8code = code.code;
+                                re.remsg = "其他出库单:" + code.code + "审核成功"; 
                             }
                         #endregion
                     #endregion

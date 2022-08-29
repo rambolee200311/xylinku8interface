@@ -48,8 +48,9 @@ namespace XylinkU8Interface.UFIDA
 
                         //销售出库
                         strSql = @"select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
-                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID,ext.cbdefine21 reqid
                                     from RdRecords32 b
+                                    inner join RdRecords32_extradefine ext on b.AutoID=ext.AutoID
                                     inner join RdRecord32 c on b.ID=c.ID 
                                     left join DispatchLists dts on b.iDLsID=dts.iDLsID
                                     left join DispatchList dt on dts.DLID=dt.DLID
@@ -78,6 +79,7 @@ namespace XylinkU8Interface.UFIDA
                                 detail.u8OutCode = dr["u8outcode"].ToString();
                                 detail.num = Convert.ToDecimal(dr["num"]);
                                 detail.u8OutTime = Convert.ToDateTime(dr["u8outtime"]).ToShortDateString() + " " + Convert.ToDateTime(dr["u8outtime"]).ToLongTimeString();
+                                detail.reqid = dr["reqid"].ToString();
                                 //sncode
                                 autoId = dr["AutoID"].ToString();
                                 strSql = "select cInvSN from ST_SNDetail_SaleOut where iVouchsID=" + autoId;
@@ -103,10 +105,11 @@ namespace XylinkU8Interface.UFIDA
 
                         //其他出库
                         strSql = @"select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
-                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID,ext.cbdefine21 reqid
                                     from RdRecords09 b
                                     inner join RdRecord09 c on b.ID=c.ID 
                                     left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOuts_extradefine ext on bos.AutoID=ext.AutoID
                                     left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
                                     inner join inventory d on b.cInvCode=d.cInvCode
                                     left join Customer cus on bo.bObjectCode=cus.cCusCode";
@@ -131,7 +134,7 @@ namespace XylinkU8Interface.UFIDA
                                 detail.u8OutCode = dr["u8outcode"].ToString();
                                 detail.num = Convert.ToDecimal(dr["num"]);
                                 detail.u8OutTime = Convert.ToDateTime(dr["u8outtime"]).ToShortDateString() + " " + Convert.ToDateTime(dr["u8outtime"]).ToLongTimeString();
-
+                                detail.reqid = dr["reqid"].ToString();
                                 //sncode
                                 autoId = dr["AutoID"].ToString();
                                 strSql = "select cInvSN from ST_SNDetail_OtherOut where iVouchsID=" + autoId;

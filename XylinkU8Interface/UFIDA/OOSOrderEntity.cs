@@ -141,14 +141,14 @@ namespace XylinkU8Interface.UFIDA
                         xnNow.attributes.getNamedItem("irowno").text = i.ToString();
                         xnNow.attributes.getNamedItem("cinvcode").text = reqBody.invcode;
                         xnNow.attributes.getNamedItem("cbdefine21").text = reqBody.reqId;
-                        if (req.head.category == "试⽤业务SN的调换-CRM入库")
-                        {
-                            xnNow.attributes.getNamedItem("iquantity").text =(-1* reqBody.iquantity).ToString();
-                        }
-                        else
-                        {
+                        //if (req.head.category == "试⽤业务SN的调换-CRM入库")
+                        //{
+                        //    xnNow.attributes.getNamedItem("iquantity").text =(-1* reqBody.iquantity).ToString();
+                        //}
+                        //else
+                        //{
                             xnNow.attributes.getNamedItem("iquantity").text = reqBody.iquantity.ToString();
-                        }
+                        //}
                         xnNow.attributes.getNamedItem("editprop").text = "A";
                         //xnNow.attributes.getNamedItem("cbinvsn").text = reqBody.sncode;
                         if ((req.head.category == "试⽤业务SN的调换-CRM出库") || (req.head.category == "试⽤业务SN的调换-CRM入库"))
