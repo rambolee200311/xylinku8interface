@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using XylinkU8Interface.Models.DRInfo;
 using XylinkU8Interface.UFIDA;
+using XylinkU8Interface.Helper;
 
 namespace XylinkU8Interface.Controllers
 {
@@ -29,7 +30,9 @@ namespace XylinkU8Interface.Controllers
         // POST api/drinfo
         public DRInfo Post([FromBody]DRInfoQuery dq)
         {
+            LogHelper.WriteLog(typeof(DRInfoController), JsonHelper.ToJson(dq));
             DRInfo drInfo = DRInfoEntity.GetResult(dq);
+            LogHelper.WriteLog(typeof(DRInfoController), JsonHelper.ToJson(drInfo));
             return drInfo;
         }
 

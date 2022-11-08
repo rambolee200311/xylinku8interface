@@ -39,7 +39,7 @@ namespace XylinkU8Interface.UFIDA
                 foreach (ClsRequestCode code in req.codes)
                 {
                     Result re = new Result();
-                    re.oacode = code.code;
+                    re.u8code = code.code;
                     #region//audit
                     //第二步：构造环境上下文对象，传入login，并按需设置其它上下文参数
                     U8EnvContext envContext = new U8EnvContext();
@@ -140,7 +140,7 @@ namespace XylinkU8Interface.UFIDA
                                 System.String VouchIdRet = broker.GetResult("VouchId") as System.String;
                                 re.recode = "0";
                                 //STSNEntity.add_STSN(m_ologin, "32", so, VouchIdRet);
-                                re.u8code = code.code;
+                                re.oacode = Ufdata.getDataReader(m_ologin.UfDbName, "select cdefine12 from rdrecord09 where ccode='" + code.code + "'");
                                 re.remsg = "其他出库单:" + code.code + "审核成功"; 
                             }
                         #endregion

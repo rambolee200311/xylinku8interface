@@ -203,14 +203,28 @@ namespace XylinkU8Interface.UFIDA
                     bService = Ufdata.getDataReader(m_ologin.UfDbName, "select bservice from inventory where cinvcode='" + sob.cinv_code + "'");
                     
 
-
                     dom_body.selectSingleNode("//rs:data").appendChild(xnNow);
 
                     //子件
                     if ((PTOModel == "1") || (PTOModel.ToLower() == "true"))
                     {
+                        //20220926 母件数量合计
+                        decimal sumChildQty = 0;
                         foreach (TrialSale_body_detail detail in sob.detail)
                         {
+                            sumChildQty += Convert.ToDecimal(detail.iquantity);
+                        }
+                        int indexOfDetail=1;
+                        decimal sumChildRate = 0;
+                        foreach (TrialSale_body_detail detail in sob.detail)
+                        {
+                            //20220926 母件数量合计
+                            decimal fchildqty = 0;
+                            decimal fchildrate = 0;
+                            fchildqty = detail.iquantity;
+                            fchildrate = Convert.ToDecimal(fchildqty / sumChildQty);
+                            fchildqty =Convert.ToDecimal(fchildqty / iquantity);
+                            
                             MSXML2.IXMLDOMNode xnNowDetail = xnModel.cloneNode(true);
                             xnNowDetail.attributes.getNamedItem("cinvcode").text = detail.cinv_code;
                             xnNowDetail.attributes.getNamedItem("cbdefine21").text = sob.req_id;
@@ -219,7 +233,19 @@ namespace XylinkU8Interface.UFIDA
                             xnNowDetail.attributes.getNamedItem("cchildcode").text = guid;
                             xnNowDetail.attributes.getNamedItem("dpredate").text = so.head.ddate.ToShortDateString();
                             xnNowDetail.attributes.getNamedItem("dpremodate").text = so.head.ddate.ToShortDateString();
-                            bService = Ufdata.getDataReader(m_ologin.UfDbName, "select bservice from inventory where cinvcode='" + detail.cinv_code + "'"); 
+                            bService = Ufdata.getDataReader(m_ologin.UfDbName, "select bservice from inventory where cinvcode='" + detail.cinv_code + "'");
+
+                            //20220926 母件数量合计
+                            xnNowDetail.attributes.getNamedItem("ippartid").text = Ufdata.getDataReader(m_ologin.UfDbName, "select PartId from bas_part where InvCode='"+sob.cinv_code+"'");
+                            xnNowDetail.attributes.getNamedItem("ippartqty").text=iquantity.ToString();
+                            xnNowDetail.attributes.getNamedItem("fchildqty").text = fchildqty.ToString();
+                            xnNowDetail.attributes.getNamedItem("fchildrate").text =Convert.ToDecimal(100*fchildrate/fchildqty).ToString();
+                            if (indexOfDetail==sob.detail.Count)
+                            {
+                                xnNowDetail.attributes.getNamedItem("fchildrate").text = Convert.ToDecimal(100*(1 - sumChildRate) / fchildqty).ToString();
+                            }                            
+                            indexOfDetail++;
+                            sumChildRate += fchildrate;
                             dom_body.selectSingleNode("//rs:data").appendChild(xnNowDetail);
 
                         }
@@ -230,7 +256,7 @@ namespace XylinkU8Interface.UFIDA
                 {
                     dom_body.selectSingleNode("//rs:data").removeChild(xnModel);
                 }
-                dom_body.save(AppDomain.CurrentDomain.BaseDirectory + "Logs\\dispatchlist_body111.xml");
+                dom_body.save(AppDomain.CurrentDomain.BaseDirectory + "Logs\\trialorder_body111.xml");
                 broker.AssignNormalValue("domBody", dom_body);
                 errMsg = "";
 

@@ -55,7 +55,7 @@ namespace XylinkU8Interface.UFIDA
                     infordata.u8ExtCode = code.u8ExtCode.ToString();
                     infordata.detail = new List<ClsInfoDataDetatil>();
 
-                    //销售出库
+                    #region//销售出库
                     strSql = @"select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
                                     b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID,ext.cbdefine21 reqid
                                     from RdRecords32 b
@@ -67,7 +67,7 @@ namespace XylinkU8Interface.UFIDA
                                     left join SO_SOMain som on sod.ID=som.ID
                                     left join Customer cus on som.cCusCode=cus.cCusCode
                                     inner join inventory d on b.cInvCode=d.cInvCode";
-                    strSql += " where som.cSOCode=? or som.cDefine10=?";
+                    strSql += " where (som.cSOCode=? or som.cDefine10=?) and c.dnverifytime is not null";
                     LogHelper.WriteLog(typeof(OOSU8ExtInfoEntity), strSql);
                     LogHelper.WriteLog(typeof(OOSU8ExtInfoEntity), JsonHelper.ToJson(myParams));
                     dtResult = Ufdata.getDatatableFromSql(m_ologin.UfDbName, strSql, myParams);
@@ -110,9 +110,9 @@ namespace XylinkU8Interface.UFIDA
                         }
 
                     }
+                    #endregion
 
-
-                    //其他出库
+                    #region//其他出库
                     strSql = @"select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
                                     b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID,ext.cbdefine21 reqid
                                     from RdRecords09 b                                    
@@ -122,7 +122,7 @@ namespace XylinkU8Interface.UFIDA
                                     left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
                                     inner join inventory d on b.cInvCode=d.cInvCode
                                     left join Customer cus on bo.bObjectCode=cus.cCusCode";
-                    strSql += " where bo.cCode=? or bo.cDefine12=?";
+                    strSql += " where (bo.cCode=? or bo.cDefine12=?) and c.dnverifytime is not null";
                     LogHelper.WriteLog(typeof(OOSU8ExtInfoEntity), strSql);
                     LogHelper.WriteLog(typeof(OOSU8ExtInfoEntity), JsonHelper.ToJson(myParams));
                     dtResult = Ufdata.getDatatableFromSql(m_ologin.UfDbName, strSql, myParams);
@@ -164,7 +164,7 @@ namespace XylinkU8Interface.UFIDA
                         }
 
                     }
-
+                    #endregion
 
                     infor.datas.Add(infordata);
                 }

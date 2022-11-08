@@ -140,7 +140,8 @@ namespace XylinkU8Interface.UFIDA
                                         re.remsg = so.head.person_name + "人员档案不存在";
                                         return re;
                                     }
-                                    break;
+                                    break;                                
+
                                 default:
                                     dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem(doel.nodeName.ToString()).text = getItemValue(doel.text, so.head);
                                     break;
@@ -222,6 +223,9 @@ namespace XylinkU8Interface.UFIDA
                                     case "idiscount":
                                     case "inatdiscount":
                                         xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = dkl.ToString();
+                                        break;
+                                    case "bsaleprice":
+                                        xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = "1";
                                         break;
                                     default:
                                         xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = getItemValue(doel.text, sob);
@@ -400,8 +404,26 @@ namespace XylinkU8Interface.UFIDA
                 xnNow.attributes.getNamedItem("cparentcode").text = guid;
                 dom_body.selectSingleNode("//rs:data").appendChild(xnNow);
                 DataTable dtComponent = Ufdata.getDatatableFromSql(m_ologin.UfDbName, strSql);
+
+                //20220926 母件数量合计
+                //decimal sumChildQty = 0;
+                //foreach (DataRow dr in dtComponent.Rows)
+                //{
+                //    sumChildQty += Convert.ToDecimal(dr["baseQty"]);
+                //}
+                //int indexOfDetail = 1;
+                //decimal sumChildRate = 0;
+
+
                 foreach (DataRow dr in dtComponent.Rows)
                 {
+                    ////20220926 母件数量合计
+                    //decimal fchildqty = 0;
+                    //decimal fchildrate = 0;
+                    //fchildqty = Convert.ToDecimal(dr["baseQty"]);
+                    //fchildrate = Convert.ToDecimal(fchildqty / sumChildQty);
+                    //fchildqty = Convert.ToDecimal(fchildqty / iquantity);
+
                     MSXML2.IXMLDOMNode xnNowClone = xnNow.cloneNode(true);
                     xnNowClone.attributes.getNamedItem("cparentcode").text = "";
                     xnNowClone.attributes.getNamedItem("cchildcode").text = guid;
@@ -410,6 +432,10 @@ namespace XylinkU8Interface.UFIDA
                     //xnNowClone.attributes.getNamedItem("cinvname").text = dr["cInvName"].ToString();
                     xnNowClone.attributes.getNamedItem("iquantity").text = (iquantity * Convert.ToDecimal(dr["baseQty"])).ToString();
                     //xnNow.attributes.getNamedItem("ipartid").text = dr["cInvCode"].ToString();
+
+                    xnNowClone.attributes.getNamedItem("ippartid").text = Ufdata.getDataReader(m_ologin.UfDbName, "select PartId from bas_part where InvCode='" + cinvcode + "'");
+                    xnNowClone.attributes.getNamedItem("ippartqty").text = iquantity.ToString();
+
                     xnNowClone.attributes.getNamedItem("fchildqty").text = dr["baseQty"].ToString();
                     xnNowClone.attributes.getNamedItem("fchildrate").text = dr["fchildrate"].ToString();
                     xnNowClone.attributes.getNamedItem("inatunitprice").text = "0";
@@ -424,6 +450,7 @@ namespace XylinkU8Interface.UFIDA
                     xnNowClone.attributes.getNamedItem("kl").text = "100";
                     xnNowClone.attributes.getNamedItem("idiscount").text = "0";
                     xnNowClone.attributes.getNamedItem("inatdiscount").text = "0";
+                    xnNowClone.attributes.getNamedItem("bsaleprice").text = "0";
                     /*
                      case "iunitprice":
                                     case "inatunitprice":

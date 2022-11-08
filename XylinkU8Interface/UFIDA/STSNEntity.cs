@@ -501,7 +501,7 @@ namespace XylinkU8Interface.UFIDA
                     if (bResult)
                     {
                         re.recode = "0";
-                        verifyOtherIn(m_ologin, vouchid);
+                        
                     }
                     else
                     {
@@ -520,7 +520,7 @@ namespace XylinkU8Interface.UFIDA
                 return re;
             }
 
-
+            verifyOtherIn(m_ologin, vouchid);
 
             return re;
         }
@@ -606,7 +606,7 @@ namespace XylinkU8Interface.UFIDA
                     if (bResult)
                     {
                         re.recode = "0";
-                        verifyOtherIn(m_ologin, vouchid);
+                        
                     }
                     else
                     {
@@ -615,7 +615,7 @@ namespace XylinkU8Interface.UFIDA
                         return re;
                     }
                 }
-
+                verifyOtherIn(m_ologin, vouchid);
                 re.recode = "0";
             }
             catch (Exception ex)
@@ -821,8 +821,50 @@ namespace XylinkU8Interface.UFIDA
 
             //给普通参数oGenVouchIds赋值。此参数的数据类型为Scripting.IDictionary，此参数按值传递，表示返回审核时自动生成的单据的id列表,传空
             broker.AssignNormalValue("oGenVouchIds", null);
-            broker.Invoke();
-
+            //broker.Invoke();
+            //第六步：调用API
+            if (!broker.Invoke())
+            {
+                //错误处理
+                Exception apiEx = broker.GetException();
+                if (apiEx != null)
+                {
+                    if (apiEx is MomSysException)
+                    {
+                        MomSysException sysEx = apiEx as MomSysException;
+                        //Console.WriteLine("系统异常：" + sysEx.Message);
+                        //re.recode = "999";
+                        //re.remsg = "系统异常：" + sysEx.Message;
+                        LogHelper.WriteLog(typeof(STSNEntity), "verifyOtherIn:" + "系统异常：" + sysEx.Message);
+                        //return re;
+                        //todo:异常处理
+                    }
+                    else if (apiEx is MomBizException)
+                    {
+                        MomBizException bizEx = apiEx as MomBizException;
+                        //Console.WriteLine("API异常：" + bizEx.Message);                        
+                        LogHelper.WriteLog(typeof(STSNEntity), "verifyOtherIn:" + "API异常：" + bizEx.Message);
+                        //return re;
+                        //todo:异常处理
+                    }
+                    //异常原因
+                    String exReason = broker.GetExceptionString();
+                    if (exReason.Length != 0)
+                    {
+                        //Console.WriteLine("异常原因：" + exReason);
+                        LogHelper.WriteLog(typeof(STSNEntity), "verifyOtherIn:"+ "异常原因：" + exReason);
+                        //return re;
+                    }
+                }
+                              
+            }
+            String errMsgRet = "";
+            if (broker.GetResult("errMsg") != null)
+            { errMsgRet = broker.GetResult("errMsg").ToString(); }
+            if (!string.IsNullOrEmpty(errMsgRet))
+            { LogHelper.WriteLog(typeof(STSNEntity), "verifyOtherIn:" + "审核失败：" + errMsgRet); }
+            //结束本次调用，释放API资源
+            broker.Release(); 
         }
 
         //审核销售出库单
@@ -877,7 +919,51 @@ namespace XylinkU8Interface.UFIDA
             //给普通参数oGenVouchIds赋值。此参数的数据类型为Scripting.IDictionary，此参数按值传递，表示返回审核时自动生成的单据的id列表,传空
             broker.AssignNormalValue("oGenVouchIds", null);
 
-            broker.Invoke();
+            //broker.Invoke();
+            //第六步：调用API
+            if (!broker.Invoke())
+            {
+                //错误处理
+                Exception apiEx = broker.GetException();
+                if (apiEx != null)
+                {
+                    if (apiEx is MomSysException)
+                    {
+                        MomSysException sysEx = apiEx as MomSysException;
+                        //Console.WriteLine("系统异常：" + sysEx.Message);
+                        //re.recode = "999";
+                        //re.remsg = "系统异常：" + sysEx.Message;
+                        LogHelper.WriteLog(typeof(STSNEntity), "verifySaleOut:" + "系统异常：" + sysEx.Message);
+                        //return re;
+                        //todo:异常处理
+                    }
+                    else if (apiEx is MomBizException)
+                    {
+                        MomBizException bizEx = apiEx as MomBizException;
+                        //Console.WriteLine("API异常：" + bizEx.Message);                        
+                        LogHelper.WriteLog(typeof(STSNEntity), "verifySaleOut:" + "API异常：" + bizEx.Message);
+                        //return re;
+                        //todo:异常处理
+                    }
+                    //异常原因
+                    String exReason = broker.GetExceptionString();
+                    if (exReason.Length != 0)
+                    {
+                        //Console.WriteLine("异常原因：" + exReason);
+                        LogHelper.WriteLog(typeof(STSNEntity), "verifySaleOut:" + "异常原因：" + exReason);
+                        //return re;
+                    }
+                    
+                }
+                
+            }
+            String errMsgRet = "";
+            if (broker.GetResult("errMsg") != null)
+            { errMsgRet = broker.GetResult("errMsg").ToString(); }
+            if (!string.IsNullOrEmpty(errMsgRet))
+            { LogHelper.WriteLog(typeof(STSNEntity), "verifySaleOut:" + "审核失败：" + errMsgRet); }
+            //结束本次调用，释放API资源
+            broker.Release();
         }
     }
 }

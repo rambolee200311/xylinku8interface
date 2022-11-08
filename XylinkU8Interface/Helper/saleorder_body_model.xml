@@ -110,5 +110,6 @@
   <cbdefine9>[cfst_rcv_address]</cbdefine9>
   <cbdefine21>[req_id]</cbdefine21>
   <keyextend_b_isosid_so_sodetails_extradefine_isosid>{1000000434}</keyextend_b_isosid_so_sodetails_extradefine_isosid>
-  <editprop>{A}</editprop> 
+  <editprop>{A}</editprop>
+  <icalctype>{0}</icalctype>
 </data>

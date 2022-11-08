@@ -22,6 +22,7 @@ namespace XylinkU8Interface.UFIDA
         public static void Add_so(ref Result re,string cexchan,U8Login.clsLoginClass m_ologin,string vNewIDRet,DispatchReturn so)
         {
             string errMsg = "";
+            string strSql = "";
             try
             {
                 //第二步：构造环境上下文对象，传入login，并按需设置其它上下文参数
@@ -93,7 +94,9 @@ namespace XylinkU8Interface.UFIDA
                 #endregion
                 
                 #region //body
-                DataTable dtbody = Ufdata.getDatatableFromSql(m_ologin.UfDbName, "select * from dispatchlists a left join DispatchLists_extradefine b on a.idlsid=b.iDLsID inner join inventory c on a.cInvCode=c.cInvCode where a.dlid=" + vNewIDRet + " and isnull(cwhcode,'')!='' and c.bPTOModel=0 and c.bService=0");
+                strSql="select * from dispatchlists a left join DispatchLists_extradefine b on a.idlsid=b.iDLsID inner join inventory c on a.cInvCode=c.cInvCode where a.dlid=" + vNewIDRet + " and isnull(cwhcode,'')!='' and c.bPTOModel=0 and c.bService=0";
+                LogHelper.WriteLog(typeof(SaleOutEntity), strSql);
+                DataTable dtbody = Ufdata.getDatatableFromSql(m_ologin.UfDbName, strSql);
                 MSXML2.IXMLDOMDocument2 dom_body;
                 dom_body = new MSXML2.DOMDocument30();
 
@@ -103,7 +106,9 @@ namespace XylinkU8Interface.UFIDA
                 if (cexchan == "red")
                 {
                     dom_body.load(AppDomain.CurrentDomain.BaseDirectory + "Helper\\saleoutbody_red.xml");
+                    LogHelper.WriteLog(typeof(SaleOutEntity), AppDomain.CurrentDomain.BaseDirectory + "Helper\\saleoutbody_red.xml loaeded");
                     dom_body_mode.load(AppDomain.CurrentDomain.BaseDirectory + "Helper\\saleoutbody_red_model.xml");
+                    LogHelper.WriteLog(typeof(SaleOutEntity), AppDomain.CurrentDomain.BaseDirectory + "Helper\\saleoutbody_red_model.xml loaeded");
                     xnModel =dom_body.selectSingleNode("//rs:data//z:row"); 
                     int i = 1;
                     foreach (DataRow dr in dtbody.Rows)
@@ -472,28 +477,43 @@ namespace XylinkU8Interface.UFIDA
 
 
                 dom_head.save(AppDomain.CurrentDomain.BaseDirectory + "Logs\\saleouthead111.xml");
-                broker.AssignNormalValue("DomHead", dom_head);
+                //broker.AssignNormalValue("DomHead", dom_head);
+                LogHelper.WriteLog(typeof(SaleOutEntity), "dom_haed saved.");
+                broker.AssignNormalValue("domHead", dom_head);
                 #endregion
 
                 #region //body
-                DataTable dtbody = Ufdata.getDatatableFromSql(m_ologin.UfDbName, "select * from dispatchlists a left join DispatchLists_extradefine b on a.idlsid=b.iDLsID inner join inventory c on a.cInvCode=c.cInvCode where b.cbdefine21='" + so.body[0].req_id + "' and isnull(cwhcode,'')!='' and c.bPTOModel=0 and c.bService=0");
+                strSql = "select * from dispatchlists a left join DispatchLists_extradefine b on a.idlsid=b.iDLsID inner join inventory c on a.cInvCode=c.cInvCode where b.cbdefine21='" + so.body[0].req_id + "' and isnull(cwhcode,'')!='' and c.bPTOModel=0 and c.bService=0";
+                LogHelper.WriteLog(typeof(SaleOutEntity), strSql);
+                DataTable dtbody = Ufdata.getDatatableFromSql(m_ologin.UfDbName,strSql );
                 MSXML2.IXMLDOMDocument2 dom_body;
                 dom_body = new MSXML2.DOMDocument30();
 
                 MSXML2.IXMLDOMNode xnModel = null;
                 MSXML2.IXMLDOMDocument2 dom_body_mode;
                 dom_body_mode = new MSXML2.DOMDocument30();
+                LogHelper.WriteLog(typeof(SaleOutEntity), "cexchan:"+cexchan);
                 if (cexchan == "red")
                 {
                     dom_body.load(AppDomain.CurrentDomain.BaseDirectory + "Helper\\saleoutbody_red.xml");
+                    //LogHelper.WriteLog(typeof(SaleOutEntity), AppDomain.CurrentDomain.BaseDirectory + "Helper\\saleoutbody_red.xml loaded.");
                     dom_body_mode.load(AppDomain.CurrentDomain.BaseDirectory + "Helper\\saleoutbody_red_model.xml");
+                    //LogHelper.WriteLog(typeof(SaleOutEntity), AppDomain.CurrentDomain.BaseDirectory + "Helper\\saleoutbody_red_model.xml loaded.");
+                    //LogHelper.WriteLog(typeof(SaleOutEntity), dom_body_mode.xml);
+                    //LogHelper.WriteLog(typeof(SaleOutEntity), "dom_body_mode:" + dom_body_mode.selectSingleNode("data").xml);
                     xnModel = dom_body.selectSingleNode("//rs:data//z:row");
+                    //LogHelper.WriteLog(typeof(SaleOutEntity), xnModel.xml)
+                    //LogHelper.WriteLog(typeof(SaleOutEntity), "dom_body:"+dom_body.xml);
+                    //LogHelper.WriteLog(typeof(SaleOutEntity), "dom_body rs:data:" + dom_body.selectSingleNode("//rs:data").xml);
+                    //LogHelper.WriteLog(typeof(SaleOutEntity), "dom_body z:row:" + dom_body.selectSingleNode("//rs:data//z:row").xml);
                     int i = 1;
                     foreach (DispatchReturnBack_body drbBody in so.body)
                     {
                         foreach (BodyDetail bodyDetail in drbBody.detail)
                         {
+                            //MSXML2.IXMLDOMNode xnNow = xnModel.cloneNode(true);
                             MSXML2.IXMLDOMNode xnNow = xnModel.cloneNode(true);
+                            //LogHelper.WriteLog(typeof(SaleOutEntity), "xnNow:" + xnNow.xml);
                             foreach (IXMLDOMNode doel in dom_body_mode.selectSingleNode("data").childNodes)
                             {
                                 errMsg ="body:"+ doel.nodeName.ToString().Trim();
@@ -516,8 +536,11 @@ namespace XylinkU8Interface.UFIDA
                                             xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = i.ToString();
                                             break;
                                         case "iquantity":
+                                             xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = (bodyDetail.iquantity*-1).ToString();
+                                            break;
                                         case "inquantity":
-                                            xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = (bodyDetail.iquantity*-1).ToString();
+                                            xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text =Ufdata.getDataReader(m_ologin.UfDbName,
+                                            "select isnull(iQuantity-fOutQuantity,0) iqty from DispatchLists a inner join DispatchLists_extradefine b on a.iDLsID=b.iDLsID where b.cbdefine21='" + drbBody.req_id + "'");
                                             break;
                                         case "idlsid":
                                             xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = 
@@ -784,6 +807,10 @@ namespace XylinkU8Interface.UFIDA
                                     case "iuninvsncount":
                                         //xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = "0";
                                         xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = (Convert.ToDecimal(dr["iquantity"])).ToString();
+                                        break;
+                                    case "inquantity":
+                                        xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = Ufdata.getDataReader(m_ologin.UfDbName,
+                                        "select isnull(iQuantity-fOutQuantity,0) iqty from DispatchLists where autoid=" + dr["autoid"].ToString() + "");
                                         break;
                                     case "irowno":
                                         xnNow.attributes.getNamedItem(doel.nodeName.ToString()).text = i.ToString();

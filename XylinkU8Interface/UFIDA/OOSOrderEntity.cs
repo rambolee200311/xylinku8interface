@@ -36,6 +36,7 @@ namespace XylinkU8Interface.UFIDA
                     rep.remsg = strResult;
                     return rep;
                 }
+               
                 strSql = "select a.cDefine12 from rdrecord09 a inner join rdrecords09 b on a.ID=b.ID where a .cdefine12='" + req.head.ccode + "'";
                 switch (req.head.category)
                 {
@@ -57,15 +58,15 @@ namespace XylinkU8Interface.UFIDA
                         dom_body.load(AppDomain.CurrentDomain.BaseDirectory + "Helper\\otheroutbody_blue.xml");
                         break;
                 }
-
-                if (!string.IsNullOrEmpty(Ufdata.getDataReader(m_ologin.UfDbName, strSql)))
-                {
-                    strResult = req.head.ccode + "已存在其他出库单，不能重复同步";
-                    rep.recode = "222";
-                    rep.remsg = strResult;
-                    return rep;
-                }
-
+                /*
+               if (!string.IsNullOrEmpty(Ufdata.getDataReader(m_ologin.UfDbName, strSql)))
+               {
+                   strResult = req.head.ccode + "已存在其他出库单，不能重复同步";
+                   rep.recode = "222";
+                   rep.remsg = strResult;
+                   return rep;
+               }
+               */
                 #endregion
 
                 #region//api params
@@ -98,21 +99,23 @@ namespace XylinkU8Interface.UFIDA
                         return rep;
                     }
                     dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("cwhcode").text = cwhcode;
-
-                    string ccuscode = Ufdata.getDataReader(m_ologin.UfDbName, "select ccuscode from customer where ccusname='" + req.head.custName + "'");
-                    if (string.IsNullOrEmpty(ccuscode))
-                    {
-                        strResult = req.head.custName + "在客户档案中不存在";
-                        rep.recode = "333";
-                        rep.remsg = strResult;
-                        return rep;
-                    }
-                    dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("ccuscode").text = ccuscode;
+                    //20220915 取消客户档案校验
+                    //string ccuscode = Ufdata.getDataReader(m_ologin.UfDbName, "select ccuscode from customer where ccusname='" + req.head.custName + "'");
+                    //if (string.IsNullOrEmpty(ccuscode))
+                    //{
+                    //    strResult = req.head.custName + "在客户档案中不存在";
+                    //    rep.recode = "333";
+                    //    rep.remsg = strResult;
+                    //    return rep;
+                    //}
+                    //dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("ccuscode").text = ccuscode;
 
                     dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("cmaker").text = req.head.personName;
                     dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("ddate").text =Convert.ToDateTime(req.head.ddate).ToShortDateString();
                     dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("ccode").text = req.head.ccode;
-                    dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("cdefine10").text = req.head.category;
+                    //dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("cdefine10").text = req.head.category;
+                    //20220907 使用表头扩展自定义项35
+                    dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("chdefine35").text = req.head.category;
                     dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("cdefine12").text = req.head.ccode;
                     dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("cmemo").text = req.head.cmemo;
                     if ((req.head.category == "试⽤业务SN的调换-CRM出库")||(req.head.category == "试⽤业务SN的调换-CRM入库"))
@@ -120,6 +123,9 @@ namespace XylinkU8Interface.UFIDA
                         dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("csource").text = "借出借用单";
                         dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("cbuscode").text =Ufdata.getDataReader(m_ologin.UfDbName,
                             "select a.cCODE from HY_DZ_BorrowOut a inner join HY_DZ_BorrowOuts b on b.ID=a.ID inner join HY_DZ_BorrowOuts_extradefine c on c.AutoID=b.AutoID where c.cbdefine21='"+req.body[0].ori_reqid +"'");
+                        //20220915 取原借用借出单的客户编码
+                        dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("ccuscode").text = Ufdata.getDataReader(m_ologin.UfDbName,
+                            "select a.bObjectCode from HY_DZ_BorrowOut a inner join HY_DZ_BorrowOuts b on b.ID=a.ID inner join HY_DZ_BorrowOuts_extradefine c on c.AutoID=b.AutoID where c.cbdefine21='" + req.body[0].ori_reqid + "'");
                     }
                     else
                     {

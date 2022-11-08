@@ -213,16 +213,40 @@ namespace XylinkU8Interface.UFIDA
                     
                     bService = Ufdata.getDataReader(m_ologin.UfDbName, "select bservice from inventory where cinvcode='" + sob.cinv_code + "'");
                     if ((bService != "1") && (bService.ToLower() != "true"))
-                    { xnNow.attributes.getNamedItem("cwhcode").text = cwhcode; }         
-                    
-
+                    { xnNow.attributes.getNamedItem("cwhcode").text = cwhcode; }
+                   
+                    if ((PTOModel == "1") || (PTOModel.ToLower() == "true"))
+                    {
+                        xnNow.attributes.getNamedItem("cwhcode").text = "";
+                        xnNow.attributes.getNamedItem("bcosting").text = "False";
+                        xnNow.attributes.getNamedItem("bcontrolserial").text = "False";
+                        xnNow.attributes.getNamedItem("bserial").text = "0";
+                        xnNow.attributes.getNamedItem("bptomodel").text = "是";
+                    }
                     dom_body.selectSingleNode("//rs:data").appendChild(xnNow);
 
                     //子件
                     if ((PTOModel == "1") || (PTOModel.ToLower() == "true"))
                     {
+                        //20220926 母件数量合计
+                        decimal sumChildQty = 0;
+                        foreach (TrialSale_body_detail detail in sob.detail)
+                        {
+                            sumChildQty += Convert.ToDecimal(detail.iquantity);
+                        }
+                        int indexOfDetail = 1;
+                        decimal sumChildRate = 0;
+
                         foreach(TrialSale_body_detail detail in sob.detail)
-                        {                            
+                        {
+                            //20220926 母件数量合计
+                            decimal fchildqty = 0;
+                            decimal fchildrate = 0;
+                            fchildqty = detail.iquantity;
+                            fchildrate = Convert.ToDecimal(fchildqty / sumChildQty);
+                            fchildqty = Convert.ToDecimal(fchildqty / iquantity);
+                            
+
                             MSXML2.IXMLDOMNode xnNowDetail = xnModel.cloneNode(true);
                             xnNowDetail.attributes.getNamedItem("cinvcode").text = detail.cinv_code;
                             xnNowDetail.attributes.getNamedItem("cbdefine21").text = sob.req_id;
@@ -239,6 +263,18 @@ namespace XylinkU8Interface.UFIDA
                             xnNowDetail.attributes.getNamedItem("cordercode").text = Ufdata.getDataReader(m_ologin.UfDbName, strSql);
                             strSql = "select a.irowno from SO_SODetails a inner join SO_SODetails_extradefine b on a.iSOsID=b.iSOsID where a.cinvcode='" + detail.cinv_code + "' and b.cbdefine21='" + sob.req_id + "'";
                             xnNowDetail.attributes.getNamedItem("iorderrowno").text = Ufdata.getDataReader(m_ologin.UfDbName, strSql);
+
+                            //20220926 母件数量合计
+                            xnNowDetail.attributes.getNamedItem("ippartid").text = Ufdata.getDataReader(m_ologin.UfDbName, "select PartId from bas_part where InvCode='" + sob.cinv_code + "'");
+                            xnNowDetail.attributes.getNamedItem("ippartqty").text = iquantity.ToString();
+                            xnNowDetail.attributes.getNamedItem("fchildqty").text = fchildqty.ToString();
+                            xnNowDetail.attributes.getNamedItem("fchildrate").text = Convert.ToDecimal(100*fchildrate / fchildqty).ToString();
+                            if (indexOfDetail == sob.detail.Count)
+                            {
+                                xnNowDetail.attributes.getNamedItem("fchildrate").text = Convert.ToDecimal(100*(1 - sumChildRate) / fchildqty).ToString();
+                            }
+                            indexOfDetail++;
+                            sumChildRate += fchildrate;
                             dom_body.selectSingleNode("//rs:data").appendChild(xnNowDetail);
 
                         }
@@ -371,10 +407,11 @@ namespace XylinkU8Interface.UFIDA
                 //{
                 xnNow.attributes.getNamedItem("cparentcode").text = guid;
                 xnNow.attributes.getNamedItem("cwhcode").text = "";
-                if ((bService == "0") || (bService.ToLower() == "false"))
-                {
-                    xnNow.attributes.getNamedItem("cwhcode").text = cwhcode;
-                }
+                xnNow.attributes.getNamedItem("bcosting").text = "0"; 
+                //if ((bService == "0") || (bService.ToLower() == "false"))
+                //{
+                //    xnNow.attributes.getNamedItem("cwhcode").text = cwhcode;
+                //}
                 dom_body.selectSingleNode("//rs:data").appendChild(xnNow);
                 //}
                 DataTable dtComponent = Ufdata.getDatatableFromSql(m_ologin.UfDbName, strSql);
