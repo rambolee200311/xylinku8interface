@@ -605,6 +605,6 @@
 		</s:ElementType>
 	</s:Schema>
 	<rs:data>		
-		<z:row id="" cinvcode="" cinvname="" cinvstd="" inquantity="-0.0000000000" cinvccode="" cinvm_unit="" iquantity="-0.0000000000" autoid="0" cinvdefine6="" cinvdefine8="" cinvdefine9="" cinvdefine10="" idlsid="" cbdlcode="" bgsp="0" scrapufts="" cdemandmemo="" iordertype="1" iorderseq="" isotype="0" corufts="" bcosting="True" bvmiused="False" iexpiratdatecalcu="0" cbinvsn="" irowno="5" ipesotype="0" cbsysbarcode="" bsaleoutcreatebill="False" biacreatebill="False" bneedbill="False" iavanum="" avaInQuantity="0" avaInNum="0" avaOutQuantity="0" avaOutNum="0" taskguid="" editprop="" cbdefine21="" iorderdid="" iordercode="" iuninvsncount="0"/>
+		<z:row id="" cinvcode="" cinvname="" cinvstd="" inquantity="-0.0000000000" cinvccode="" cinvm_unit="" iquantity="-0.0000000000" autoid="0" cinvdefine6="" cinvdefine8="" cinvdefine9="" cinvdefine10="" idlsid="" cbdlcode="" bgsp="0" scrapufts="" cdemandmemo="" iordertype="1" iorderseq="" isotype="0" corufts="" bcosting="True" bvmiused="False" iexpiratdatecalcu="0" cbinvsn="" irowno="5" ipesotype="0" cbsysbarcode="" bsaleoutcreatebill="False" biacreatebill="False" bneedbill="False" iavanum="" avaInQuantity="0" avaInNum="0" avaOutQuantity="0" avaOutNum="0" taskguid="" editprop="" cbdefine1="" cbdefine21="" iorderdid="" iordercode="" iuninvsncount="0" cpesocode="" ipesodid="" ipesoseq="" />
 	</rs:data>
 </xml>

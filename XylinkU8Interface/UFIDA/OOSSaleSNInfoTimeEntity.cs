@@ -19,7 +19,10 @@ namespace XylinkU8Interface.UFIDA
             infor.pages = 0;
             infor.total = 0;
             U8Login.clsLoginClass m_ologin = U8LoginEntity.getU8LoginEntity(query.companycode);
-            string strSql = @"select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode
+            string strSql = @"select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                            b.cDefine22 excomp,b.cDefine23 exnum,e.cbdefine4 receiver,e.cbdefine5 recrmobi,
+                            replace(isnull(e.cbdefine6,''),'/','')+replace(isnull(e.cbdefine7,''),'/','')+replace(isnull(e.cbdefine8,''),'/','')+replace(isnull(e.cbdefine9,''),'/','') recraddress,
+                            isnull(f.cbdefine21,'') reqId,case when isnull(a.cInvSN,'')!='' and b.iQuantity>0 then 1 else -1 end num 
                             from ST_SNDetail_SaleOut a
                             inner join RdRecords32 b on a.iVouchsID=b.AutoID 
                             inner join RdRecord32 c on b.ID=c.ID 
@@ -27,6 +30,8 @@ namespace XylinkU8Interface.UFIDA
                             left join DispatchList dt on dts.DLID=dt.DLID
                             left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
                             left join SO_SOMain som on sod.ID=som.ID
+                            left join RdRecords32_extradefine e on e.AutoID=b.AutoID
+							left join SO_SODetails_extradefine f on f.iSOsID=sod.iSOsID
                             inner join inventory d on a.cInvCode=d.cInvCode";
             strSql += " where c.dnverifytime>=? and c.dnverifytime<?";
             strSql += " order by c.dnverifytime,u8outcode";
@@ -40,11 +45,13 @@ namespace XylinkU8Interface.UFIDA
             {
                 if (!string.IsNullOrEmpty(query.startTime))
                 {
-                    dDates = Convert.ToDateTime(query.startTime).ToShortDateString();
+                    //dDates = Convert.ToDateTime(query.startTime).ToShortDateString();
+                    dDates = Convert.ToDateTime(query.startTime).ToLongDateString();
                 }
                 if (!string.IsNullOrEmpty(query.endTime))
                 {
-                    dDatee = Convert.ToDateTime(Convert.ToDateTime(query.endTime).ToShortDateString()).AddDays(1).ToShortDateString();
+                    //dDatee = Convert.ToDateTime(Convert.ToDateTime(query.endTime).ToShortDateString()).AddDays(1).ToShortDateString();
+                    dDates = Convert.ToDateTime(query.endTime).ToLongDateString();
                 }
 
 
@@ -81,6 +88,14 @@ namespace XylinkU8Interface.UFIDA
                             infordata.u8InvCode = dr["u8invcode"].ToString();
                             infordata.u8OutCode = dr["u8outcode"].ToString();
                             infordata.u8OutTime = Convert.ToDateTime(dr["u8outtime"]).ToShortDateString() + " " + Convert.ToDateTime(dr["u8outtime"]).ToLongTimeString();
+
+                            infordata.num = Convert.ToDecimal(dr["num"]);
+                            infordata.excomp = dr["excomp"].ToString();
+                            infordata.exnum = dr["exnum"].ToString();
+                            infordata.receiver = dr["receiver"].ToString();
+                            infordata.recemobi = dr["recrmobi"].ToString();
+                            infordata.receaddress = dr["recraddress"].ToString();                            
+                            infordata.reqId = dr["reqId"].ToString();
                             infor.datas.Add(infordata);
                         }
                     }

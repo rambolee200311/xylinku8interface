@@ -295,8 +295,15 @@ namespace XylinkU8Interface.UFIDA
                         System.String VouchIdRet = broker.GetResult("VouchId") as System.String;
                         rep.recode = "0";
                         //STSNEntity.add_STSN(m_ologin, "32", so, VouchIdRet);
-                        rep.u8code = Ufdata.getDataReader(m_ologin.UfDbName, "select ccode from rdrecord09 where ID=" + VouchIdRet);
 
+                        rep.u8code = Ufdata.getDataReader(m_ologin.UfDbName, "select ccode from rdrecord09 where ID=" + VouchIdRet);
+                        /*
+                        2022-11-17
+                        修复其他出库单表体自定义项显示业务号和出库单号                       
+                        */
+
+                        strSql = "update rdrecords09 set cDefine32=b.cCode,cDefine33=b.cBusCode from rdrecords09 a,rdrecord09 b where a.id=b.ID and  cDefine32 is null and cDefine33 is null and b.cCode='"+rep.u8code+"'";
+                        Ufdata.execSqlcommand(m_ologin.UfDbName, strSql);
 
                         strResult = STSNEntity.add_STSN(m_ologin, req, VouchIdRet);
                         if (!string.IsNullOrEmpty(strResult))

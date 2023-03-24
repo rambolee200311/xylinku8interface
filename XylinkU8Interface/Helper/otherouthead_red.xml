@@ -1,4 +1,4 @@
-<xml xmlns:s="uuid:BDC6E3F0-6DA3-11d1-A2A3-00AA00C14882" xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882" xmlns:rs="urn:schemas-microsoft-com:rowset" xmlns:z="#RowsetSchema">
+﻿<xml xmlns:s="uuid:BDC6E3F0-6DA3-11d1-A2A3-00AA00C14882" xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882" xmlns:rs="urn:schemas-microsoft-com:rowset" xmlns:z="#RowsetSchema">
 	<s:Schema id="RowsetSchema">
 		<s:ElementType name="row" content="eltOnly" rs:updatable="true">
 			<s:AttributeType name="id" rs:number="1" rs:writeunknown="true" rs:basecatalog="UFDATA_995_2017" rs:basetable="rdrecord09" rs:basecolumn="id" rs:keycolumn="true">
@@ -365,6 +365,6 @@
 		</s:ElementType>
 	</s:Schema>
 	<rs:data>
-		<z:row id="" brdflag="0" cvouchtype="09" csysbarcode="" cvouchname="其他出库单" cbustype="其他出库" cbuscode="" cwhcode="" cwhname="" ddate="" vt_id="85" bisstqc="False" ccode="" ccuscode="" crdcode="203" crdname="其他出库" chandler="" cmaker="demo" csource="库存" dveridate="" bpufirst="False" biafirst="False" ufts="" ibg_overflag="0" controlresult="-1" cbg_auditor="" cbg_audittime="" ireturncount="0" iverifystate="0" iswfcontrolled="0" cmodifyperson="" dnmaketime="" dnverifytime="" bomfirst="0" chinvsn="" iPrintCount="0" cchecksignflag="" editprop="" cdefine10="" cdefine12="" cmemo="" chdefine35=""/>
+		<z:row id="" brdflag="0" cvouchtype="09" csysbarcode="" cvouchname="其他出库单" cbustype="其他出库" cbuscode="" cwhcode="" cwhname="" ddate="" vt_id="85" bisstqc="False" ccode="" ccuscode="" crdcode="211" crdname="其他出库" chandler="" cmaker="demo" csource="库存" dveridate="" bpufirst="False" biafirst="False" ufts="" ibg_overflag="0" controlresult="-1" cbg_auditor="" cbg_audittime="" ireturncount="0" iverifystate="0" iswfcontrolled="0" cmodifyperson="" dnmaketime="" dnverifytime="" bomfirst="0" chinvsn="" iPrintCount="0" cchecksignflag="" editprop="" cdefine10="" cdefine12="" cmemo="" chdefine35=""/>
 	</rs:data>
 </xml>

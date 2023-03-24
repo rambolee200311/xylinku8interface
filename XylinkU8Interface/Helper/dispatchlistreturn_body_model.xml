@@ -20,7 +20,7 @@
   <iunitprice>[itaxunitprice]</iunitprice>
   <imoney>[isum]</imoney>
   <itax>{.0000000000}</itax>
-  <idiscount></idiscount>
+  <idiscount>{.0000000000}</idiscount>
   <dlid>{1000046104}</dlid>
   <icorid></icorid>
   <inatunitprice>[itaxunitprice]</inatunitprice>

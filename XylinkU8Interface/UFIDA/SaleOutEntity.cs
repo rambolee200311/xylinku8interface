@@ -380,6 +380,18 @@ namespace XylinkU8Interface.UFIDA
                 #region //head
                 DataTable dthead = Ufdata.getDatatableFromSql(m_ologin.UfDbName,
                     "select a.*,b.* from dispatchlist a left join DispatchList_extradefine b on a.DLID=b.dlid inner join DispatchLists c on a.DLID=c.DLID inner join DispatchLists_extradefine d on c.iDLsID=d.iDLsID where d.cbdefine21='" + so.body[0].ori_req_id + "'");//+so.body[0].req_id+"'");
+                if (dthead == null)
+                {
+                    re.recode = "777";
+                    re.remsg = "发货单明细里不存在ori_req_id:" + so.body[0].ori_req_id + ",请检查表体扩展自定义项21";
+                    return re;
+                }
+                if (dthead.Rows.Count <= 0)
+                {
+                    re.recode = "777";
+                    re.remsg = "发货单明细里不存在ori_req_id:" + so.body[0].ori_req_id + ",请检查表体扩展自定义项21";
+                    return re;
+                }
                 MSXML2.IXMLDOMDocument2 dom_head;
                 dom_head = new MSXML2.DOMDocument30();
 
@@ -486,6 +498,19 @@ namespace XylinkU8Interface.UFIDA
                 strSql = "select * from dispatchlists a left join DispatchLists_extradefine b on a.idlsid=b.iDLsID inner join inventory c on a.cInvCode=c.cInvCode where b.cbdefine21='" + so.body[0].req_id + "' and isnull(cwhcode,'')!='' and c.bPTOModel=0 and c.bService=0";
                 LogHelper.WriteLog(typeof(SaleOutEntity), strSql);
                 DataTable dtbody = Ufdata.getDatatableFromSql(m_ologin.UfDbName,strSql );
+                if (dtbody == null)
+                {
+                    re.recode = "777";
+                    re.remsg = "发货单明细里不存在req_id:" + so.body[0].req_id + ",请检查表体扩展自定义项21";
+                    return re;
+                }
+                if (dtbody.Rows.Count <= 0)
+                {
+                    re.recode = "777";
+                    re.remsg = "发货单明细里不存在req_id:" + so.body[0].req_id + ",请检查表体扩展自定义项21";
+                    return re;
+                }
+
                 MSXML2.IXMLDOMDocument2 dom_body;
                 dom_body = new MSXML2.DOMDocument30();
 

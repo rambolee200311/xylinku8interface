@@ -22,6 +22,7 @@ namespace HYBorrowOut.UFIDA
             int iVouchID = 0;
             bool bresult = false;
             bool insert = true;
+            string xmlItem = "";
             oricode = bo.head.oriccode;
             try
             {
@@ -76,7 +77,7 @@ namespace HYBorrowOut.UFIDA
                 string ccuscode = Ufdata.getDataReader(m_ologin.UfDbName, "select ccuscode from customer where ccusname='" + bo.head.cust_name + "'");
                 string cdepcode = Ufdata.getDataReader(m_ologin.UfDbName, "select cdepcode from department where cdepname='" + bo.head.dept_name + "'");
                 string cpersoncode = Ufdata.getDataReader(m_ologin.UfDbName, "select cpersoncode from person where cpersonname='" + bo.head.person_name + "'");
-                string cwhcode = "";
+                string cwhcode = Ufdata.getDataReader(m_ologin.UfDbName, "select cwhcode from warehouse where cwhname='" + bo.head.cwhname + "'");
                 if (!string.IsNullOrEmpty(ccuscode))
                 {
                     ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("bObjectCode").text = ccuscode;
@@ -184,8 +185,11 @@ namespace HYBorrowOut.UFIDA
                     {
                         re.remsg += "借出归还单[" + errMsg + "]审核成功,";
                         //生成其他入库单
+                        LogHelper.WriteLog(typeof(TrialSaleEntity), "借出归还单ID:" + iVouchID);
                         strResult = cosc.PushOtherIn(iVouchID);
+                        LogHelper.WriteLog(typeof(TrialSaleEntity), "借出归还单推其他入库单结果:" + strResult);
                         errMsg = getCCode(strResult);
+                        LogHelper.WriteLog(typeof(TrialSaleEntity), "借出归还单推其他入库单单号:" + errMsg);
                         if (string.IsNullOrEmpty(errMsg))
                         {
                             re.recode = "2244";
@@ -198,6 +202,9 @@ namespace HYBorrowOut.UFIDA
                         }
                         //其他入库单序列号
                         bo.head.cmemo = errMsg;
+                        //20220508 update rdcode
+                        Ufdata.execSqlcommand(m_ologin.UfDbName, "update RdRecord08 set crdcode='104' where ccode='" + errMsg + "'");
+
                         strResult = HttpPostHelper.sendInsert("http://127.0.0.1/XylinkU8Interface/api/TrialSaleOtherInSn", JsonHelper.ToJson(bo));
                         
                             Result reSN = JsonHelper.FromJson<Result>(strResult);

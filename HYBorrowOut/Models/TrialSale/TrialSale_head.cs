@@ -16,6 +16,7 @@ namespace HYBorrowOut.Models.TrialSale
         public string cmemo { get; set; }//备注-备注
         public string recv_name { get; set; }//联系人-联系人
         public string recv_type { get; set; }//收发类别名称-入库类别(借出还回入库)
+        public string cwhname { get; set; }
         
     }
 }

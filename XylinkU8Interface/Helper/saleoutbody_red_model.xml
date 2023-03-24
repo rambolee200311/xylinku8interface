@@ -19,7 +19,7 @@
   <iordercode></iordercode>
   <iorderseq>{2}</iorderseq>
   <isotype>{0}</isotype>
-  <corufts>{}</corufts>
+  <corufts></corufts>
   <bcosting>{True}</bcosting>
   <bvmiused>{False}</bvmiused>
   <iuninvsncount>[iquantity]</iuninvsncount>

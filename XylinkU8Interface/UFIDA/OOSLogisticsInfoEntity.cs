@@ -27,7 +27,7 @@ namespace XylinkU8Interface.UFIDA
                     string strSql = @"select a.AutoID,a.cInvCode invcode,g.cInvName invname,a.cDefine22 excomp,a.cDefine23 exnum,
                                 e.cbdefine4 receiver,e.cbdefine5 recrmobi,
                                 replace(isnull(e.cbdefine6,''),'/','')+replace(isnull(e.cbdefine7,''),'/','')+replace(isnull(e.cbdefine8,''),'/','')+replace(isnull(e.cbdefine9,''),'/','') recraddress,
-                                isnull(b.cbdefine21,'')+isnull(e.cbdefine21,'') reqId,a.iQuantity num,c.cDefine12,c.dnverifytime u8outtime 
+                                isnull(b.cbdefine21,'')+isnull(e.cbdefine21,'') reqId,a.iQuantity num,c.cDefine12,c.dnverifytime u8outtime
                                 from rdrecords09 a 
                                 inner join rdrecords09_extradefine b on a.AutoID=b.AutoID 
                                 inner join rdrecord09 c on a.ID=c.ID
