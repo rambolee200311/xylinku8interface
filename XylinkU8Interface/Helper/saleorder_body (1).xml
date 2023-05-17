@@ -686,15 +686,6 @@
       <s:AttributeType name="cbdefine21" rs:number="250" rs:nullable="true" rs:writeunknown="true">
         <s:datatype dt:type="string" dt:maxLength="60"/>
       </s:AttributeType>
-      <s:AttributeType name="cbdefine32" rs:number="250" rs:nullable="true" rs:writeunknown="true">
-        <s:datatype dt:type="string" dt:maxLength="60"/>
-      </s:AttributeType>
-      <s:AttributeType name="cbdefine33" rs:number="250" rs:nullable="true" rs:writeunknown="true">
-        <s:datatype dt:type="string" dt:maxLength="60"/>
-      </s:AttributeType>
-      <s:AttributeType name="cbdefine34" rs:number="250" rs:nullable="true" rs:writeunknown="true">
-        <s:datatype dt:type="string" dt:maxLength="60"/>
-      </s:AttributeType>      
       <s:AttributeType name="keyextend_b_isosid_so_sodetails_extradefine_isosid" rs:number="228" rs:nullable="true" rs:writeunknown="true">
         <s:datatype dt:type="int" dt:maxLength="4" rs:precision="10" rs:fixedlength="true"/>
       </s:AttributeType>
@@ -764,31 +755,10 @@
       <s:AttributeType name="c249" rs:name="cbdefine20" rs:number="250" rs:nullable="true" rs:writeunknown="true">
         <s:datatype dt:type="string" dt:maxLength="60"/>
       </s:AttributeType>
-      <s:AttributeType name="c250" rs:name="cbdefine21" rs:number="250" rs:nullable="true" rs:writeunknown="true">
-        <s:datatype dt:type="string" dt:maxLength="60"/>
-      </s:AttributeType>
-      <s:AttributeType name="c251" rs:name="cbdefine32" rs:number="250" rs:nullable="true" rs:writeunknown="true">
-        <s:datatype dt:type="string" dt:maxLength="60"/>
-      </s:AttributeType>
-      <s:AttributeType name="c252" rs:name="cbdefine33" rs:number="250" rs:nullable="true" rs:writeunknown="true">
-        <s:datatype dt:type="string" dt:maxLength="60"/>
-      </s:AttributeType>
-      <s:AttributeType name="c253" rs:name="cbdefine34" rs:number="250" rs:nullable="true" rs:writeunknown="true">
-        <s:datatype dt:type="string" dt:maxLength="60"/>
-      </s:AttributeType>      
       <s:extends type="rs:rowbase"/>
     </s:ElementType>
   </s:Schema>
   <rs:data>
-    <z:row autoid="434" id="1000000212" cinvcode="" bservice="False" cinvname="" cinvm_unit="" igrouptype="0" cgroupcode="01" 
-           cinvdefine1="否" cinvdefine6="可选配件及服务" cinvdefine8="是" cinvdefine9="可选配件及服务" cinvdefine10="否" 
-           iquantity=".0000000000" iquotedprice=".0000000000" iunitprice=".0000000000" iinvncost=".00000001" funmoqty=".000000000" 
-           imoney="0" itax="0" isum="0" inatunitprice="0.0000000000" inatmoney="0" inattax="0" inatsum="0" inatdiscount="0" idiscount="0" 
-           ifhquantity=".0000000000" ifhnum=".000000000000" ifhmoney="0.00" ikpquantity=".0000000000" iexchsum="0.0" imoneysum="0.0" 
-           cbsysbarcode="||SA17|DD2017011200000025|1" ikpnum=".0000000000" ikpmoney="0.0" dpredate="2017-01-12T00:00:00" iinvlscost="578" itaxunitprice="424.0000000000" 
-           bfree1="False" bfree2="False" bfree3="False" bfree4="False" bfree5="False" bfree6="False" bfree7="False" bfree8="False" bfree9="False" bfree10="False" 
-           bsalepricefree1="False" bsalepricefree2="False" bsalepricefree3="False" bsalepricefree4="False" bsalepricefree5="False" bsalepricefree6="False" bsalepricefree7="False" bsalepricefree8="False" bsalepricefree9="False" bsalepricefree10="False" 
-           binvtype="False" itaxrate=".0000000000" kl="100.0000000000" kl2="100.0000000000" isosid="1000000434" dkl1=".0000000000" dkl2=".0000000000" cscloser="" irowno="1" cconfigstatus="未选配" ccomunitcode="02" dpremodate="2017-01-12T00:00:00" cbarcode="7020100126001" batomodel="否" bptomodel="否" borderbom="否" borderbomover="0" busecusbom="0" binvmodel="否" csrpolicy="PE" btracksalebill="0" dreleasedate="2017-01-12T00:00:00" bproxyforeign="False" bspecialorder="False" binvbatch="False" btrack="False" bproductbill="True" bgift="0" bsaleprice="0" finquantity=".000000000" foutquantity=".000000000" fretquantity=".000000" fretnum=".000000000" cordercode="DD2017011200000025" bproducebyfeatureallocate="0" fstockquan=".000000000" fstockquano=".000000000" fcanusequan=".000000000" fcanusequano=".000000000" keyextend_b_cinvcode_v_inventory_cinvcode="70201-00126-001" cbdefine3="" cbdefine2="" cbdefine4="" cbdefine5="" cbdefine6="" cbdefine7="" cbdefine9="" keyextend_b_isosid_so_sodetails_extradefine_isosid="1000000434" editprop="A" cbdefine8="" cparentcode="" cchildcode="" fchildqty="" fchildrate="" cbdefine1="" cbdefine21="" 
-           ippartid="" ippartqty="" fsalecost="0" fsaleprice="0" fcusminprice="0" ballpurchase="0" icalctype="0" inum=""  cbdefine32=""  cbdefine33=""  cbdefine34=""/>
+    <z:row autoid="434" id="1000000212" cinvcode="" bservice="False" cinvname="" cinvm_unit="" igrouptype="0" cgroupcode="01" cinvdefine1="否" cinvdefine6="可选配件及服务" cinvdefine8="是" cinvdefine9="可选配件及服务" cinvdefine10="否" iquantity=".0000000000" iquotedprice=".0000000000" iunitprice=".0000000000" iinvncost=".00000001" funmoqty=".000000000" imoney="0" itax="0" isum="0" inatunitprice="0.0000000000" inatmoney="0" inattax="0" inatsum="0" inatdiscount="0" idiscount="0" ifhquantity=".0000000000" ifhnum=".000000000000" ifhmoney="0.00" ikpquantity=".0000000000" iexchsum="0.0" imoneysum="0.0" cbsysbarcode="||SA17|DD2017011200000025|1" ikpnum=".0000000000" ikpmoney="0.0" dpredate="2017-01-12T00:00:00" iinvlscost="578" itaxunitprice="424.0000000000" bfree1="False" bfree2="False" bfree3="False" bfree4="False" bfree5="False" bfree6="False" bfree7="False" bfree8="False" bfree9="False" bfree10="False" bsalepricefree1="False" bsalepricefree2="False" bsalepricefree3="False" bsalepricefree4="False" bsalepricefree5="False" bsalepricefree6="False" bsalepricefree7="False" bsalepricefree8="False" bsalepricefree9="False" bsalepricefree10="False" binvtype="False" itaxrate=".0000000000" kl="100.0000000000" kl2="100.0000000000" isosid="1000000434" dkl1=".0000000000" dkl2=".0000000000" cscloser="" irowno="1" cconfigstatus="未选配" ccomunitcode="02" dpremodate="2017-01-12T00:00:00" cbarcode="7020100126001" batomodel="否" bptomodel="否" borderbom="否" borderbomover="0" busecusbom="0" binvmodel="否" csrpolicy="PE" btracksalebill="0" dreleasedate="2017-01-12T00:00:00" bproxyforeign="False" bspecialorder="False" binvbatch="False" btrack="False" bproductbill="True" bgift="0" bsaleprice="0" finquantity=".000000000" foutquantity=".000000000" fretquantity=".000000" fretnum=".000000000" cordercode="DD2017011200000025" bproducebyfeatureallocate="0" fstockquan=".000000000" fstockquano=".000000000" fcanusequan=".000000000" fcanusequano=".000000000" keyextend_b_cinvcode_v_inventory_cinvcode="70201-00126-001" cbdefine3="" cbdefine2="" cbdefine4="" cbdefine5="" cbdefine6="" cbdefine7="" cbdefine9="" keyextend_b_isosid_so_sodetails_extradefine_isosid="1000000434" editprop="A" cbdefine8="" cparentcode="" cchildcode="" fchildqty="" fchildrate="" cbdefine1="" cbdefine21="" ippartid="" ippartqty=""/>
   </rs:data>
 </xml>

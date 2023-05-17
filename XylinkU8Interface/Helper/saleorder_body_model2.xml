@@ -109,10 +109,6 @@
   <cbdefine8>[cdis_name]</cbdefine8>
   <cbdefine9>[cfst_rcv_address]</cbdefine9>
   <cbdefine21>[req_id]</cbdefine21>
-  <cbdefine32>[sample_order_code]</cbdefine32>
-  <cbdefine33>[sample_product_code]</cbdefine33>
-  <cbdefine34>[sample_product_name]</cbdefine34>
   <keyextend_b_isosid_so_sodetails_extradefine_isosid>{1000000434}</keyextend_b_isosid_so_sodetails_extradefine_isosid>
-  <editprop>{A}</editprop>
-  <icalctype>{0}</icalctype>
+  <editprop>{A}</editprop> 
 </data>

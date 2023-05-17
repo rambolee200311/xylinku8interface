@@ -1,0 +1,902 @@
+2022-08-13 22:10:10,181 [10] ERROR XylinkU8Interface.Controllers.ISStateController - {"companycode":"995","sncodes":[{"sncode":"2F1531030867EF45"},{"sncode":"GA1946044FCE9F3C"}]}
+2022-08-13 22:10:10,855 [10] ERROR XylinkU8Interface.UFIDA.ISStateEntity - select cInvCode,cInvSN,iSNState,iSNOperateCount from [dbo].[ST_SNState]  where a.cInvSN=?
+2022-08-13 22:10:10,864 [10] ERROR XylinkU8Interface.UFIDA.ISStateEntity - [{"paramname":"@sncode","paramtype":200,"paramvalue":"2F1531030867EF45"}]
+2022-08-13 22:10:11,037 [10] ERROR XylinkU8Interface.Helper.Ufdata - Error
+System.Data.OleDb.OleDbException (0x80040E14): 无法绑定由多个部分组成的标识符 "a.cInvSN"。
+   在 System.Data.OleDb.OleDbDataReader.ProcessResults(OleDbHResult hr)
+   在 System.Data.OleDb.OleDbDataReader.NextResult()
+   在 System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   在 System.Data.OleDb.OleDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.OleDb.OleDbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XylinkU8Interface.Helper.Ufdata.getDatatableFromSql(String strConn, String strSql, List`1 myparams) 位置 c:\App\XylinkU8Interface\XylinkU8Interface\Helper\Ufdata.cs:行号 120
+2022-08-13 22:10:11,046 [10] ERROR XylinkU8Interface.UFIDA.ISStateEntity - select cInvCode,cInvSN,iSNState,iSNOperateCount from [dbo].[ST_SNState]  where a.cInvSN=?
+2022-08-13 22:10:11,048 [10] ERROR XylinkU8Interface.UFIDA.ISStateEntity - [{"paramname":"@sncode","paramtype":200,"paramvalue":"GA1946044FCE9F3C"}]
+2022-08-13 22:10:11,126 [10] ERROR XylinkU8Interface.Helper.Ufdata - Error
+System.Data.OleDb.OleDbException (0x80040E14): 无法绑定由多个部分组成的标识符 "a.cInvSN"。
+   在 System.Data.OleDb.OleDbDataReader.ProcessResults(OleDbHResult hr)
+   在 System.Data.OleDb.OleDbDataReader.NextResult()
+   在 System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   在 System.Data.OleDb.OleDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.OleDb.OleDbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XylinkU8Interface.Helper.Ufdata.getDatatableFromSql(String strConn, String strSql, List`1 myparams) 位置 c:\App\XylinkU8Interface\XylinkU8Interface\Helper\Ufdata.cs:行号 120
+2022-08-13 22:10:11,131 [10] ERROR XylinkU8Interface.Controllers.ISStateController - {"companycode":"995","datas":[]}
+2022-08-13 22:11:07,424 [9] ERROR XylinkU8Interface.Controllers.ISStateController - {"companycode":"995","sncodes":[{"sncode":"2F1531030867EF45"},{"sncode":"GA1946044FCE9F3C"}]}
+2022-08-13 22:11:07,963 [9] ERROR XylinkU8Interface.UFIDA.ISStateEntity - select cInvCode,cInvSN,iSNState,iSNOperateCount from [dbo].[ST_SNState]  where cInvSN=?
+2022-08-13 22:11:07,970 [9] ERROR XylinkU8Interface.UFIDA.ISStateEntity - [{"paramname":"@sncode","paramtype":200,"paramvalue":"2F1531030867EF45"}]
+2022-08-13 22:11:08,109 [9] ERROR XylinkU8Interface.UFIDA.ISStateEntity - select cInvCode,cInvSN,iSNState,iSNOperateCount from [dbo].[ST_SNState]  where cInvSN=?
+2022-08-13 22:11:08,111 [9] ERROR XylinkU8Interface.UFIDA.ISStateEntity - [{"paramname":"@sncode","paramtype":200,"paramvalue":"GA1946044FCE9F3C"}]
+2022-08-13 22:11:08,139 [9] ERROR XylinkU8Interface.Controllers.ISStateController - {"companycode":"995","datas":[{"sncode":"2F1531030867EF45","inStock":false},{"sncode":"GA1946044FCE9F3C","inStock":false}]}
+2022-08-13 22:12:13,604 [10] ERROR XylinkU8Interface.Controllers.ISStateController - {"companycode":"995","sncodes":[{"sncode":"202203150062"},{"sncode":"GA1946044FCE9F3C"}]}
+2022-08-13 22:12:13,920 [10] ERROR XylinkU8Interface.UFIDA.ISStateEntity - select cInvCode,cInvSN,iSNState,iSNOperateCount from [dbo].[ST_SNState]  where cInvSN=?
+2022-08-13 22:12:13,922 [10] ERROR XylinkU8Interface.UFIDA.ISStateEntity - [{"paramname":"@sncode","paramtype":200,"paramvalue":"202203150062"}]
+2022-08-13 22:12:13,952 [10] ERROR XylinkU8Interface.UFIDA.ISStateEntity - select cInvCode,cInvSN,iSNState,iSNOperateCount from [dbo].[ST_SNState]  where cInvSN=?
+2022-08-13 22:12:13,954 [10] ERROR XylinkU8Interface.UFIDA.ISStateEntity - [{"paramname":"@sncode","paramtype":200,"paramvalue":"GA1946044FCE9F3C"}]
+2022-08-13 22:12:13,977 [10] ERROR XylinkU8Interface.Controllers.ISStateController - {"companycode":"995","datas":[{"sncode":"202203150062","inStock":true},{"sncode":"GA1946044FCE9F3C","inStock":false}]}
+2022-08-13 22:22:08,650 [11] ERROR XylinkU8Interface.Controllers.OOSSNInfoController - {"companycode":"995","sncodes":[{"sncode":"SN1"},{"sncode":"SN2"}]}
+2022-08-13 22:22:09,208 [11] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                b.irowno rowid,cus.cCusName custname,'销售出库' businesstype
+                                from ST_SNDetail_SaleOut a
+                                inner join RdRecords32 b on a.iVouchsID=b.AutoID 
+                                inner join RdRecord32 c on b.ID=c.ID 
+                                left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                left join DispatchList dt on dts.DLID=dt.DLID
+                                left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                left join SO_SOMain som on sod.ID=som.ID
+                                left join Customer cus on som.cCusCode=cus.cCusCode
+                                inner join inventory d on a.cInvCode=d.cInvCode where c.dnverifytime>=? and c.dnverifytime<? and a.cInvSN=? and b.iQuantity>0 order by c.dnverifytime,c.cCode
+2022-08-13 22:22:09,213 [11] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"1980-01-01"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2049-12-31"},{"paramname":"@sncode","paramtype":200,"paramvalue":"SN1"}]
+2022-08-13 22:22:09,527 [11] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                b.irowno rowid,cus.cCusName custname,'其他出库' businesstype
+                                from ST_SNDetail_OtherOut a
+                                inner join RdRecords09 b on a.iVouchsID=b.AutoID 
+                                inner join RdRecord09 c on b.ID=c.ID 
+                                left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                inner join inventory d on a.cInvCode=d.cInvCode
+                                left join Customer cus on bo.bObjectCode=cus.cCusCode where c.dnverifytime>=? and c.dnverifytime<? and a.cInvSN=? and b.iQuantity>0 order by c.dnverifytime,c.cCode
+2022-08-13 22:22:09,529 [11] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"1980-01-01"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2049-12-31"},{"paramname":"@sncode","paramtype":200,"paramvalue":"SN1"}]
+2022-08-13 22:22:09,626 [11] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                b.irowno rowid,cus.cCusName custname,'销售出库' businesstype
+                                from ST_SNDetail_SaleOut a
+                                inner join RdRecords32 b on a.iVouchsID=b.AutoID 
+                                inner join RdRecord32 c on b.ID=c.ID 
+                                left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                left join DispatchList dt on dts.DLID=dt.DLID
+                                left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                left join SO_SOMain som on sod.ID=som.ID
+                                left join Customer cus on som.cCusCode=cus.cCusCode
+                                inner join inventory d on a.cInvCode=d.cInvCode where c.dnverifytime>=? and c.dnverifytime<? and a.cInvSN=? and b.iQuantity>0 order by c.dnverifytime,c.cCode
+2022-08-13 22:22:09,627 [11] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"1980-01-01"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2049-12-31"},{"paramname":"@sncode","paramtype":200,"paramvalue":"SN2"}]
+2022-08-13 22:22:09,651 [11] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                b.irowno rowid,cus.cCusName custname,'其他出库' businesstype
+                                from ST_SNDetail_OtherOut a
+                                inner join RdRecords09 b on a.iVouchsID=b.AutoID 
+                                inner join RdRecord09 c on b.ID=c.ID 
+                                left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                inner join inventory d on a.cInvCode=d.cInvCode
+                                left join Customer cus on bo.bObjectCode=cus.cCusCode where c.dnverifytime>=? and c.dnverifytime<? and a.cInvSN=? and b.iQuantity>0 order by c.dnverifytime,c.cCode
+2022-08-13 22:22:09,653 [11] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"1980-01-01"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2049-12-31"},{"paramname":"@sncode","paramtype":200,"paramvalue":"SN2"}]
+2022-08-13 22:22:09,680 [11] ERROR XylinkU8Interface.Controllers.OOSSNInfoController - {"companycode":"995","datas":[{"sncode":"SN1","detail":[]},{"sncode":"SN2","detail":[]}]}
+2022-08-13 22:22:36,246 [10] ERROR XylinkU8Interface.Controllers.OOSSNInfoController - {"companycode":"995","sncodes":[{"sncode":"202203150062"},{"sncode":"GA1946044FCE9F3C"}]}
+2022-08-13 22:22:36,584 [10] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                b.irowno rowid,cus.cCusName custname,'销售出库' businesstype
+                                from ST_SNDetail_SaleOut a
+                                inner join RdRecords32 b on a.iVouchsID=b.AutoID 
+                                inner join RdRecord32 c on b.ID=c.ID 
+                                left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                left join DispatchList dt on dts.DLID=dt.DLID
+                                left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                left join SO_SOMain som on sod.ID=som.ID
+                                left join Customer cus on som.cCusCode=cus.cCusCode
+                                inner join inventory d on a.cInvCode=d.cInvCode where c.dnverifytime>=? and c.dnverifytime<? and a.cInvSN=? and b.iQuantity>0 order by c.dnverifytime,c.cCode
+2022-08-13 22:22:36,586 [10] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"1980-01-01"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2049-12-31"},{"paramname":"@sncode","paramtype":200,"paramvalue":"202203150062"}]
+2022-08-13 22:22:36,657 [10] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                b.irowno rowid,cus.cCusName custname,'其他出库' businesstype
+                                from ST_SNDetail_OtherOut a
+                                inner join RdRecords09 b on a.iVouchsID=b.AutoID 
+                                inner join RdRecord09 c on b.ID=c.ID 
+                                left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                inner join inventory d on a.cInvCode=d.cInvCode
+                                left join Customer cus on bo.bObjectCode=cus.cCusCode where c.dnverifytime>=? and c.dnverifytime<? and a.cInvSN=? and b.iQuantity>0 order by c.dnverifytime,c.cCode
+2022-08-13 22:22:36,658 [10] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"1980-01-01"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2049-12-31"},{"paramname":"@sncode","paramtype":200,"paramvalue":"202203150062"}]
+2022-08-13 22:22:36,711 [10] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                b.irowno rowid,cus.cCusName custname,'销售出库' businesstype
+                                from ST_SNDetail_SaleOut a
+                                inner join RdRecords32 b on a.iVouchsID=b.AutoID 
+                                inner join RdRecord32 c on b.ID=c.ID 
+                                left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                left join DispatchList dt on dts.DLID=dt.DLID
+                                left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                left join SO_SOMain som on sod.ID=som.ID
+                                left join Customer cus on som.cCusCode=cus.cCusCode
+                                inner join inventory d on a.cInvCode=d.cInvCode where c.dnverifytime>=? and c.dnverifytime<? and a.cInvSN=? and b.iQuantity>0 order by c.dnverifytime,c.cCode
+2022-08-13 22:22:36,713 [10] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"1980-01-01"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2049-12-31"},{"paramname":"@sncode","paramtype":200,"paramvalue":"GA1946044FCE9F3C"}]
+2022-08-13 22:22:36,804 [10] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                b.irowno rowid,cus.cCusName custname,'其他出库' businesstype
+                                from ST_SNDetail_OtherOut a
+                                inner join RdRecords09 b on a.iVouchsID=b.AutoID 
+                                inner join RdRecord09 c on b.ID=c.ID 
+                                left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                inner join inventory d on a.cInvCode=d.cInvCode
+                                left join Customer cus on bo.bObjectCode=cus.cCusCode where c.dnverifytime>=? and c.dnverifytime<? and a.cInvSN=? and b.iQuantity>0 order by c.dnverifytime,c.cCode
+2022-08-13 22:22:36,805 [10] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"1980-01-01"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2049-12-31"},{"paramname":"@sncode","paramtype":200,"paramvalue":"GA1946044FCE9F3C"}]
+2022-08-13 22:22:36,854 [10] ERROR XylinkU8Interface.Controllers.OOSSNInfoController - {"companycode":"995","datas":[{"sncode":"202203150062","detail":[]},{"sncode":"GA1946044FCE9F3C","detail":[{"rowId":"10","invcode":"73030-00601-001","invname":"无线传屏器NP30","u8OutTime":"2019-12-30 9:38:45","businessType":"销售出库","u8OutCode":"XSCK201912270783","u8InvCode":"XSFH201912271236","u8Code":"DD2019122700000014","u8ExtCode":"2017081225201912001","custName":"西藏景致信息科技有限公司"}]}]}
+2022-08-13 22:23:29,811 [11] ERROR XylinkU8Interface.Controllers.OOSSNInfoController - {"companycode":"995","sncodes":[{"sncode":"202203150062"},{"sncode":"GA1946044FCE9F3C"}]}
+2022-08-13 22:23:30,122 [11] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                b.irowno rowid,cus.cCusName custname,'销售出库' businesstype
+                                from ST_SNDetail_SaleOut a
+                                inner join RdRecords32 b on a.iVouchsID=b.AutoID 
+                                inner join RdRecord32 c on b.ID=c.ID 
+                                left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                left join DispatchList dt on dts.DLID=dt.DLID
+                                left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                left join SO_SOMain som on sod.ID=som.ID
+                                left join Customer cus on som.cCusCode=cus.cCusCode
+                                inner join inventory d on a.cInvCode=d.cInvCode where c.dnverifytime>=? and c.dnverifytime<? and a.cInvSN=? and b.iQuantity>0 order by c.dnverifytime,c.cCode
+2022-08-13 22:23:30,123 [11] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"1980-01-01"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2049-12-31"},{"paramname":"@sncode","paramtype":200,"paramvalue":"202203150062"}]
+2022-08-13 22:23:30,145 [11] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                b.irowno rowid,cus.cCusName custname,'其他出库' businesstype
+                                from ST_SNDetail_OtherOut a
+                                inner join RdRecords09 b on a.iVouchsID=b.AutoID 
+                                inner join RdRecord09 c on b.ID=c.ID 
+                                left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                inner join inventory d on a.cInvCode=d.cInvCode
+                                left join Customer cus on bo.bObjectCode=cus.cCusCode where c.dnverifytime>=? and c.dnverifytime<? and a.cInvSN=? and b.iQuantity>0 order by c.dnverifytime,c.cCode
+2022-08-13 22:23:30,146 [11] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"1980-01-01"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2049-12-31"},{"paramname":"@sncode","paramtype":200,"paramvalue":"202203150062"}]
+2022-08-13 22:23:30,165 [11] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                b.irowno rowid,cus.cCusName custname,'销售出库' businesstype
+                                from ST_SNDetail_SaleOut a
+                                inner join RdRecords32 b on a.iVouchsID=b.AutoID 
+                                inner join RdRecord32 c on b.ID=c.ID 
+                                left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                left join DispatchList dt on dts.DLID=dt.DLID
+                                left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                left join SO_SOMain som on sod.ID=som.ID
+                                left join Customer cus on som.cCusCode=cus.cCusCode
+                                inner join inventory d on a.cInvCode=d.cInvCode where c.dnverifytime>=? and c.dnverifytime<? and a.cInvSN=? and b.iQuantity>0 order by c.dnverifytime,c.cCode
+2022-08-13 22:23:30,167 [11] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"1980-01-01"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2049-12-31"},{"paramname":"@sncode","paramtype":200,"paramvalue":"GA1946044FCE9F3C"}]
+2022-08-13 22:23:30,189 [11] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                b.irowno rowid,cus.cCusName custname,'其他出库' businesstype
+                                from ST_SNDetail_OtherOut a
+                                inner join RdRecords09 b on a.iVouchsID=b.AutoID 
+                                inner join RdRecord09 c on b.ID=c.ID 
+                                left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                inner join inventory d on a.cInvCode=d.cInvCode
+                                left join Customer cus on bo.bObjectCode=cus.cCusCode where c.dnverifytime>=? and c.dnverifytime<? and a.cInvSN=? and b.iQuantity>0 order by c.dnverifytime,c.cCode
+2022-08-13 22:23:30,191 [11] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"1980-01-01"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2049-12-31"},{"paramname":"@sncode","paramtype":200,"paramvalue":"GA1946044FCE9F3C"}]
+2022-08-13 22:23:30,210 [11] ERROR XylinkU8Interface.Controllers.OOSSNInfoController - {"companycode":"995","datas":[{"sncode":"202203150062","detail":[]},{"sncode":"GA1946044FCE9F3C","detail":[{"rowId":"10","invcode":"73030-00601-001","invname":"无线传屏器NP30","u8OutTime":"2019-12-30 9:38:45","businessType":"销售出库","u8OutCode":"XSCK201912270783","u8InvCode":"XSFH201912271236","u8Code":"DD2019122700000014","u8ExtCode":"2017081225201912001","custName":"西藏景致信息科技有限公司"}]}]}
+2022-08-13 22:23:41,559 [10] ERROR XylinkU8Interface.Controllers.OOSSNInfoController - {"companycode":"995","sncodes":[{"sncode":"202203150062"},{"sncode":"GA1946044FCE9F3C"}]}
+2022-08-13 22:23:41,882 [10] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                b.irowno rowid,cus.cCusName custname,'销售出库' businesstype
+                                from ST_SNDetail_SaleOut a
+                                inner join RdRecords32 b on a.iVouchsID=b.AutoID 
+                                inner join RdRecord32 c on b.ID=c.ID 
+                                left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                left join DispatchList dt on dts.DLID=dt.DLID
+                                left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                left join SO_SOMain som on sod.ID=som.ID
+                                left join Customer cus on som.cCusCode=cus.cCusCode
+                                inner join inventory d on a.cInvCode=d.cInvCode where c.dnverifytime>=? and c.dnverifytime<? and a.cInvSN=? and b.iQuantity>0 order by c.dnverifytime,c.cCode
+2022-08-13 22:23:41,884 [10] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"1980-01-01"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2049-12-31"},{"paramname":"@sncode","paramtype":200,"paramvalue":"202203150062"}]
+2022-08-13 22:23:41,909 [10] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                b.irowno rowid,cus.cCusName custname,'其他出库' businesstype
+                                from ST_SNDetail_OtherOut a
+                                inner join RdRecords09 b on a.iVouchsID=b.AutoID 
+                                inner join RdRecord09 c on b.ID=c.ID 
+                                left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                inner join inventory d on a.cInvCode=d.cInvCode
+                                left join Customer cus on bo.bObjectCode=cus.cCusCode where c.dnverifytime>=? and c.dnverifytime<? and a.cInvSN=? and b.iQuantity>0 order by c.dnverifytime,c.cCode
+2022-08-13 22:23:41,911 [10] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"1980-01-01"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2049-12-31"},{"paramname":"@sncode","paramtype":200,"paramvalue":"202203150062"}]
+2022-08-13 22:23:41,934 [10] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                b.irowno rowid,cus.cCusName custname,'销售出库' businesstype
+                                from ST_SNDetail_SaleOut a
+                                inner join RdRecords32 b on a.iVouchsID=b.AutoID 
+                                inner join RdRecord32 c on b.ID=c.ID 
+                                left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                left join DispatchList dt on dts.DLID=dt.DLID
+                                left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                left join SO_SOMain som on sod.ID=som.ID
+                                left join Customer cus on som.cCusCode=cus.cCusCode
+                                inner join inventory d on a.cInvCode=d.cInvCode where c.dnverifytime>=? and c.dnverifytime<? and a.cInvSN=? and b.iQuantity>0 order by c.dnverifytime,c.cCode
+2022-08-13 22:23:41,936 [10] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"1980-01-01"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2049-12-31"},{"paramname":"@sncode","paramtype":200,"paramvalue":"GA1946044FCE9F3C"}]
+2022-08-13 22:23:41,958 [10] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                b.irowno rowid,cus.cCusName custname,'其他出库' businesstype
+                                from ST_SNDetail_OtherOut a
+                                inner join RdRecords09 b on a.iVouchsID=b.AutoID 
+                                inner join RdRecord09 c on b.ID=c.ID 
+                                left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                inner join inventory d on a.cInvCode=d.cInvCode
+                                left join Customer cus on bo.bObjectCode=cus.cCusCode where c.dnverifytime>=? and c.dnverifytime<? and a.cInvSN=? and b.iQuantity>0 order by c.dnverifytime,c.cCode
+2022-08-13 22:23:41,960 [10] ERROR XylinkU8Interface.UFIDA.OOSSNInfoEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"1980-01-01"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2049-12-31"},{"paramname":"@sncode","paramtype":200,"paramvalue":"GA1946044FCE9F3C"}]
+2022-08-13 22:23:41,981 [10] ERROR XylinkU8Interface.Controllers.OOSSNInfoController - {"companycode":"995","datas":[{"sncode":"202203150062","detail":[]},{"sncode":"GA1946044FCE9F3C","detail":[{"rowId":"10","invcode":"73030-00601-001","invname":"无线传屏器NP30","u8OutTime":"2019-12-30 9:38:45","businessType":"销售出库","u8OutCode":"XSCK201912270783","u8InvCode":"XSFH201912271236","u8Code":"DD2019122700000014","u8ExtCode":"2017081225201912001","custName":"西藏景致信息科技有限公司"}]}]}
+2022-08-13 22:27:48,196 [8] ERROR XylinkU8Interface.Controllers.OOSOutInfoController - {"companycode":"995","codes":[{"code":"xxx1"},{"code":"xxx2"}]}
+2022-08-13 22:27:48,766 [8] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=?
+2022-08-13 22:27:48,773 [8] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"xxx1"}]
+2022-08-13 22:27:48,974 [8] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=?
+2022-08-13 22:27:48,976 [8] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"xxx1"}]
+2022-08-13 22:27:49,086 [8] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - Error
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 XylinkU8Interface.UFIDA.OOSOutInfoEntity.getInfo(ClsQuery query) 位置 c:\App\XylinkU8Interface\XylinkU8Interface\UFIDA\OOSOutInfoEntity.cs:行号 160
+2022-08-13 22:27:49,095 [8] ERROR XylinkU8Interface.Controllers.OOSOutInfoController - {"companycode":"995"}
+2022-08-13 22:29:16,613 [8] ERROR XylinkU8Interface.Controllers.OOSOutInfoController - {"companycode":"995","codes":[{"code":"xxx1"},{"code":"XSCK201701250009"}]}
+2022-08-13 22:29:16,949 [8] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=?
+2022-08-13 22:29:16,951 [8] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"xxx1"}]
+2022-08-13 22:29:16,995 [8] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=?
+2022-08-13 22:29:16,996 [8] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"xxx1"}]
+2022-08-13 22:29:17,076 [8] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - Error
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 XylinkU8Interface.UFIDA.OOSOutInfoEntity.getInfo(ClsQuery query) 位置 c:\App\XylinkU8Interface\XylinkU8Interface\UFIDA\OOSOutInfoEntity.cs:行号 160
+2022-08-13 22:29:17,078 [8] ERROR XylinkU8Interface.Controllers.OOSOutInfoController - {"companycode":"995"}
+2022-08-13 22:31:38,230 [8] ERROR XylinkU8Interface.Controllers.OOSOutInfoController - {"companycode":"995","codes":[{"code":"xxx1"},{"code":"XSCK201701250009"}]}
+2022-08-13 22:31:38,560 [8] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=?
+2022-08-13 22:31:38,562 [8] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"xxx1"}]
+2022-08-13 22:31:38,607 [8] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=?
+2022-08-13 22:31:38,609 [8] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"xxx1"}]
+2022-08-13 22:34:53,209 [10] ERROR XylinkU8Interface.Controllers.OOSOutInfoController - {"companycode":"995","codes":[{"code":"xxx1"},{"code":"XSCK201701250009"}]}
+2022-08-13 22:34:53,768 [10] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=?
+2022-08-13 22:34:53,776 [10] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"xxx1"}]
+2022-08-13 22:34:53,885 [10] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=?
+2022-08-13 22:34:53,887 [10] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"xxx1"}]
+2022-08-13 22:34:53,908 [10] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=?
+2022-08-13 22:34:53,910 [10] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"XSCK201701250009"}]
+2022-08-13 22:34:54,006 [10] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000000413
+2022-08-13 22:34:54,008 [10] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=?
+2022-08-13 22:34:54,011 [10] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"XSCK201701250009"}]
+2022-08-13 22:34:54,072 [10] ERROR XylinkU8Interface.Controllers.OOSOutInfoController - {"companycode":"995","datas":[{"code":"xxx1","detail":[]},{"code":"XSCK201701250009","detail":[{"rowId":"1","invcode":"70201-00126-001","invname":"大屏投放器","u8OutTime":"2017-07-18 13:24:19","u8OutCode":"XSCK201701250009","u8InvCode":"XSFH201701240008","u8Code":"DD2017011100000009","u8ExtCode":"","custName":"周震","num":1.0000000000,"sncodes":[]}]}]}
+2022-08-13 22:35:29,916 [11] ERROR XylinkU8Interface.Controllers.OOSOutInfoController - {"companycode":"995","codes":[{"code":"XSCK202203300034"},{"code":"XSCK201701250009"}]}
+2022-08-13 22:35:30,266 [11] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=?
+2022-08-13 22:35:30,268 [11] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"XSCK202203300034"}]
+2022-08-13 22:35:30,330 [11] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199216
+2022-08-13 22:35:30,332 [11] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=?
+2022-08-13 22:35:30,334 [11] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"XSCK202203300034"}]
+2022-08-13 22:35:30,359 [11] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=?
+2022-08-13 22:35:30,360 [11] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"XSCK201701250009"}]
+2022-08-13 22:35:30,401 [11] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000000413
+2022-08-13 22:35:30,403 [11] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=?
+2022-08-13 22:35:30,405 [11] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"XSCK201701250009"}]
+2022-08-13 22:35:30,426 [11] ERROR XylinkU8Interface.Controllers.OOSOutInfoController - {"companycode":"995","datas":[{"code":"XSCK202203300034","detail":[{"rowId":"1","invcode":"62060-00288-001","invname":"ES700智慧互动教学终端","u8OutTime":"2022-03-30 10:48:38","u8OutCode":"XSCK202203300034","u8InvCode":"XSFH202203300044","u8Code":"DD2022033000000002","u8ExtCode":"ZXDD202203300002","custName":"常用","num":2.0000000000,"sncodes":[{"sncode":"1H21516757F0BEFC"},{"sncode":"1H21516757E05F0F"}]}]},{"code":"XSCK201701250009","detail":[{"rowId":"1","invcode":"70201-00126-001","invname":"大屏投放器","u8OutTime":"2017-07-18 13:24:19","u8OutCode":"XSCK201701250009","u8InvCode":"XSFH201701240008","u8Code":"DD2017011100000009","u8ExtCode":"","custName":"周震","num":1.0000000000,"sncodes":[]}]}]}
+2022-08-13 22:36:03,023 [4] ERROR XylinkU8Interface.Controllers.OOSOutInfoController - {"companycode":"995","codes":[{"code":"XSCK202203300034"},{"code":"XSCK202203180024"}]}
+2022-08-13 22:36:03,365 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=?
+2022-08-13 22:36:03,367 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"XSCK202203300034"}]
+2022-08-13 22:36:03,412 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199216
+2022-08-13 22:36:03,413 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=?
+2022-08-13 22:36:03,415 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"XSCK202203300034"}]
+2022-08-13 22:36:03,434 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=?
+2022-08-13 22:36:03,436 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"XSCK202203180024"}]
+2022-08-13 22:36:03,489 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199090
+2022-08-13 22:36:03,510 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199091
+2022-08-13 22:36:03,541 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199092
+2022-08-13 22:36:03,542 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=?
+2022-08-13 22:36:03,543 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"XSCK202203180024"}]
+2022-08-13 22:36:03,561 [4] ERROR XylinkU8Interface.Controllers.OOSOutInfoController - {"companycode":"995","datas":[{"code":"XSCK202203300034","detail":[{"rowId":"1","invcode":"62060-00288-001","invname":"ES700智慧互动教学终端","u8OutTime":"2022-03-30 10:48:38","u8OutCode":"XSCK202203300034","u8InvCode":"XSFH202203300044","u8Code":"DD2022033000000002","u8ExtCode":"ZXDD202203300002","custName":"常用","num":2.0000000000,"sncodes":[{"sncode":"1H21516757E05F0F"},{"sncode":"1H21516757F0BEFC"}]}]},{"code":"XSCK202203180024","detail":[{"rowId":"1","invcode":"52040-00225-001","invname":"小鱼易连ME40主机","u8OutTime":"2022-03-18 16:33:37","u8OutCode":"XSCK202203180024","u8InvCode":"XSFH202203180032","u8Code":"DD2022031800000004","u8ExtCode":"ZDDD202203180006","custName":"紫光数码（苏州）集团有限公司","num":1.0000000000,"sncodes":[{"sncode":"5D214526ED4481DD"}]},{"rowId":"2","invcode":"52040-00225-001","invname":"小鱼易连ME40主机","u8OutTime":"2022-03-18 16:33:37","u8OutCode":"XSCK202203180024","u8InvCode":"XSFH202203180032","u8Code":"DD2022031800000004","u8ExtCode":"ZDDD202203180006","custName":"紫光数码（苏州）集团有限公司","num":2.0000000000,"sncodes":[{"sncode":"5D214526ED54B769"},{"sncode":"5D214526EDE8EAAC"}]},{"rowId":"3","invcode":"52040-00225-001","invname":"小鱼易连ME40主机","u8OutTime":"2022-03-18 16:33:37","u8OutCode":"XSCK202203180024","u8InvCode":"XSFH202203180032","u8Code":"DD2022031800000004","u8ExtCode":"ZDDD202203180006","custName":"紫光数码（苏州）集团有限公司","num":1.0000000000,"sncodes":[{"sncode":"5D214526EDEC0754"}]}]}]}
+2022-08-13 22:37:19,335 [4] ERROR XylinkU8Interface.Controllers.OOSOutInfoController - {"companycode":"995","codes":[{"code":"XSCK202203300034"},{"code":"QTCK202203150001"}]}
+2022-08-13 22:37:19,665 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=?
+2022-08-13 22:37:19,668 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"XSCK202203300034"}]
+2022-08-13 22:37:19,731 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199216
+2022-08-13 22:37:19,734 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=?
+2022-08-13 22:37:19,736 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"XSCK202203300034"}]
+2022-08-13 22:37:19,757 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=?
+2022-08-13 22:37:19,758 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"QTCK202203150001"}]
+2022-08-13 22:37:19,787 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=?
+2022-08-13 22:37:19,789 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"QTCK202203150001"}]
+2022-08-13 22:37:19,857 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199033
+2022-08-13 22:37:19,880 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199034
+2022-08-13 22:37:19,899 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199035
+2022-08-13 22:37:19,918 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199036
+2022-08-13 22:37:19,943 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199037
+2022-08-13 22:37:19,962 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199038
+2022-08-13 22:37:19,981 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199039
+2022-08-13 22:37:19,999 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199040
+2022-08-13 22:37:20,019 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199041
+2022-08-13 22:37:20,037 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199042
+2022-08-13 22:37:20,056 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199043
+2022-08-13 22:37:20,081 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199044
+2022-08-13 22:37:20,100 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199045
+2022-08-13 22:37:20,125 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199046
+2022-08-13 22:37:20,146 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199047
+2022-08-13 22:37:20,166 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199048
+2022-08-13 22:37:20,187 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199049
+2022-08-13 22:37:20,207 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199050
+2022-08-13 22:37:20,230 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199051
+2022-08-13 22:37:20,250 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199052
+2022-08-13 22:37:20,267 [4] ERROR XylinkU8Interface.UFIDA.OOSOutInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000199053
+2022-08-13 22:37:20,269 [4] ERROR XylinkU8Interface.Controllers.OOSOutInfoController - {"companycode":"995","datas":[{"code":"XSCK202203300034","detail":[{"rowId":"1","invcode":"62060-00288-001","invname":"ES700智慧互动教学终端","u8OutTime":"2022-03-30 10:48:38","u8OutCode":"XSCK202203300034","u8InvCode":"XSFH202203300044","u8Code":"DD2022033000000002","u8ExtCode":"ZXDD202203300002","custName":"常用","num":2.0000000000,"sncodes":[{"sncode":"1H21516757E05F0F"},{"sncode":"1H21516757F0BEFC"}]}]},{"code":"QTCK202203150001","detail":[{"rowId":"1","invcode":"70090-00001-001","invname":"小鱼易连NE90主机","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":5.0000000000,"sncodes":[{"sncode":"TA2132A068C819F2"},{"sncode":"TA2132A06CB0FF6A"},{"sncode":"TA2144A06E08F842"},{"sncode":"TA2144A06F98E159"},{"sncode":"TA2144A06FF84D1A"}]},{"rowId":"2","invcode":"70090-00005-001","invname":"小鱼易连AE350主机","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":5.0000000000,"sncodes":[{"sncode":"TA2145A08548FB09"},{"sncode":"TA2145A0855837A3"},{"sncode":"TA2145A085609AED"},{"sncode":"TA2145A0856824BF"},{"sncode":"TA2145A08570AEE0"}]},{"rowId":"3","invcode":"62080-00402-001","invname":"小鱼全向麦克风MX80","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":10.0000000000,"sncodes":[]},{"rowId":"4","invcode":"73030-00601-001","invname":"无线传屏器NP30","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":5.0000000000,"sncodes":[{"sncode":"GA1945044AB9554E"},{"sncode":"GA1945044AC3A910"},{"sncode":"GA1945044AE5DFCC"},{"sncode":"GA1945044AECA82D"},{"sncode":"GA1945044B5BC1FA"}]},{"rowId":"5","invcode":"10348-00215-001","invname":"ME90无线网卡","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":5.0000000000,"sncodes":[]},{"rowId":"6","invcode":"10457-00056-001","invname":"HDMI线（3.0M）","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":5.0000000000,"sncodes":[]},{"rowId":"7","invcode":"62080-00403-003","invname":"摄像头1080P镜头CH80","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":5.0000000000,"sncodes":[{"sncode":"CH80211012372"},{"sncode":"CH80211012381"},{"sncode":"CH80211012383"},{"sncode":"CH80211012384"},{"sncode":"CH80211012386"}]},{"rowId":"8","invcode":"72090-00251-090","invname":"小鱼易连AE90主机","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":5.0000000000,"sncodes":[{"sncode":"202203150001"},{"sncode":"202203150002"},{"sncode":"202203150003"},{"sncode":"202203150004"},{"sncode":"202203150005"}]},{"rowId":"9","invcode":"62080-00402-001","invname":"小鱼全向麦克风MX80","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":10.0000000000,"sncodes":[]},{"rowId":"10","invcode":"73030-00601-001","invname":"无线传屏器NP30","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":5.0000000000,"sncodes":[{"sncode":"GA1945044B5DF508"},{"sncode":"GA1945044B630C49"},{"sncode":"GA1945044B74B3AC"},{"sncode":"GA1945044B8E6A98"},{"sncode":"GA1945044B9C1D83"}]},{"rowId":"11","invcode":"10348-00215-001","invname":"ME90无线网卡","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":5.0000000000,"sncodes":[]},{"rowId":"12","invcode":"10457-00056-001","invname":"HDMI线（3.0M）","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":5.0000000000,"sncodes":[]},{"rowId":"13","invcode":"62080-00403-003","invname":"摄像头1080P镜头CH80","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":5.0000000000,"sncodes":[{"sncode":"CH80211012393"},{"sncode":"CH80211026001"},{"sncode":"CH80211026002"},{"sncode":"CH80211026003"},{"sncode":"CH80211026004"}]},{"rowId":"14","invcode":"72090-00251-090","invname":"小鱼易连AE90主机","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":5.0000000000,"sncodes":[{"sncode":"202203150006"},{"sncode":"202203150007"},{"sncode":"202203150008"},{"sncode":"202203150009"},{"sncode":"202203150010"}]},{"rowId":"15","invcode":"10457-00056-001","invname":"HDMI线（3.0M）","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":5.0000000000,"sncodes":[]},{"rowId":"16","invcode":"60624-04000-095","invname":"AC95摄像机","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":5.0000000000,"sncodes":[{"sncode":"CV211418304792EB"},{"sncode":"CV21141830486AA4"},{"sncode":"CV2114183049CD5E"},{"sncode":"CV211418304A77B8"},{"sncode":"CV211418304B39C0"}]},{"rowId":"17","invcode":"10348-00215-001","invname":"ME90无线网卡","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":5.0000000000,"sncodes":[]},{"rowId":"18","invcode":"73030-00601-001","invname":"无线传屏器NP30","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":5.0000000000,"sncodes":[{"sncode":"GA19460450534F88"},{"sncode":"GA194604507614F1"},{"sncode":"GA19460450FF022F"},{"sncode":"GA19460451014B65"},{"sncode":"GA19460451095A18"}]},{"rowId":"19","invcode":"62080-00402-001","invname":"小鱼全向麦克风MX80","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":10.0000000000,"sncodes":[]},{"rowId":"20","invcode":"72090-00251-090","invname":"小鱼易连AE90主机","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":5.0000000000,"sncodes":[{"sncode":"202203150011"},{"sncode":"202203150012"},{"sncode":"202203150013"},{"sncode":"202203150014"},{"sncode":"202203150015"}]},{"rowId":"21","invcode":"62060-00288-001","invname":"ES700智慧互动教学终端","u8OutTime":"2022-03-15 11:51:05","u8OutCode":"QTCK202203150001","u8InvCode":"","u8Code":"JCJY202203150002","u8ExtCode":"SY202203150003","custName":"常用","num":5.0000000000,"sncodes":[{"sncode":"1H2151675C20000F"},{"sncode":"1H2151675C405B35"},{"sncode":"1H2151675C50D883"},{"sncode":"1H2151675C805CEF"},{"sncode":"1H2151675C908D80"}]}]}]}
+2022-08-13 22:41:28,733 [15] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995","codes":[{"u8Code":"XSCK202203300034","u8ExtCode":""}]}
+2022-08-13 22:41:29,056 [15] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=? or som.cDefine10=?
+2022-08-13 22:41:29,057 [15] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"XSCK202203300034"},{"paramname":"@code","paramtype":200,"paramvalue":""}]
+2022-08-13 22:41:29,166 [15] ERROR XylinkU8Interface.Helper.Ufdata - Error
+System.Data.OleDb.OleDbException (0x80040E14): 关键字 'DEFAULT' 附近有语法错误。
+   在 System.Data.OleDb.OleDbDataReader.ProcessResults(OleDbHResult hr)
+   在 System.Data.OleDb.OleDbDataReader.NextResult()
+   在 System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   在 System.Data.OleDb.OleDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.OleDb.OleDbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XylinkU8Interface.Helper.Ufdata.getDatatableFromSql(String strConn, String strSql, List`1 myparams) 位置 c:\App\XylinkU8Interface\XylinkU8Interface\Helper\Ufdata.cs:行号 120
+2022-08-13 22:41:29,174 [15] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=? or bo.cDefine12=?
+2022-08-13 22:41:29,176 [15] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"XSCK202203300034"},{"paramname":"@code","paramtype":200,"paramvalue":""}]
+2022-08-13 22:41:29,253 [15] ERROR XylinkU8Interface.Helper.Ufdata - Error
+System.Data.OleDb.OleDbException (0x80040E14): 关键字 'DEFAULT' 附近有语法错误。
+   在 System.Data.OleDb.OleDbDataReader.ProcessResults(OleDbHResult hr)
+   在 System.Data.OleDb.OleDbDataReader.NextResult()
+   在 System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   在 System.Data.OleDb.OleDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.OleDb.OleDbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XylinkU8Interface.Helper.Ufdata.getDatatableFromSql(String strConn, String strSql, List`1 myparams) 位置 c:\App\XylinkU8Interface\XylinkU8Interface\Helper\Ufdata.cs:行号 120
+2022-08-13 22:41:29,298 [15] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - Error
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity.getInfo(ClsQuery query) 位置 c:\App\XylinkU8Interface\XylinkU8Interface\UFIDA\OOSU8ExtInfoEntity.cs:行号 166
+2022-08-13 22:41:29,304 [15] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995"}
+2022-08-13 22:42:32,259 [10] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995","codes":[{"u8Code":"XSCK202203300034","u8ExtCode":""}]}
+2022-08-13 22:42:32,823 [10] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=? or som.cDefine10=?
+2022-08-13 22:42:32,831 [10] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"XSCK202203300034"},{"paramname":"@code","paramtype":200,"paramvalue":""}]
+2022-08-13 22:42:33,009 [10] ERROR XylinkU8Interface.Helper.Ufdata - Error
+System.Data.OleDb.OleDbException (0x80040E14): 关键字 'DEFAULT' 附近有语法错误。
+   在 System.Data.OleDb.OleDbDataReader.ProcessResults(OleDbHResult hr)
+   在 System.Data.OleDb.OleDbDataReader.NextResult()
+   在 System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   在 System.Data.OleDb.OleDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.OleDb.OleDbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XylinkU8Interface.Helper.Ufdata.getDatatableFromSql(String strConn, String strSql, List`1 myparams) 位置 c:\App\XylinkU8Interface\XylinkU8Interface\Helper\Ufdata.cs:行号 120
+2022-08-13 22:42:33,017 [10] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=? or bo.cDefine12=?
+2022-08-13 22:42:33,019 [10] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code","paramtype":200,"paramvalue":"XSCK202203300034"},{"paramname":"@code","paramtype":200,"paramvalue":""}]
+2022-08-13 22:42:33,095 [10] ERROR XylinkU8Interface.Helper.Ufdata - Error
+System.Data.OleDb.OleDbException (0x80040E14): 关键字 'DEFAULT' 附近有语法错误。
+   在 System.Data.OleDb.OleDbDataReader.ProcessResults(OleDbHResult hr)
+   在 System.Data.OleDb.OleDbDataReader.NextResult()
+   在 System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   在 System.Data.OleDb.OleDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.OleDb.OleDbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XylinkU8Interface.Helper.Ufdata.getDatatableFromSql(String strConn, String strSql, List`1 myparams) 位置 c:\App\XylinkU8Interface\XylinkU8Interface\Helper\Ufdata.cs:行号 120
+2022-08-13 22:42:33,106 [10] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995","datas":[{"u8Code":"XSCK202203300034","u8ExtCode":"","detail":[]}]}
+2022-08-13 22:44:40,627 [11] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995","codes":[{"u8Code":"XSCK202203300034","u8ExtCode":""}]}
+2022-08-13 22:44:41,174 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=? or som.cDefine10=?
+2022-08-13 22:44:41,182 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":"XSCK202203300034"},{"paramname":"@code2","paramtype":200,"paramvalue":""}]
+2022-08-13 22:44:45,949 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199216
+2022-08-13 22:44:45,950 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=? or bo.cDefine12=?
+2022-08-13 22:44:45,952 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":"XSCK202203300034"},{"paramname":"@code2","paramtype":200,"paramvalue":""}]
+2022-08-13 22:44:46,296 [11] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995","datas":[{"u8Code":"XSCK202203300034","u8ExtCode":"","detail":[{"rowId":"1","invcode":"62060-00288-001","invname":"ES700智慧互动教学终端","u8OutTime":"2022-03-30 10:48:38","u8OutCode":"XSCK202203300034","u8InvCode":"XSFH202203300044","u8Code":"DD2022033000000002","u8ExtCode":"ZXDD202203300002","custName":"常用","num":2.0000000000,"sncodes":[{"sncode":"1H21516757E05F0F"},{"sncode":"1H21516757F0BEFC"}]}]}]}
+2022-08-13 22:46:43,669 [11] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995","codes":[{"u8Code":"XSCK202203300034","u8ExtCode":""},{"u8Code":"","u8ExtCode":"ZXDD202204080003"}]}
+2022-08-13 22:46:44,084 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=? or som.cDefine10=?
+2022-08-13 22:46:44,086 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":"XSCK202203300034"},{"paramname":"@code2","paramtype":200,"paramvalue":""}]
+2022-08-13 22:46:47,235 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199216
+2022-08-13 22:46:47,236 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=? or bo.cDefine12=?
+2022-08-13 22:46:47,238 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":"XSCK202203300034"},{"paramname":"@code2","paramtype":200,"paramvalue":""}]
+2022-08-13 22:46:47,479 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=? or som.cDefine10=?
+2022-08-13 22:46:47,481 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":""},{"paramname":"@code2","paramtype":200,"paramvalue":"ZXDD202204080003"}]
+2022-08-13 22:46:50,752 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=? or bo.cDefine12=?
+2022-08-13 22:46:50,753 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":""},{"paramname":"@code2","paramtype":200,"paramvalue":"ZXDD202204080003"}]
+2022-08-13 22:46:51,179 [11] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995","datas":[{"u8Code":"XSCK202203300034","u8ExtCode":"","detail":[{"rowId":"1","invcode":"62060-00288-001","invname":"ES700智慧互动教学终端","u8OutTime":"2022-03-30 10:48:38","u8OutCode":"XSCK202203300034","u8InvCode":"XSFH202203300044","u8Code":"DD2022033000000002","u8ExtCode":"ZXDD202203300002","custName":"常用","num":2.0000000000,"sncodes":[{"sncode":"1H21516757F0BEFC"},{"sncode":"1H21516757E05F0F"}]}]},{"u8Code":"","u8ExtCode":"ZXDD202204080003","detail":[]}]}
+2022-08-13 22:47:10,939 [11] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995","codes":[{"u8Code":"XSCK202203300034","u8ExtCode":""},{"u8Code":"","u8ExtCode":"ZXDD202204070020_TX"}]}
+2022-08-13 22:47:11,270 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=? or som.cDefine10=?
+2022-08-13 22:47:11,273 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":"XSCK202203300034"},{"paramname":"@code2","paramtype":200,"paramvalue":""}]
+2022-08-13 22:47:14,443 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199216
+2022-08-13 22:47:14,445 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=? or bo.cDefine12=?
+2022-08-13 22:47:14,447 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":"XSCK202203300034"},{"paramname":"@code2","paramtype":200,"paramvalue":""}]
+2022-08-13 22:47:14,575 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=? or som.cDefine10=?
+2022-08-13 22:47:14,577 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":""},{"paramname":"@code2","paramtype":200,"paramvalue":"ZXDD202204070020_TX"}]
+2022-08-13 22:47:17,848 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=? or bo.cDefine12=?
+2022-08-13 22:47:17,850 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":""},{"paramname":"@code2","paramtype":200,"paramvalue":"ZXDD202204070020_TX"}]
+2022-08-13 22:47:18,069 [11] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995","datas":[{"u8Code":"XSCK202203300034","u8ExtCode":"","detail":[{"rowId":"1","invcode":"62060-00288-001","invname":"ES700智慧互动教学终端","u8OutTime":"2022-03-30 10:48:38","u8OutCode":"XSCK202203300034","u8InvCode":"XSFH202203300044","u8Code":"DD2022033000000002","u8ExtCode":"ZXDD202203300002","custName":"常用","num":2.0000000000,"sncodes":[{"sncode":"1H21516757F0BEFC"},{"sncode":"1H21516757E05F0F"}]}]},{"u8Code":"","u8ExtCode":"ZXDD202204070020_TX","detail":[]}]}
+2022-08-13 22:49:06,019 [11] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995","codes":[{"u8Code":"XSCK202203300034","u8ExtCode":""},{"u8Code":"","u8ExtCode":"ZXDD202203300002"}]}
+2022-08-13 22:49:06,382 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=? or som.cDefine10=?
+2022-08-13 22:49:06,384 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":"XSCK202203300034"},{"paramname":"@code2","paramtype":200,"paramvalue":""}]
+2022-08-13 22:49:09,405 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199216
+2022-08-13 22:49:09,406 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=? or bo.cDefine12=?
+2022-08-13 22:49:09,408 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":"XSCK202203300034"},{"paramname":"@code2","paramtype":200,"paramvalue":""}]
+2022-08-13 22:49:09,649 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=? or som.cDefine10=?
+2022-08-13 22:49:09,651 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":""},{"paramname":"@code2","paramtype":200,"paramvalue":"ZXDD202203300002"}]
+2022-08-13 22:49:12,931 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199216
+2022-08-13 22:49:12,933 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=? or bo.cDefine12=?
+2022-08-13 22:49:12,935 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":""},{"paramname":"@code2","paramtype":200,"paramvalue":"ZXDD202203300002"}]
+2022-08-13 22:49:13,157 [11] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995","datas":[{"u8Code":"XSCK202203300034","u8ExtCode":"","detail":[{"rowId":"1","invcode":"62060-00288-001","invname":"ES700智慧互动教学终端","u8OutTime":"2022-03-30 10:48:38","u8OutCode":"XSCK202203300034","u8InvCode":"XSFH202203300044","u8Code":"DD2022033000000002","u8ExtCode":"ZXDD202203300002","custName":"常用","num":2.0000000000,"sncodes":[{"sncode":"1H21516757F0BEFC"},{"sncode":"1H21516757E05F0F"}]}]},{"u8Code":"","u8ExtCode":"ZXDD202203300002","detail":[{"rowId":"1","invcode":"62060-00288-001","invname":"ES700智慧互动教学终端","u8OutTime":"2022-03-30 10:48:38","u8OutCode":"XSCK202203300034","u8InvCode":"XSFH202203300044","u8Code":"DD2022033000000002","u8ExtCode":"ZXDD202203300002","custName":"常用","num":2.0000000000,"sncodes":[{"sncode":"1H21516757F0BEFC"},{"sncode":"1H21516757E05F0F"}]}]}]}
+2022-08-13 22:50:00,832 [11] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995","codes":[{"u8Code":"XSCK202203300034","u8ExtCode":""},{"u8Code":"","u8ExtCode":"ZDDD202203180005"}]}
+2022-08-13 22:50:01,160 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=? or som.cDefine10=?
+2022-08-13 22:50:01,161 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":"XSCK202203300034"},{"paramname":"@code2","paramtype":200,"paramvalue":""}]
+2022-08-13 22:50:04,545 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199216
+2022-08-13 22:50:04,547 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=? or bo.cDefine12=?
+2022-08-13 22:50:04,549 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":"XSCK202203300034"},{"paramname":"@code2","paramtype":200,"paramvalue":""}]
+2022-08-13 22:50:04,768 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=? or som.cDefine10=?
+2022-08-13 22:50:04,771 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":""},{"paramname":"@code2","paramtype":200,"paramvalue":"ZDDD202203180005"}]
+2022-08-13 22:50:07,946 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199088
+2022-08-13 22:50:07,971 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199080
+2022-08-13 22:50:07,992 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199082
+2022-08-13 22:50:08,013 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199087
+2022-08-13 22:50:08,034 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199089
+2022-08-13 22:50:08,058 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199083
+2022-08-13 22:50:08,081 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199084
+2022-08-13 22:50:08,104 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199078
+2022-08-13 22:50:08,127 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199085
+2022-08-13 22:50:08,152 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199079
+2022-08-13 22:50:08,174 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199081
+2022-08-13 22:50:08,198 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199086
+2022-08-13 22:50:08,199 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=? or bo.cDefine12=?
+2022-08-13 22:50:08,201 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":""},{"paramname":"@code2","paramtype":200,"paramvalue":"ZDDD202203180005"}]
+2022-08-13 22:50:08,404 [11] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995","datas":[{"u8Code":"XSCK202203300034","u8ExtCode":"","detail":[{"rowId":"1","invcode":"62060-00288-001","invname":"ES700智慧互动教学终端","u8OutTime":"2022-03-30 10:48:38","u8OutCode":"XSCK202203300034","u8InvCode":"XSFH202203300044","u8Code":"DD2022033000000002","u8ExtCode":"ZXDD202203300002","custName":"常用","num":2.0000000000,"sncodes":[{"sncode":"1H21516757F0BEFC"},{"sncode":"1H21516757E05F0F"}]}]},{"u8Code":"","u8ExtCode":"ZDDD202203180005","detail":[{"rowId":"11","invcode":"73030-00601-001","invname":"无线传屏器NP30","u8OutTime":"2022-03-18 16:32:02","u8OutCode":"XSCK202203180023","u8InvCode":"XSFH202203180031","u8Code":"DD2022031800000003","u8ExtCode":"ZDDD202203180005","custName":"紫光数码（苏州）集团有限公司","num":1.0000000000,"sncodes":[{"sncode":"GA1945044BCAFC69"}]},{"rowId":"3","invcode":"62080-00402-001","invname":"小鱼全向麦克风MX80","u8OutTime":"2022-03-18 16:32:02","u8OutCode":"XSCK202203180023","u8InvCode":"XSFH202203180031","u8Code":"DD2022031800000003","u8ExtCode":"ZDDD202203180005","custName":"紫光数码（苏州）集团有限公司","num":2.0000000000,"sncodes":[]},{"rowId":"5","invcode":"73030-00601-001","invname":"无线传屏器NP30","u8OutTime":"2022-03-18 16:32:02","u8OutCode":"XSCK202203180023","u8InvCode":"XSFH202203180031","u8Code":"DD2022031800000003","u8ExtCode":"ZDDD202203180005","custName":"紫光数码（苏州）集团有限公司","num":1.0000000000,"sncodes":[{"sncode":"GA1945044BC9F14B"}]},{"rowId":"10","invcode":"20457-00408-001","invname":"5米SDI线","u8OutTime":"2022-03-18 16:32:02","u8OutCode":"XSCK202203180023","u8InvCode":"XSFH202203180031","u8Code":"DD2022031800000003","u8ExtCode":"ZDDD202203180005","custName":"紫光数码（苏州）集团有限公司","num":1.0000000000,"sncodes":[]},{"rowId":"12","invcode":"10348-00215-001","invname":"ME90无线网卡","u8OutTime":"2022-03-18 16:32:02","u8OutCode":"XSCK202203180023","u8InvCode":"XSFH202203180031","u8Code":"DD2022031800000003","u8ExtCode":"ZDDD202203180005","custName":"紫光数码（苏州）集团有限公司","num":1.0000000000,"sncodes":[]},{"rowId":"6","invcode":"10348-00215-001","invname":"ME90无线网卡","u8OutTime":"2022-03-18 16:32:02","u8OutCode":"XSCK202203180023","u8InvCode":"XSFH202203180031","u8Code":"DD2022031800000003","u8ExtCode":"ZDDD202203180005","custName":"紫光数码（苏州）集团有限公司","num":1.0000000000,"sncodes":[]},{"rowId":"7","invcode":"72090-00251-001","invname":"小鱼易连ME90主机","u8OutTime":"2022-03-18 16:32:02","u8OutCode":"XSCK202203180023","u8InvCode":"XSFH202203180031","u8Code":"DD2022031800000003","u8ExtCode":"ZDDD202203180005","custName":"紫光数码（苏州）集团有限公司","num":1.0000000000,"sncodes":[{"sncode":"6A1924011D46ADCA"}]},{"rowId":"1","invcode":"72090-00251-001","invname":"小鱼易连ME90主机","u8OutTime":"2022-03-18 16:32:02","u8OutCode":"XSCK202203180023","u8InvCode":"XSFH202203180031","u8Code":"DD2022031800000003","u8ExtCode":"ZDDD202203180005","custName":"紫光数码（苏州）集团有限公司","num":1.0000000000,"sncodes":[{"sncode":"6A1826010B296ECA"}]},{"rowId":"8","invcode":"62080-00403-002","invname":"摄像头CS80（SDI）","u8OutTime":"2022-03-18 16:32:02","u8OutCode":"XSCK202203180023","u8InvCode":"XSFH202203180031","u8Code":"DD2022031800000003","u8ExtCode":"ZDDD202203180005","custName":"紫光数码（苏州）集团有限公司","num":1.0000000000,"sncodes":[{"sncode":"CS80211012001"}]},{"rowId":"2","invcode":"62080-00403-002","invname":"摄像头CS80（SDI）","u8OutTime":"2022-03-18 16:32:02","u8OutCode":"XSCK202203180023","u8InvCode":"XSFH202203180031","u8Code":"DD2022031800000003","u8ExtCode":"ZDDD202203180005","custName":"紫光数码（苏州）集团有限公司","num":1.0000000000,"sncodes":[{"sncode":"CS80210908050"}]},{"rowId":"4","invcode":"20457-00408-001","invname":"5米SDI线","u8OutTime":"2022-03-18 16:32:02","u8OutCode":"XSCK202203180023","u8InvCode":"XSFH202203180031","u8Code":"DD2022031800000003","u8ExtCode":"ZDDD202203180005","custName":"紫光数码（苏州）集团有限公司","num":1.0000000000,"sncodes":[]},{"rowId":"9","invcode":"62080-00402-001","invname":"小鱼全向麦克风MX80","u8OutTime":"2022-03-18 16:32:02","u8OutCode":"XSCK202203180023","u8InvCode":"XSFH202203180031","u8Code":"DD2022031800000003","u8ExtCode":"ZDDD202203180005","custName":"紫光数码（苏州）集团有限公司","num":2.0000000000,"sncodes":[]}]}]}
+2022-08-13 22:52:18,996 [12] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995","codes":[{"u8Code":"XSCK202203300034","u8ExtCode":""},{"u8Code":"","u8ExtCode":"SY202202250007"}]}
+2022-08-13 22:52:19,351 [12] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=? or som.cDefine10=?
+2022-08-13 22:52:19,353 [12] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":"XSCK202203300034"},{"paramname":"@code2","paramtype":200,"paramvalue":""}]
+2022-08-13 22:52:23,162 [12] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199216
+2022-08-13 22:52:23,164 [12] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=? or bo.cDefine12=?
+2022-08-13 22:52:23,166 [12] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":"XSCK202203300034"},{"paramname":"@code2","paramtype":200,"paramvalue":""}]
+2022-08-13 22:52:23,378 [12] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=? or som.cDefine10=?
+2022-08-13 22:52:23,379 [12] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":""},{"paramname":"@code2","paramtype":200,"paramvalue":"SY202202250007"}]
+2022-08-13 22:52:27,178 [12] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=? or bo.cDefine12=?
+2022-08-13 22:52:27,180 [12] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":""},{"paramname":"@code2","paramtype":200,"paramvalue":"SY202202250007"}]
+2022-08-13 22:52:27,495 [12] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000198648
+2022-08-13 22:52:27,522 [12] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000198650
+2022-08-13 22:52:27,549 [12] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000198652
+2022-08-13 22:52:27,576 [12] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000198646
+2022-08-13 22:52:27,600 [12] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000198647
+2022-08-13 22:52:27,621 [12] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000198651
+2022-08-13 22:52:27,648 [12] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000198649
+2022-08-13 22:52:27,650 [12] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995","datas":[{"u8Code":"XSCK202203300034","u8ExtCode":"","detail":[{"rowId":"1","invcode":"62060-00288-001","invname":"ES700智慧互动教学终端","u8OutTime":"2022-03-30 10:48:38","u8OutCode":"XSCK202203300034","u8InvCode":"XSFH202203300044","u8Code":"DD2022033000000002","u8ExtCode":"ZXDD202203300002","custName":"常用","num":2.0000000000,"sncodes":[{"sncode":"1H21516757F0BEFC"},{"sncode":"1H21516757E05F0F"}]}]},{"u8Code":"","u8ExtCode":"SY202202250007","detail":[{"rowId":"3","invcode":"10348-00215-001","invname":"ME90无线网卡","u8OutTime":"2022-02-25 11:47:17","u8OutCode":"QTCK202202250011","u8InvCode":"","u8Code":"JCJY202202250013","u8ExtCode":"SY202202250007","custName":"汉德时代科技","num":3.0000000000,"sncodes":[]},{"rowId":"5","invcode":"62080-00402-001","invname":"小鱼全向麦克风MX80","u8OutTime":"2022-02-25 11:47:17","u8OutCode":"QTCK202202250011","u8InvCode":"","u8Code":"JCJY202202250013","u8ExtCode":"SY202202250007","custName":"汉德时代科技","num":6.0000000000,"sncodes":[]},{"rowId":"7","invcode":"70090-00005-001","invname":"小鱼易连AE350主机","u8OutTime":"2022-02-25 11:47:17","u8OutCode":"QTCK202202250011","u8InvCode":"","u8Code":"JCJY202202250013","u8ExtCode":"SY202202250007","custName":"汉德时代科技","num":2.0000000000,"sncodes":[{"sncode":"TA2145A084001D00"},{"sncode":"TA2145A08408E701"}]},{"rowId":"1","invcode":"10457-00056-001","invname":"HDMI线（3.0M）","u8OutTime":"2022-02-25 11:47:17","u8OutCode":"QTCK202202250011","u8InvCode":"","u8Code":"JCJY202202250013","u8ExtCode":"SY202202250007","custName":"汉德时代科技","num":3.0000000000,"sncodes":[]},{"rowId":"2","invcode":"60624-04000-095","invname":"AC95摄像机","u8OutTime":"2022-02-25 11:47:17","u8OutCode":"QTCK202202250011","u8InvCode":"","u8Code":"JCJY202202250013","u8ExtCode":"SY202202250007","custName":"汉德时代科技","num":3.0000000000,"sncodes":[{"sncode":"CV21051827E9C132"},{"sncode":"CV21051827EAAC88"},{"sncode":"CV21051827EBF400"}]},{"rowId":"6","invcode":"72090-00251-090","invname":"小鱼易连AE90主机","u8OutTime":"2022-02-25 11:47:17","u8OutCode":"QTCK202202250011","u8InvCode":"","u8Code":"JCJY202202250013","u8ExtCode":"SY202202250007","custName":"汉德时代科技","num":3.0000000000,"sncodes":[{"sncode":"6A202001310F5613"},{"sncode":"6A20200131106BBB"},{"sncode":"6A2020013111F1C5"}]},{"rowId":"4","invcode":"73030-00601-001","invname":"无线传屏器NP30","u8OutTime":"2022-02-25 11:47:17","u8OutCode":"QTCK202202250011","u8InvCode":"","u8Code":"JCJY202202250013","u8ExtCode":"SY202202250007","custName":"汉德时代科技","num":3.0000000000,"sncodes":[{"sncode":"GA1937043CB2FCF2"},{"sncode":"GA1937043CC7838C"},{"sncode":"GA1937043CD37F0C"}]}]}]}
+2022-08-13 23:00:41,414 [24] ERROR XylinkU8Interface.Controllers.ISStateController - {"companycode":"995","sncodes":[{"sncode":"202203150062"},{"sncode":"GA1946044FCE9F3C"}]}
+2022-08-13 23:00:42,057 [24] ERROR XylinkU8Interface.UFIDA.ISStateEntity - select cInvCode,cInvSN,iSNState,iSNOperateCount from [dbo].[ST_SNState]  where cInvSN=?
+2022-08-13 23:00:42,059 [24] ERROR XylinkU8Interface.UFIDA.ISStateEntity - [{"paramname":"@sncode","paramtype":200,"paramvalue":"202203150062"}]
+2022-08-13 23:00:42,107 [24] ERROR XylinkU8Interface.UFIDA.ISStateEntity - select cInvCode,cInvSN,iSNState,iSNOperateCount from [dbo].[ST_SNState]  where cInvSN=?
+2022-08-13 23:00:42,109 [24] ERROR XylinkU8Interface.UFIDA.ISStateEntity - [{"paramname":"@sncode","paramtype":200,"paramvalue":"GA1946044FCE9F3C"}]
+2022-08-13 23:00:42,136 [24] ERROR XylinkU8Interface.Controllers.ISStateController - {"companycode":"995","datas":[{"sncode":"202203150062","inStock":true},{"sncode":"GA1946044FCE9F3C","inStock":false}]}
+2022-08-13 23:04:37,625 [11] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995","codes":[{"u8Code":"XSCK202203300034"},{"u8Code":"","u8ExtCode":"SY202202250007"}]}
+2022-08-13 23:04:38,247 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - Error
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity.getInfo(ClsQuery query) 位置 c:\App\XylinkU8Interface\XylinkU8Interface\UFIDA\OOSU8ExtInfoEntity.cs:行号 50
+2022-08-13 23:04:38,272 [11] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995","datas":[]}
+2022-08-13 23:05:08,044 [11] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995","codes":[{"u8Code":"XSCK202203300034","u8ExtCode":""},{"u8Code":"","u8ExtCode":"SY202202250007"}]}
+2022-08-13 23:05:08,375 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=? or som.cDefine10=?
+2022-08-13 23:05:08,383 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":"XSCK202203300034"},{"paramname":"@code2","paramtype":200,"paramvalue":""}]
+2022-08-13 23:05:11,280 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_SaleOut where iVouchsID=1000199216
+2022-08-13 23:05:11,282 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=? or bo.cDefine12=?
+2022-08-13 23:05:11,283 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":"XSCK202203300034"},{"paramname":"@code2","paramtype":200,"paramvalue":""}]
+2022-08-13 23:05:11,380 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords32 b
+                                    inner join RdRecord32 c on b.ID=c.ID 
+                                    left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                                    left join DispatchList dt on dts.DLID=dt.DLID
+                                    left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                                    left join SO_SOMain som on sod.ID=som.ID
+                                    left join Customer cus on som.cCusCode=cus.cCusCode
+                                    inner join inventory d on b.cInvCode=d.cInvCode where c.cCode=? or som.cDefine10=?
+2022-08-13 23:05:11,383 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":""},{"paramname":"@code2","paramtype":200,"paramvalue":"SY202202250007"}]
+2022-08-13 23:05:14,098 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,b.cInvCode invcode,d.cInvName invname,bo.cCODE u8code,'' u8invcode,bo.cDefine12 u8extcode,
+                                    b.irowno rowid,cus.cCusName custname,b.iQuantity num,b.AutoID
+                                    from RdRecords09 b
+                                    inner join RdRecord09 c on b.ID=c.ID 
+                                    left join HY_DZ_BorrowOuts bos on bos.AutoID=b.idebitchildids
+                                    left join HY_DZ_BorrowOut bo on bo.ID=bos.ID
+                                    inner join inventory d on b.cInvCode=d.cInvCode
+                                    left join Customer cus on bo.bObjectCode=cus.cCusCode where c.cCode=? or bo.cDefine12=?
+2022-08-13 23:05:14,099 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - [{"paramname":"@code1","paramtype":200,"paramvalue":""},{"paramname":"@code2","paramtype":200,"paramvalue":"SY202202250007"}]
+2022-08-13 23:05:14,204 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000198646
+2022-08-13 23:05:14,225 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000198647
+2022-08-13 23:05:14,242 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000198651
+2022-08-13 23:05:14,258 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000198649
+2022-08-13 23:05:14,274 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000198648
+2022-08-13 23:05:14,290 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000198650
+2022-08-13 23:05:14,309 [11] ERROR XylinkU8Interface.UFIDA.OOSU8ExtInfoEntity - select cInvSN from ST_SNDetail_OtherOut where iVouchsID=1000198652
+2022-08-13 23:05:14,321 [11] ERROR XylinkU8Interface.Controllers.OOSU8ExtInfoController - {"companycode":"995","datas":[{"u8Code":"XSCK202203300034","u8ExtCode":"","detail":[{"rowId":"1","invcode":"62060-00288-001","invname":"ES700智慧互动教学终端","u8OutTime":"2022-03-30 10:48:38","u8OutCode":"XSCK202203300034","u8InvCode":"XSFH202203300044","u8Code":"DD2022033000000002","u8ExtCode":"ZXDD202203300002","custName":"常用","num":2.0000000000,"sncodes":[{"sncode":"1H21516757E05F0F"},{"sncode":"1H21516757F0BEFC"}]}]},{"u8Code":"","u8ExtCode":"SY202202250007","detail":[{"rowId":"1","invcode":"10457-00056-001","invname":"HDMI线（3.0M）","u8OutTime":"2022-02-25 11:47:17","u8OutCode":"QTCK202202250011","u8InvCode":"","u8Code":"JCJY202202250013","u8ExtCode":"SY202202250007","custName":"汉德时代科技","num":3.0000000000,"sncodes":[]},{"rowId":"2","invcode":"60624-04000-095","invname":"AC95摄像机","u8OutTime":"2022-02-25 11:47:17","u8OutCode":"QTCK202202250011","u8InvCode":"","u8Code":"JCJY202202250013","u8ExtCode":"SY202202250007","custName":"汉德时代科技","num":3.0000000000,"sncodes":[{"sncode":"CV21051827E9C132"},{"sncode":"CV21051827EAAC88"},{"sncode":"CV21051827EBF400"}]},{"rowId":"6","invcode":"72090-00251-090","invname":"小鱼易连AE90主机","u8OutTime":"2022-02-25 11:47:17","u8OutCode":"QTCK202202250011","u8InvCode":"","u8Code":"JCJY202202250013","u8ExtCode":"SY202202250007","custName":"汉德时代科技","num":3.0000000000,"sncodes":[{"sncode":"6A202001310F5613"},{"sncode":"6A20200131106BBB"},{"sncode":"6A2020013111F1C5"}]},{"rowId":"4","invcode":"73030-00601-001","invname":"无线传屏器NP30","u8OutTime":"2022-02-25 11:47:17","u8OutCode":"QTCK202202250011","u8InvCode":"","u8Code":"JCJY202202250013","u8ExtCode":"SY202202250007","custName":"汉德时代科技","num":3.0000000000,"sncodes":[{"sncode":"GA1937043CB2FCF2"},{"sncode":"GA1937043CC7838C"},{"sncode":"GA1937043CD37F0C"}]},{"rowId":"3","invcode":"10348-00215-001","invname":"ME90无线网卡","u8OutTime":"2022-02-25 11:47:17","u8OutCode":"QTCK202202250011","u8InvCode":"","u8Code":"JCJY202202250013","u8ExtCode":"SY202202250007","custName":"汉德时代科技","num":3.0000000000,"sncodes":[]},{"rowId":"5","invcode":"62080-00402-001","invname":"小鱼全向麦克风MX80","u8OutTime":"2022-02-25 11:47:17","u8OutCode":"QTCK202202250011","u8InvCode":"","u8Code":"JCJY202202250013","u8ExtCode":"SY202202250007","custName":"汉德时代科技","num":6.0000000000,"sncodes":[]},{"rowId":"7","invcode":"70090-00005-001","invname":"小鱼易连AE350主机","u8OutTime":"2022-02-25 11:47:17","u8OutCode":"QTCK202202250011","u8InvCode":"","u8Code":"JCJY202202250013","u8ExtCode":"SY202202250007","custName":"汉德时代科技","num":2.0000000000,"sncodes":[{"sncode":"TA2145A084001D00"},{"sncode":"TA2145A08408E701"}]}]}]}

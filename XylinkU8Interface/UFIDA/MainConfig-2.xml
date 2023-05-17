@@ -1,23 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ufinterface>
   <ACC id="999">
     <user>demo</user>
     <password>DEMO</password>
-    <server>172.17.100.178</server>
+    <server>172.17.100.239</server>
   </ACC>
   <ACC id="005" func="main">
     <user>demo</user>
     <password>DEMO</password>
-    <server>172.17.100.178</server>
+    <server>172.17.100.239</server>
   </ACC>
   <ACC id="001">
     <user>demo</user>
-    <password>Xin@Demo#SzYp0602</password>
+    <password>XYlink.com!@#</password>
     <server>172.17.100.239</server>
   </ACC>
   <ACC id="995">
     <user>demo</user>
-    <password>XDsd@87,Xy2390</password>
-    <server>172.17.100.178</server>
+    <password>XYlink.com!@#</password>
+    <server>172.17.100.239</server>
   </ACC>
 </ufinterface>

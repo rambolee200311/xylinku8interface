@@ -1,0 +1,76 @@
+2023-04-10 10:48:16,682 [8] ERROR XylinkU8Interface.Controllers.OOSSaleSNInfoTimeController - {"companycode":"995","current":1,"size":10,"startTime":"2023-03-12 00:00:00","endTime":"2023-04-10 00:00:00"}
+2023-04-10 10:48:59,763 [8] ERROR XylinkU8Interface.UFIDA.OOSSaleSNInfoTimeEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                            b.cDefine22 excomp,b.cDefine23 exnum,e.cbdefine4 receiver,e.cbdefine5 recrmobi,
+                            replace(isnull(e.cbdefine6,''),'/','')+replace(isnull(e.cbdefine7,''),'/','')+replace(isnull(e.cbdefine8,''),'/','')+replace(isnull(e.cbdefine9,''),'/','') recraddress,
+                            isnull(f.cbdefine21,'') reqId,case when isnull(a.cInvSN,'')!='' and b.iQuantity>0 then 1 else -1 end num 
+                            from ST_SNDetail_SaleOut a
+                            inner join RdRecords32 b on a.iVouchsID=b.AutoID 
+                            inner join RdRecord32 c on b.ID=c.ID 
+                            left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                            left join DispatchList dt on dts.DLID=dt.DLID
+                            left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                            left join SO_SOMain som on sod.ID=som.ID
+                            left join RdRecords32_extradefine e on e.AutoID=b.AutoID
+							left join SO_SODetails_extradefine f on f.iSOsID=sod.iSOsID
+                            inner join inventory d on a.cInvCode=d.cInvCode where c.dnverifytime>=? and c.dnverifytime<? order by c.dnverifytime,u8outcode
+2023-04-10 10:48:59,885 [8] ERROR XylinkU8Interface.UFIDA.OOSSaleSNInfoTimeEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"2023-04-10 0:00:00"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2049-12-31"}]
+2023-04-10 10:49:00,411 [8] ERROR XylinkU8Interface.UFIDA.OOSSaleSNInfoTimeEntity - Error
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 XylinkU8Interface.UFIDA.OOSSaleSNInfoTimeEntity.getInfo(ClsQuery query) 位置 c:\App\XylinkU8Interface\XylinkU8Interface\UFIDA\OOSSaleSNInfoTimeEntity.cs:行号 72
+2023-04-10 10:49:00,571 [8] ERROR XylinkU8Interface.Controllers.OOSSaleSNInfoTimeController - {"companycode":"995","total":0,"pages":0,"datas":[]}
+2023-04-10 10:53:30,444 [14] ERROR XylinkU8Interface.Controllers.OOSSaleSNInfoTimeController - {"companycode":"995","current":1,"size":10,"startTime":"2023-03-12 00:00:00","endTime":"2023-04-10 00:00:00"}
+2023-04-10 10:54:12,956 [14] ERROR XylinkU8Interface.UFIDA.OOSSaleSNInfoTimeEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                            b.cDefine22 excomp,b.cDefine23 exnum,e.cbdefine4 receiver,e.cbdefine5 recrmobi,
+                            replace(isnull(e.cbdefine6,''),'/','')+replace(isnull(e.cbdefine7,''),'/','')+replace(isnull(e.cbdefine8,''),'/','')+replace(isnull(e.cbdefine9,''),'/','') recraddress,
+                            isnull(f.cbdefine21,'') reqId,case when isnull(a.cInvSN,'')!='' and b.iQuantity>0 then 1 else -1 end num 
+                            from ST_SNDetail_SaleOut a
+                            inner join RdRecords32 b on a.iVouchsID=b.AutoID 
+                            inner join RdRecord32 c on b.ID=c.ID 
+                            left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                            left join DispatchList dt on dts.DLID=dt.DLID
+                            left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                            left join SO_SOMain som on sod.ID=som.ID
+                            left join RdRecords32_extradefine e on e.AutoID=b.AutoID
+							left join SO_SODetails_extradefine f on f.iSOsID=sod.iSOsID
+                            inner join inventory d on a.cInvCode=d.cInvCode where c.dnverifytime>=? and c.dnverifytime<? order by c.dnverifytime,u8outcode
+2023-04-10 10:54:12,968 [14] ERROR XylinkU8Interface.UFIDA.OOSSaleSNInfoTimeEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"2023-03-12 0:00:00"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2023-04-10 0:00:00"}]
+2023-04-10 10:54:13,031 [14] ERROR XylinkU8Interface.UFIDA.OOSSaleSNInfoTimeEntity - Error
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 XylinkU8Interface.UFIDA.OOSSaleSNInfoTimeEntity.getInfo(ClsQuery query) 位置 c:\App\XylinkU8Interface\XylinkU8Interface\UFIDA\OOSSaleSNInfoTimeEntity.cs:行号 72
+2023-04-10 10:54:13,044 [14] ERROR XylinkU8Interface.Controllers.OOSSaleSNInfoTimeController - {"companycode":"995","total":0,"pages":0,"datas":[]}
+2023-04-10 10:55:50,091 [8] ERROR XylinkU8Interface.Controllers.OOSSaleSNInfoTimeController - {"companycode":"995","current":1,"size":10,"startTime":"2023-03-12 00:00:00","endTime":"2023-04-10 00:00:00"}
+2023-04-10 10:56:32,627 [8] ERROR XylinkU8Interface.UFIDA.OOSSaleSNInfoTimeEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                            b.cDefine22 excomp,b.cDefine23 exnum,e.cbdefine4 receiver,e.cbdefine5 recrmobi,
+                            replace(isnull(e.cbdefine6,''),'/','')+replace(isnull(e.cbdefine7,''),'/','')+replace(isnull(e.cbdefine8,''),'/','')+replace(isnull(e.cbdefine9,''),'/','') recraddress,
+                            isnull(f.cbdefine21,'') reqId,case when isnull(a.cInvSN,'')!='' and b.iQuantity>0 then 1 else -1 end num 
+                            from ST_SNDetail_SaleOut a
+                            inner join RdRecords32 b on a.iVouchsID=b.AutoID 
+                            inner join RdRecord32 c on b.ID=c.ID 
+                            left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                            left join DispatchList dt on dts.DLID=dt.DLID
+                            left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                            left join SO_SOMain som on sod.ID=som.ID
+                            left join RdRecords32_extradefine e on e.AutoID=b.AutoID
+							left join SO_SODetails_extradefine f on f.iSOsID=sod.iSOsID
+                            inner join inventory d on a.cInvCode=d.cInvCode where c.dnverifytime>=? and c.dnverifytime<? order by c.dnverifytime,u8outcode
+2023-04-10 10:56:32,629 [8] ERROR XylinkU8Interface.UFIDA.OOSSaleSNInfoTimeEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"2023-03-12 0:00:00"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2023-04-10 0:00:00"}]
+2023-04-10 10:58:01,111 [10] ERROR XylinkU8Interface.Controllers.OOSSaleSNInfoTimeController - {"companycode":"995","current":1,"size":10,"startTime":"2023-03-12 00:00:00","endTime":"2023-04-10 00:01:03"}
+2023-04-10 10:58:44,584 [10] ERROR XylinkU8Interface.UFIDA.OOSSaleSNInfoTimeEntity - select c.cCode u8outcode,c.dnverifytime u8outtime,a.cInvCode invcode,d.cInvName invname,a.cInvSN sncode,som.cSOCode u8code,dt.cDLCode u8invcode,som.cDefine10 u8extcode,
+                            b.cDefine22 excomp,b.cDefine23 exnum,e.cbdefine4 receiver,e.cbdefine5 recrmobi,
+                            replace(isnull(e.cbdefine6,''),'/','')+replace(isnull(e.cbdefine7,''),'/','')+replace(isnull(e.cbdefine8,''),'/','')+replace(isnull(e.cbdefine9,''),'/','') recraddress,
+                            isnull(f.cbdefine21,'') reqId,case when isnull(a.cInvSN,'')!='' and b.iQuantity>0 then 1 else -1 end num 
+                            from ST_SNDetail_SaleOut a
+                            inner join RdRecords32 b on a.iVouchsID=b.AutoID 
+                            inner join RdRecord32 c on b.ID=c.ID 
+                            left join DispatchLists dts on b.iDLsID=dts.iDLsID
+                            left join DispatchList dt on dts.DLID=dt.DLID
+                            left join SO_SODetails sod on dts.iSOsID=sod.iSOsID
+                            left join SO_SOMain som on sod.ID=som.ID
+                            left join RdRecords32_extradefine e on e.AutoID=b.AutoID
+							left join SO_SODetails_extradefine f on f.iSOsID=sod.iSOsID
+                            inner join inventory d on a.cInvCode=d.cInvCode where c.dnverifytime>=? and c.dnverifytime<? order by c.dnverifytime,u8outcode
+2023-04-10 10:58:44,602 [10] ERROR XylinkU8Interface.UFIDA.OOSSaleSNInfoTimeEntity - [{"paramname":"@starttime","paramtype":200,"paramvalue":"2023-03-12 0:00:00"},{"paramname":"@endtime","paramtype":200,"paramvalue":"2023-04-10 0:01:03"}]
+2023-04-10 10:59:00,195 [10] ERROR XylinkU8Interface.UFIDA.OOSSaleSNInfoTimeEntity - Error
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 XylinkU8Interface.UFIDA.OOSSaleSNInfoTimeEntity.getInfo(ClsQuery query) 位置 c:\App\XylinkU8Interface\XylinkU8Interface\UFIDA\OOSSaleSNInfoTimeEntity.cs:行号 72
+2023-04-10 10:59:00,286 [10] ERROR XylinkU8Interface.Controllers.OOSSaleSNInfoTimeController - {"companycode":"995","total":0,"pages":0,"datas":[]}

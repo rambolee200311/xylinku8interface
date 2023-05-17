@@ -25,5 +25,10 @@ namespace XylinkU8Interface.Models.SaleOrder
         public string cord_phone { get; set; }//联系电电话-订货人手机
 
         public decimal taxrate { get; set; }//税率
+        // 相对于接口 /xylinku8interface/api/SaleOrder 新增的字段
+        public string sample_order_code { get; set; }// 样机订单
+        public string sample_product_code { get; set; }// 样机产品编码
+        public string sample_product_name { get; set; }// 样机产品名称
+
     }
 }

@@ -83,10 +83,15 @@ namespace XylinkU8Interface.UFIDA
                             }
 
                             //bldetail
-                            strSql = @"select  a.cInvCode invcode,c.cInvName invname,isnull(a.iQuantity,0) billnum,isnull(a.isum,0) isum,b.cSBVCode u8code
-                                        from SaleBillVouchs a
-                                        inner join SaleBillVouch b on a.SBVID=b.SBVID
-                                        inner join inventory c on a.cInvCode=c.cInvCode
+                           // strSql = @"select  a.cInvCode invcode,c.cInvName invname,isnull(a.iQuantity,0) billnum,isnull(a.isum,0) isum,b.cSBVCode u8code
+                                    //    from SaleBillVouchs a
+                                    //    inner join SaleBillVouch b on a.SBVID=b.SBVID
+                                    //    inner join inventory c on a.cInvCode=c.cInvCode
+                                    //where a.iSOsID=?";
+                            strSql = @"select a.iSOsID,b.cBDefine21,a.cInvCode invcode,c.cInvName invname,,isnull(b.cbdefine26,0) billnum,isnull(b.cbdefine27,0) isum,'' u8code
+                                    from SO_SODetails a
+                                    inner join SO_SODetails_extradefine b on a.iSOsID=b.iSOsID
+                                    inner join Inventory c on a.cInvCode=c.cInvCode 
                                     where a.iSOsID=?";
                             dtBL = Ufdata.getDatatableFromSql(m_ologin.UfDbName, strSql, yourParams);
                             if (dtBL != null)

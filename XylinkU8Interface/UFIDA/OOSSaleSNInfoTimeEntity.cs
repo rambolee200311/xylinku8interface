@@ -46,12 +46,12 @@ namespace XylinkU8Interface.UFIDA
                 if (!string.IsNullOrEmpty(query.startTime))
                 {
                     //dDates = Convert.ToDateTime(query.startTime).ToShortDateString();
-                    dDates = Convert.ToDateTime(query.startTime).ToLongDateString();
+                    dDates = Convert.ToDateTime(query.startTime).ToString();//.ToLongDateString();
                 }
                 if (!string.IsNullOrEmpty(query.endTime))
                 {
                     //dDatee = Convert.ToDateTime(Convert.ToDateTime(query.endTime).ToShortDateString()).AddDays(1).ToShortDateString();
-                    dDates = Convert.ToDateTime(query.endTime).ToLongDateString();
+                    dDatee = Convert.ToDateTime(query.endTime).ToString();//.ToLongDateString();
                 }
 
 

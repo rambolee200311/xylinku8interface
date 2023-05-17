@@ -49,7 +49,10 @@ namespace XylinkU8Interface
             //Response.Write(verifyOtherIn());
             //Response.Write(verifySaleOut());
             //Response.Write(getOtherOut());
-            Response.Write(delOtherOutSn());
+            //Response.Write(delOtherOutSn());
+
+            String datetime = "2023-03-12 23:59:59";
+            Response.Write(Convert.ToDateTime(datetime).ToString());
         }
 
         private string getHelper(string sname)

@@ -225,6 +225,7 @@
     <Compile Include="Controllers\OOSStateController.cs" />
     <Compile Include="Controllers\OOSU8ExtInfoController.cs" />
     <Compile Include="Controllers\RevokeOOSOrderController.cs" />
+    <Compile Include="Controllers\SaleOrder\ResellController.cs" />
     <Compile Include="Controllers\STInfoController.cs" />
     <Compile Include="Controllers\TrialSaleOrderController.cs" />
     <Compile Include="Controllers\TrialSaleOtherInSnController.cs" />
