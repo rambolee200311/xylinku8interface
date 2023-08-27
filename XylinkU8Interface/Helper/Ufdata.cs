@@ -204,5 +204,32 @@ namespace XylinkU8Interface.Helper
             }
             finally { conn.Close(); }
         }
+        //得到分页表 currentPage 当前页，size 页大小
+        public static DataTable getPagedTable(DataTable dt, int currentPage, int size)
+        {
+            DataTable dtt;
+            if (currentPage == 0)
+            { dtt = dt; }
+            dtt = dt.Copy();
+            dtt.Clear();
+            int rowbegin = (currentPage - 1) * size;
+            int rowend = currentPage * size;
+            if (rowbegin >= dt.Rows.Count)
+            { dtt = dt; }
+            if (rowend > dt.Rows.Count)
+            { rowend = dt.Rows.Count; }
+
+            for (int i = rowbegin; i <= rowend - 1; i++)
+            {
+                DataRow newdr = dtt.NewRow();
+                DataRow dr = dt.Rows[i];
+                foreach (DataColumn column in dt.Columns)
+                {
+                    newdr[column.ColumnName] = dr[column.ColumnName];
+                }
+                dtt.Rows.Add(newdr);
+            }
+            return dtt;
+        }
     }
 }

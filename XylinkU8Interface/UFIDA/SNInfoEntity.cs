@@ -88,7 +88,7 @@ namespace XylinkU8Interface.UFIDA
                                     //    inner join SaleBillVouch b on a.SBVID=b.SBVID
                                     //    inner join inventory c on a.cInvCode=c.cInvCode
                                     //where a.iSOsID=?";
-                            strSql = @"select a.iSOsID,b.cBDefine21,a.cInvCode invcode,c.cInvName invname,,isnull(b.cbdefine26,0) billnum,isnull(b.cbdefine27,0) isum,'' u8code
+                            strSql = @"select a.iSOsID,b.cBDefine21,a.cInvCode invcode,c.cInvName invname,isnull(b.cbdefine26,0) billnum,isnull(b.cbdefine27,0) isum,'' u8code
                                     from SO_SODetails a
                                     inner join SO_SODetails_extradefine b on a.iSOsID=b.iSOsID
                                     inner join Inventory c on a.cInvCode=c.cInvCode 

@@ -346,6 +346,7 @@ namespace XylinkU8Interface.UFIDA
             MSXML2.IXMLDOMDocument2 domHead = new MSXML2.DOMDocument();
             MSXML2.IXMLDOMDocument2 domBody = new MSXML2.DOMDocument();
             domSN.load(AppDomain.CurrentDomain.BaseDirectory + "Helper\\saleouthead_red_sn.xml");
+
             try
             {
                 //getSaleOutDom(m_ologin, VouchIdRet, ref domHead, ref domBody);
@@ -413,6 +414,10 @@ namespace XylinkU8Interface.UFIDA
                         re.recode = "4444";
                         re.remsg += result;
                     }
+                }
+                else//20230627无SN自动审核
+                {
+                    verifySaleOut(m_ologin, VouchIdRet);
                 }
             }
             catch (Exception ex)

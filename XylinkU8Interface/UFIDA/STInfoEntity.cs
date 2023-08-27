@@ -36,13 +36,13 @@ namespace XylinkU8Interface.UFIDA
                                 d.cbdefine21 req_id,
                                 h.chdefine35
                                 from rdrecords09 a
-                                inner join HY_DZ_BorrowOuts b on a.iDebitIDs=b.AutoID
-                                inner join HY_DZ_BorrowOut c on b.id=c.id
-                                inner join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID 
-                                inner join Inventory e on a.cInvCode=e.cInvCode
-                                inner join rdrecords09_extradefine f on f.autoid=a.autoid
-                                inner join RdRecord09 g on g.id=a.ID
-                                inner join RdRecord09_extradefine h on h.ID=g.ID
+                                left join HY_DZ_BorrowOuts b on a.iDebitIDs=b.AutoID
+                                left join HY_DZ_BorrowOut c on b.id=c.id
+                                left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID 
+                                left join Inventory e on a.cInvCode=e.cInvCode
+                                left join rdrecords09_extradefine f on f.autoid=a.autoid
+                                left join RdRecord09 g on g.id=a.ID
+                                left join RdRecord09_extradefine h on h.ID=g.ID
                                 where c.cdefine12=?";
                     LogHelper.WriteLog(typeof(STInfoEntity), strSql);
                     List<Param> myParams = new List<Param>();
@@ -116,12 +116,12 @@ namespace XylinkU8Interface.UFIDA
                     strSql = @"select  a.ID,a.AutoID,a.cInvCode invcode,a.iQuantity num,g.cbdefine21 req_id
                                 ,e.cdefine12 ccode,c.cCODE u8code,f.cInvName invname
                                 from  rdrecords08 a 
-                                inner join HY_DZ_BorrowOutBacks b on a.iDebitIDs=b.AutoID
-                                inner join HY_DZ_BorrowOutBack c on b.ID=c.ID
-                                inner join HY_DZ_BorrowOuts d on b.UpAutoID=d.AutoID
-                                inner join HY_DZ_BorrowOut e on d.id=e.id
-                                inner join Inventory f on a.cInvCode=f.cInvCode
-                                inner join HY_DZ_BorrowOuts_extradefine g on d.AutoID=g.AutoID 
+                                left join HY_DZ_BorrowOutBacks b on a.iDebitIDs=b.AutoID
+                                left join HY_DZ_BorrowOutBack c on b.ID=c.ID
+                                left join HY_DZ_BorrowOuts d on b.UpAutoID=d.AutoID
+                                left join HY_DZ_BorrowOut e on d.id=e.id
+                                left join Inventory f on a.cInvCode=f.cInvCode
+                                left join HY_DZ_BorrowOuts_extradefine g on d.AutoID=g.AutoID 
                                 where e.cDefine12=?";
                     LogHelper.WriteLog(typeof(STInfoEntity), strSql);
                     dtResult = Ufdata.getDatatableFromSql(m_ologin.UfDbName, strSql, myParams);
