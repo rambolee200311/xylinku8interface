@@ -509,6 +509,6 @@
 		</s:ElementType>
 	</s:Schema>
 	<rs:data>
-		<z:row ID="1000002559" AutoID="1000009514" cinvcode="54000-00253-001" iquantity="1.00000000" cinvname="电视墙服务器NP4000" cinvstd="NP4000" igrouptype="0" cgroupcode="01" cgroupname="无换算" ccomunitcode="01" ccomunitname="个" bsalepricefree1="0" bsalepricefree2="0" bsalepricefree3="0" bsalepricefree4="0" bsalepricefree5="0" bsalepricefree6="0" bsalepricefree7="0" bsalepricefree8="0" bsalepricefree9="0" bsalepricefree10="0" backdate="2020-08-31" cinvdefine8="是" cbsysbarcode="||stjc|JCJY202009010023|1" keyextend_b_autoid_hy_dz_borrowouts_extradefine_autoid="1000009514" editprop="A" cbdefine4="abc" cbdefine5="abc" cbdefine9="abc" cmemo="" cbdefine21=""/>
+		<z:row ID="1000002559" AutoID="1000009514" cwhcode="" cinvcode="54000-00253-001" iquantity="1.00000000" cinvname="电视墙服务器NP4000" cinvstd="NP4000" igrouptype="0" cgroupcode="01" cgroupname="无换算" ccomunitcode="01" ccomunitname="个" bsalepricefree1="0" bsalepricefree2="0" bsalepricefree3="0" bsalepricefree4="0" bsalepricefree5="0" bsalepricefree6="0" bsalepricefree7="0" bsalepricefree8="0" bsalepricefree9="0" bsalepricefree10="0" backdate="2020-08-31" cinvdefine8="是" cbsysbarcode="||stjc|JCJY202009010023|1" keyextend_b_autoid_hy_dz_borrowouts_extradefine_autoid="1000009514" editprop="A" cbdefine4="abc" cbdefine5="abc" cbdefine9="abc" cmemo="" cbdefine21=""/>
 	</rs:data>
 </xml>

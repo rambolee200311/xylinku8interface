@@ -6,7 +6,7 @@ using System.Web;
  *20230827 
  * 借用head
  */
-namespace HYBorrowOut.Models.BorrowTrial
+namespace XylinkU8Interface.Models.BorrowTrial
 {
     /*
     "head": {

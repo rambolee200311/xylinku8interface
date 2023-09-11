@@ -207,6 +207,8 @@
     <Compile Include="Controllers\BorrowLedgeController.cs" />
     <Compile Include="Controllers\BorrowoutController.cs" />
     <Compile Include="Controllers\BorrowOutReturnController.cs" />
+    <Compile Include="Controllers\BorrowReturnSNController.cs" />
+    <Compile Include="Controllers\BorrowTrialController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DispatchReturnBackController.cs" />
     <Compile Include="Controllers\DispatchReturnController.cs" />
@@ -267,6 +269,20 @@
     <Compile Include="Models\Borrowout\Borrowout.cs" />
     <Compile Include="Models\Borrowout\Borrowout_body.cs" />
     <Compile Include="Models\Borrowout\Borrowout_head.cs" />
+    <Compile Include="Models\BorrowReturn\InBody.cs" />
+    <Compile Include="Models\BorrowReturn\InDetail.cs" />
+    <Compile Include="Models\BorrowReturn\InHead.cs" />
+    <Compile Include="Models\BorrowReturn\InMain.cs" />
+    <Compile Include="Models\BorrowReturn\InSncode.cs" />
+    <Compile Include="Models\BorrowReturn\OutData.cs" />
+    <Compile Include="Models\BorrowReturn\OutMain.cs" />
+    <Compile Include="Models\BorrowTrial\InBody.cs" />
+    <Compile Include="Models\BorrowTrial\InDetail.cs" />
+    <Compile Include="Models\BorrowTrial\InHead.cs" />
+    <Compile Include="Models\BorrowTrial\InMain.cs" />
+    <Compile Include="Models\BorrowTrial\InSncode.cs" />
+    <Compile Include="Models\BorrowTrial\OutData.cs" />
+    <Compile Include="Models\BorrowTrial\OutMain.cs" />
     <Compile Include="Models\Customer\Cust.cs" />
     <Compile Include="Models\Customer\Custs.cs" />
     <Compile Include="Models\DispatchReturnBack\BodyDetail.cs" />
@@ -379,6 +395,7 @@
     <Compile Include="UFIDA\AuditOOSOrderEntity.cs" />
     <Compile Include="UFIDA\BomComponentEntity.cs" />
     <Compile Include="UFIDA\BorrowLedgerEntity.cs" />
+    <Compile Include="UFIDA\BorrowTrialEntity.cs" />
     <Compile Include="UFIDA\CustomerEntity.cs" />
     <Compile Include="UFIDA\DispatchReturnEntity.cs" />
     <Compile Include="UFIDA\DRInfoEntity.cs" />

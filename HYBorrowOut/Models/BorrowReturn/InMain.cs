@@ -6,7 +6,7 @@ using System.Web;
  *20230827 
  * 借用main
  */
-namespace HYBorrowOut.Models.BorrowTrial
+namespace HYBorrowOut.Models.BorrowReturn
 {
     public class InMain
     {

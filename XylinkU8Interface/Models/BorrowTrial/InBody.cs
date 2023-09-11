@@ -6,7 +6,7 @@ using System.Web;
  *20230827 
  * 借用body
  */
-namespace HYBorrowOut.Models.BorrowTrial
+namespace XylinkU8Interface.Models.BorrowTrial
 {
     /*
         "reqId": "9047034573724324", // 产品明细唯⼀标识

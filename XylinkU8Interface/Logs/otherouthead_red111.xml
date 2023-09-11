@@ -358,10 +358,13 @@
 			<s:AttributeType name="chdefine27" rs:number="119" rs:nullable="true" rs:writeunknown="true" rs:basecatalog="UFDATA_995_2017" rs:basetable="rdrecord09_extradefine" rs:basecolumn="chdefine27">
 				<s:datatype dt:type="string" dt:maxLength="120"/>
 			</s:AttributeType>
+			<s:AttributeType name="chdefine35" rs:number="119" rs:nullable="true" rs:writeunknown="true" rs:basecatalog="UFDATA_995_2017" rs:basetable="rdrecord09_extradefine" rs:basecolumn="chdefine35">
+				<s:datatype dt:type="string" dt:maxLength="120"/>
+			</s:AttributeType>
 			<s:extends type="rs:rowbase"/>
 		</s:ElementType>
 	</s:Schema>
 	<rs:data>
-		<z:row id="" brdflag="0" cvouchtype="09" csysbarcode="" cvouchname="其他出库单" cbustype="其他出库" cbuscode="" cwhcode="03" cwhname="" ddate="2022-08-23" vt_id="85" bisstqc="False" ccode="SBDH202208230001" ccuscode="100006493" crdcode="203" crdname="其他出库" chandler="" cmaker="system" csource="库存" dveridate="" bpufirst="False" biafirst="False" ufts="" ibg_overflag="0" controlresult="-1" cbg_auditor="" cbg_audittime="" ireturncount="0" iverifystate="0" iswfcontrolled="0" cmodifyperson="" dnmaketime="" dnverifytime="" bomfirst="0" chinvsn="" iPrintCount="0" cchecksignflag="" editprop="" cdefine10="售后换货出库-CRM入库" cdefine12="SBDH202208230001" cmemo="设备坏了，换个新的"/>
+		<z:row id="" brdflag="0" cvouchtype="09" csysbarcode="" cvouchname="其他出库单" cbustype="其他出库" cbuscode="JCJY202309060009" cwhcode="08" cwhname="" ddate="2023-09-06" vt_id="85" bisstqc="False" ccode="SY202309040020" ccuscode="100000852" crdcode="211" crdname="其他出库" chandler="" cmaker="唐媛媛" csource="借出借用单" dveridate="" bpufirst="False" biafirst="False" ufts="" ibg_overflag="0" controlresult="-1" cbg_auditor="" cbg_audittime="" ireturncount="0" iverifystate="0" iswfcontrolled="0" cmodifyperson="" dnmaketime="" dnverifytime="" bomfirst="0" chinvsn="" iPrintCount="0" cchecksignflag="" editprop="" cdefine10="" cdefine12="SY202309040020" cmemo="" chdefine35=""/>
 	</rs:data>
 </xml>

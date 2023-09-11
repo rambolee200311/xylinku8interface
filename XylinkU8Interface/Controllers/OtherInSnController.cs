@@ -28,8 +28,7 @@ namespace XylinkU8Interface.Controllers
         {
             Result re = STSNEntity.add_otherinSTSN(bob);
             return re;
-        }
-
+        }       
         // PUT api/otherinsn/5
         public void Put(int id, [FromBody]string value)
         {

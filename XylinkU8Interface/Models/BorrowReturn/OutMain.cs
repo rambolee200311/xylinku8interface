@@ -4,14 +4,13 @@ using System.Linq;
 using System.Web;
 /*
  *20230827 
- * 归还main
+ * 归还返回消息
  */
-namespace HYBorrowOut.Models.BorrowTrial
+namespace XylinkU8Interface.Models.BorrowReturn
 {
-    public class InMain
+    public class OutMain
     {
         public string companycode { get; set; }
-        public InHead head { get; set; }
-        public List<InBody> body { get; set; }
+        public List<OutData> dataList { get; set; }
     }
 }

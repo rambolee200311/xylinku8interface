@@ -20,4 +20,9 @@
     <password>XDsd@87,Xy2390</password>
     <server>172.17.100.178</server>
   </ACC>
+  <ACC id="996">
+    <user>demo</user>
+    <password>XDsd@87,Xy2390</password>
+    <server>172.17.100.178</server>
+  </ACC>
 </ufinterface>

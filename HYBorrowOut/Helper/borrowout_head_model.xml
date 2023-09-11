@@ -16,7 +16,7 @@
   <iswfcontrolled>{0}</iswfcontrolled>
   <cdefine2>[recv_name]</cdefine2>
   <cdefine3>[recv_phone]</cdefine3>
-<cdefine9>{crmnew}</cdefine9>
+  <cdefine9>{crmnew}</cdefine9>
   <cdefine11>[recv_address]</cdefine11>
   <cdefine12>[ccode]</cdefine12>  
   <cCreateType>{新增单据}</cCreateType>

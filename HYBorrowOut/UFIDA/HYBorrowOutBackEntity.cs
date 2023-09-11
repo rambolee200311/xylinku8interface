@@ -158,7 +158,7 @@ namespace HYBorrowOut.UFIDA
                     re.u8code = errMsg;
                     //re.u8code = Ufdata.getDataReader(m_ologin.UfDbName, "select ccode from [dbo].[HY_DZ_BorrowOutBack] where ID=" + iVouchID.ToString() + "");
                     re.remsg = "借出归还单[" + errMsg + "]导入成功,";
-                    Ufdata.execSqlcommand(m_ologin.UfDbName, "update [dbo].[HY_DZ_BorrowOutBack] set cdefine13='" + bo.head.ccode.ToString() + "' where id=" + iVouchID.ToString());
+                    Ufdata.execSqlcommand(m_ologin.UfDbName, "update [dbo].[HY_DZ_BorrowOutBack] set cdefine12='" + bo.head.ccode.ToString() + "',cdefine13='" + bo.head.ccode.ToString() + "' where id=" + iVouchID.ToString());
                     #region//部分归还
                     /*
                 //return re;

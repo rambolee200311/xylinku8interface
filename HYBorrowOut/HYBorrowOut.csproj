@@ -170,6 +170,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\BorrowReturnController.cs" />
+    <Compile Include="Controllers\BorrowTrialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HYBorrowOutBackController.cs" />
     <Compile Include="Controllers\HYBorrowOutController.cs" />
@@ -202,6 +204,8 @@
     <Compile Include="Models\BorrowTrial\InHead.cs" />
     <Compile Include="Models\BorrowTrial\InMain.cs" />
     <Compile Include="Models\BorrowTrial\InSncode.cs" />
+    <Compile Include="Models\BorrowTrial\OutData.cs" />
+    <Compile Include="Models\BorrowTrial\OutMain.cs" />
     <Compile Include="Models\Result\Result.cs" />
     <Compile Include="Models\TrialSale\TrialSale.cs" />
     <Compile Include="Models\TrialSale\TrialSale_body.cs" />
@@ -209,6 +213,8 @@
     <Compile Include="Models\TrialSale\TrialSale_body_detail_sncodes.cs" />
     <Compile Include="Models\TrialSale\TrialSale_head.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UFIDA\BorrowReturnEntity.cs" />
+    <Compile Include="UFIDA\BorrowTrialEntity.cs" />
     <Compile Include="UFIDA\HttpPostHelper.cs" />
     <Compile Include="UFIDA\HYBorrowOutBackEntity.cs" />
     <Compile Include="UFIDA\HYBorrowOutEntity.cs" />

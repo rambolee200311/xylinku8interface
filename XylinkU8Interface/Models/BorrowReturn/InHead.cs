@@ -6,7 +6,7 @@ using System.Web;
  *20230827 
  * 归还head
  */
-namespace HYBorrowOut.Models.BorrowReturn
+namespace XylinkU8Interface.Models.BorrowReturn
 {
     /*
      "head": {

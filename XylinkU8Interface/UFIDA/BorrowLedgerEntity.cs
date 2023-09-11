@@ -16,6 +16,7 @@ namespace XylinkU8Interface.UFIDA
             outMain.datas = new List<OutData>();
             DataTable dtPaged = null;
             string dDate = "2099-12-31";
+            outMain.companycode = inMain.companycode;
             if (String.IsNullOrEmpty(inMain.ctype))
             {
                  outMain.companycode=inMain.companycode;
@@ -29,7 +30,8 @@ namespace XylinkU8Interface.UFIDA
             {
 
                 //登录u8
-                U8Login.clsLoginClass m_ologin = U8LoginEntity.getU8LoginEntity();
+                U8Login.clsLoginClass m_ologin = U8LoginEntity.getU8LoginEntity(inMain.companycode.ToString());
+                
                 if(m_ologin==null){
                     outMain.companycode = inMain.companycode;
                     outMain.pages = 0;
@@ -70,7 +72,7 @@ namespace XylinkU8Interface.UFIDA
                     }
                     whereSql += " and a.ddate<=?";
                     Param param2 = new Param();
-                    param2.paramname = "@ctype";
+                    param2.paramname = "@ddate";
                     param2.paramtype = OleDbType.VarChar;                    
                     param2.paramvalue = dDate;
                     myParams.Add(param2);
@@ -105,10 +107,15 @@ namespace XylinkU8Interface.UFIDA
 
 
                 LogHelper.WriteLog(typeof(BorrowLedgerEntity), "getDtResult: " + selectSql + whereSql);
+                LogHelper.WriteLog(typeof(BorrowLedgerEntity), "getDtResult params: " + JsonHelper.ToJson(myParams));
                 dtResult = Ufdata.getDatatableFromSql(m_ologin.UfDbName, selectSql + whereSql, myParams);
 
+                outMain.total = dtResult.Rows.Count;
+                outMain.pages = (dtResult.Rows.Count + inMain.size - 1) / inMain.size;
+
+                DataTable dtResultPaged = Ufdata.getPagedTable(dtResult, inMain.current, inMain.size);
                 //写入临时表
-                foreach (DataRow drResult in dtResult.Rows)
+                foreach (DataRow drResult in dtResultPaged.Rows)
                 {
                     DataRow drTemp = tempTable.NewRow();
                     Decimal applyBorrowNum = 0;
@@ -130,21 +137,24 @@ namespace XylinkU8Interface.UFIDA
                     drTemp["borrowNum"] = borrowNum;// U8借出借⽤单-⾏⼦件产品实际出库数量（借⽤数量，不可以⼤于借出借⽤单产品⾏⼦件的申请借⽤数量）
                     drTemp["returnNum"] = returnNum;// U8借出借⽤单-⾏⼦件产品归还数量（归还数量）
                     drTemp["reqId"] = drResult["cbdefine21"].ToString();// 产品明细唯⼀标识（可能为空，⽆CRM试⽤申请单的情况）
-                    tempTable.Rows.Add(drTemp);
+                    if ((applyBorrowNum != borrowNum) || (borrowNum != returnNum) || (applyBorrowNum != returnNum))
+                    {
+                        tempTable.Rows.Add(drTemp);
+                    }
                 }
 
-                //对临时数据表分页
-                if (tempTable != null)
-                {
-                    outMain.total = tempTable.Rows.Count;
-                    outMain.pages = (tempTable.Rows.Count + inMain.size - 1) / inMain.size;
-                    dtPaged = Ufdata.getPagedTable(dtResult, inMain.current, inMain.size);
-                }
+                ////对临时数据表分页
+                //if (tempTable != null)
+                //{
+                //    outMain.total = tempTable.Rows.Count;
+                //    outMain.pages = (tempTable.Rows.Count + inMain.size - 1) / inMain.size;
+                //    dtPaged = Ufdata.getPagedTable(dtResult, inMain.current, inMain.size);
+                //}
 
                 //组装data对象
-                if (dtPaged != null)
+                if (tempTable != null)
                 {
-                    foreach (DataRow drPaged in dtPaged.Rows)
+                    foreach (DataRow drPaged in tempTable.Rows)
                     {
                         OutData outData = new OutData();
                         outData.borrowSncodes = new List<OutSnCode>();
@@ -164,7 +174,7 @@ namespace XylinkU8Interface.UFIDA
 
                         outData.borrowSncodes = getBorrowSncodes(drPaged["u8RowId"].ToString(),m_ologin.UfDbName);
                         outData.returnSncodes = getReturnSncodes(drPaged["u8RowId"].ToString(), m_ologin.UfDbName);
-
+                        
                         outMain.datas.Add(outData);
                     }
 
@@ -304,7 +314,7 @@ namespace XylinkU8Interface.UFIDA
             {
                 DataTable dtResult = null;
                 List<Param> myParams = new List<Param>();
-                string selectSql = "select iVouchsID,cInvSN from ST_SNDetail_OtherOut where where 1=1";
+                string selectSql = "select iVouchsID,cInvSN from ST_SNDetail_OtherOut where 1=1";
                 string whereSql = "";
 
                 //ctype
@@ -343,7 +353,7 @@ namespace XylinkU8Interface.UFIDA
             {
                 DataTable dtResult = null;
                 List<Param> myParams = new List<Param>();
-                string selectSql = "select iVouchsID,cInvSN  from ST_SNDetail_OtherIN where where 1=1";
+                string selectSql = "select iVouchsID,cInvSN  from ST_SNDetail_OtherIN where 1=1";
                 string whereSql = "";
 
                 //ctype

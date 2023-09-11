@@ -113,7 +113,7 @@
 				<s:datatype dt:type="string" dt:maxLength="30"/>
 			</s:AttributeType>
 			<s:AttributeType name="cinvsn" rs:number="38" rs:nullable="true" rs:writeunknown="true">
-				<s:datatype dt:type="string" dt:maxLength="200"/>
+				<s:datatype dt:type="string" dt:maxLength="90"/>
 			</s:AttributeType>
 			<s:AttributeType name="cvenabbname" rs:number="39" rs:nullable="true" rs:writeunknown="true">
 				<s:datatype dt:type="string" dt:maxLength="60"/>
@@ -149,6 +149,9 @@
 		</s:ElementType>
 	</s:Schema>
 	<rs:data>
-		<z:row editprop="A" autoid="" ivouchsid="1000199307" ivouchid="1000060380" irowno="1" cinvcode="62080-00403-003" cinvname="" cwhcode="03" isnprestate="4" isnoperatecount="" cinvsn="CH80211026039" cwhname="" csource="库存" ufts="5798.0083"/>
+		<z:row editprop="A" autoid="" ivouchsid="1000245159" ivouchid="1000077515" irowno="1" cinvcode="70060-00501-001" cinvname="" cwhcode="08" isnprestate="4" isnoperatecount="3" cinvsn="7D1806027614568F" cwhname="" csource="借出归还单" ufts="7638.2553"/>
+		<z:row editprop="A" autoid="" ivouchsid="1000245159" ivouchid="1000077515" irowno="1" cinvcode="70060-00501-001" cinvname="" cwhcode="08" isnprestate="4" isnoperatecount="3" cinvsn="7D1806026588CC3A" cwhname="" csource="借出归还单" ufts="7638.2553"/>
+		<z:row editprop="A" autoid="" ivouchsid="1000245159" ivouchid="1000077515" irowno="1" cinvcode="70060-00501-001" cinvname="" cwhcode="08" isnprestate="4" isnoperatecount="3" cinvsn="7D1806026398484C" cwhname="" csource="借出归还单" ufts="7638.2553"/>
+		<z:row editprop="A" autoid="" ivouchsid="1000245159" ivouchid="1000077515" irowno="1" cinvcode="70060-00501-001" cinvname="" cwhcode="08" isnprestate="4" isnoperatecount="3" cinvsn="7D18060269E4F10F" cwhname="" csource="借出归还单" ufts="7638.2553"/>
 	</rs:data>
 </xml>

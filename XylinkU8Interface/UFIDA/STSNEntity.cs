@@ -529,6 +529,110 @@ namespace XylinkU8Interface.UFIDA
 
             return re;
         }
+        //20230903 
+        //归还（归还、⽣成其他⼊库单并审核通过）
+        public static Result add_BorrowReturnSN(XylinkU8Interface.Models.BorrowReturn.InMain inMain)
+        {
+            string result = "";
+            string strSql = "";
+            string vouchid;
+            string VouchIdRet = inMain.head.cmemo.ToString();
+            UFSTSNCO.clsUFSTSNCOClass usn = new UFSTSNCO.clsUFSTSNCOClass();
+            ADODB.Connection conn = new ADODB.Connection();
+            Result re = new Result();
+            re.oacode = inMain.head.ordcode;
+            U8Login.clsLoginClass m_ologin = U8LoginEntity.getU8LoginEntity(inMain.companycode);
+            if (m_ologin == null)
+            {
+                re.recode = "1111";
+                re.remsg = "登录失败";
+                return re;
+            }
+            MSXML2.IXMLDOMDocument2 domSN = new MSXML2.DOMDocument();
+            MSXML2.IXMLDOMDocument2 domHead = new MSXML2.DOMDocument();
+            MSXML2.IXMLDOMDocument2 domBody = new MSXML2.DOMDocument();
+            domSN.load(AppDomain.CurrentDomain.BaseDirectory + "Helper\\otherinsn.xml");
+            strSql = "select id from RdRecord08 where ccode='" + VouchIdRet + "'";
+            vouchid = Ufdata.getDataReader(m_ologin.UfDbName, strSql);
+            try
+            {
+                domHead = getOtherInDom(m_ologin, VouchIdRet, "domhead");
+                domBody = getOtherInDom(m_ologin, VouchIdRet, "dombody");
+                string ufts = Ufdata.getDataReader(m_ologin.UfDbName, "select convert(money,ufts) ufts from rdrecord08 where ccode='" + VouchIdRet + "'");
+                domHead.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("ufts").text = ufts;
+
+                foreach (MSXML2.IXMLDOMNode xn in domSN.selectSingleNode("//rs:data").childNodes)
+                {
+                    xn.attributes.getNamedItem("editprop").text = "A";
+                }
+                domHead.save(AppDomain.CurrentDomain.BaseDirectory + "Logs\\otherin_head_111.xml");
+                domBody.save(AppDomain.CurrentDomain.BaseDirectory + "Logs\\otherin_body_111.xml");
+                conn.Open(m_ologin.UfDbName);
+                usn.Init(m_ologin, conn, result);
+
+                MSXML2.IXMLDOMNode xnModel = domSN.selectSingleNode("//rs:data//z:row");
+                int rowno = 1;
+                foreach ( XylinkU8Interface.Models.BorrowReturn.InBody body in inMain.body)
+                {
+                    foreach (XylinkU8Interface.Models.BorrowReturn.InDetail detail in body.detail)
+                    {
+                        if (detail.sncodes != null)
+                        {
+                            foreach (XylinkU8Interface.Models.BorrowReturn.InSncode sncode in detail.sncodes)
+                            {
+                                MSXML2.IXMLDOMNode xnNow = xnModel.cloneNode(true);
+                                xnNow.attributes.getNamedItem("ivouchid").text = vouchid;
+                                strSql = "select a.autoid from RdRecords08 a left join HY_DZ_BorrowOutBacks b on a.iDebitIDs=b.AutoID"
+                                        + " left join HY_DZ_BorrowOuts c on b.UpAutoID=c.AutoID"
+                                    //+ " left join HY_DZ_BorrowOuts_extradefine d on c.AutoID=d.AutoID"
+                                        + " where a.id=" + vouchid + " and a.cinvcode='" + detail.cinvCode + "' and c.AutoID='" + body.oriU8RowId + "'";
+                                xnNow.attributes.getNamedItem("ivouchsid").text = Ufdata.getDataReader(m_ologin.UfDbName, strSql);
+                                xnNow.attributes.getNamedItem("irowno").text = rowno.ToString();
+                                xnNow.attributes.getNamedItem("cinvcode").text = detail.cinvCode;
+                                //xnNow.attributes.getNamedItem("cinvname").text = dr["cinvname"].ToString();
+                                xnNow.attributes.getNamedItem("cwhcode").text = Ufdata.getDataReader(m_ologin.UfDbName,
+                                    " select cWhCode from WareHouse where cwhname='" + body.cwhname + "'");
+                                //xnNow.attributes.getNamedItem("cwhname").text = dr["cwhname"].ToString();
+                                //xnNow.attributes.getNamedItem("idlsid").text = dr["idlsid"].ToString();
+                                xnNow.attributes.getNamedItem("cinvsn").text = sncode.sncode;
+                                xnNow.attributes.getNamedItem("ufts").text = ufts;
+                                domSN.selectSingleNode("//rs:data").appendChild(xnNow);
+                                rowno++;
+                            }
+                        }
+                    }
+                }
+                domSN.selectSingleNode("//rs:data").removeChild(xnModel);
+                domSN.save(AppDomain.CurrentDomain.BaseDirectory + "Logs\\otherin_domsn111.xml");
+                if (domSN.selectSingleNode("//rs:data").childNodes.length >= 1)
+                {
+                    bool bResult = usn.Save(conn, "08", "add", ref domHead, ref domBody, domSN, ref result, false);
+                    if (bResult)
+                    {
+                        re.recode = "0";
+
+                    }
+                    else
+                    {
+                        re.recode = "3333";
+                        re.remsg = result;
+                        return re;
+                    }
+                }
+
+                re.recode = "0";
+            }
+            catch (Exception ex)
+            {
+                re.recode = "2222";
+                re.remsg = ex.Message;
+                return re;
+            }
+
+            verifyOtherIn(m_ologin, vouchid);
+
+            return re;
+        }
         //借用转销售-其他入库单
         public static Result add_otherinSTSN(TrialSale bob)
         {

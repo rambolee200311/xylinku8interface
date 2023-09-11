@@ -6,7 +6,7 @@ using System.Web;
  *20230827 
  * 归还main
  */
-namespace HYBorrowOut.Models.BorrowTrial
+namespace XylinkU8Interface.Models.BorrowTrial
 {
     public class InMain
     {
