@@ -34,7 +34,7 @@ namespace XylinkU8Interface.Controllers
         {
             LogHelper.WriteLog(typeof(BorrowTrialController), JsonHelper.ToJson(inMain));
             Result result = BorrowTrialEntity.addBorrowTrial(inMain);
-            LogHelper.WriteLog(typeof(BorrowTrialController), JsonHelper.ToJson(inMain));
+            LogHelper.WriteLog(typeof(BorrowTrialController), JsonHelper.ToJson(result));
             return result;
         }
 

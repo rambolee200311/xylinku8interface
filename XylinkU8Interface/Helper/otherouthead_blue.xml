@@ -365,6 +365,6 @@
 		</s:ElementType>
 	</s:Schema>
 	<rs:data>
-    <z:row id="" brdflag="0" cvouchtype="09" csysbarcode="" cvouchname="其他出库单" cbustype="其他出库" cbuscode="" cwhcode="" cwhname="" ddate="" vt_id="85" bisstqc="False" ccode="" ccuscode="" crdcode="211" crdname="其他出库" chandler="" cmaker="demo" csource="库存" dveridate="" bpufirst="False" biafirst="False" ufts="" ibg_overflag="0" controlresult="-1" cbg_auditor="" cbg_audittime="" ireturncount="0" iverifystate="0" iswfcontrolled="0" cmodifyperson="" dnmaketime="" dnverifytime="" bomfirst="0" chinvsn="" iPrintCount="0" cchecksignflag="" editprop="" cdefine10="" cdefine12="" cmemo="" chdefine35=""/>
+    <z:row id="" brdflag="0" cvouchtype="09" csysbarcode="" cvouchname="其他出库单" cbustype="其他出库" cbuscode="" cdepcode="" cwhcode="" cwhname="" ddate="" vt_id="85" bisstqc="False" ccode="" ccuscode="" crdcode="211" crdname="其他出库" chandler="" cmaker="demo" csource="库存" dveridate="" bpufirst="False" biafirst="False" ufts="" ibg_overflag="0" controlresult="-1" cbg_auditor="" cbg_audittime="" ireturncount="0" iverifystate="0" iswfcontrolled="0" cmodifyperson="" dnmaketime="" dnverifytime="" bomfirst="0" chinvsn="" iPrintCount="0" cchecksignflag="" editprop="" cdefine10="" cdefine12="" cmemo="" chdefine35=""/>
   </rs:data>
 </xml>

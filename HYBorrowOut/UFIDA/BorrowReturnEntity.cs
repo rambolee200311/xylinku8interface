@@ -87,6 +87,8 @@ namespace HYBorrowOut.UFIDA
                     ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("dmDate").text = Convert.ToDateTime(inMain.head.ddate).ToShortDateString();
                     ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("cmemo").text = "借出借用单(" + inMain.body[0].oriU8Code + ")生单 ";
                     ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("cdefine12").text = inMain.head.ordcode;
+                    //接口2生成的其它入库单类别应该是【借出还回入库】
+                    ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("crdcode").text = "104";
                 #endregion
 
 
@@ -182,6 +184,9 @@ namespace HYBorrowOut.UFIDA
                     else
                     {
                         outData.remsg += strResult + ",";
+                        //接口2生成的其它入库单类别应该是【104 借出还回入库】
+                        Ufdata.execSqlcommand(m_ologin.UfDbName, "update [dbo].[RdRecord08] set crdcode='104'" 
+                            +" where ccode='" + errMsg+"'");
                     }
 
                     //其他入库单序列号

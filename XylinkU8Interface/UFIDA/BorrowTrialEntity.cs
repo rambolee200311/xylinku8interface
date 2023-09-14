@@ -90,13 +90,18 @@ namespace XylinkU8Interface.UFIDA
                 dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("cdefine12").text = inMain.head.ccode;
                 dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("cmemo").text = inMain.head.cmemo;
                 
-                    dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("csource").text = "借出借用单";
-                    dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("cbuscode").text = Ufdata.getDataReader(m_ologin.UfDbName,
-                        "select a.cCODE from HY_DZ_BorrowOut a inner join HY_DZ_BorrowOuts b on b.ID=a.ID inner join HY_DZ_BorrowOuts_extradefine c on c.AutoID=b.AutoID where c.cbdefine21='" + inMain.body[0].reqId + "'");
-                    //20220915 取原借用借出单的客户编码
-                    dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("ccuscode").text = Ufdata.getDataReader(m_ologin.UfDbName,
-                        "select a.bObjectCode from HY_DZ_BorrowOut a inner join HY_DZ_BorrowOuts b on b.ID=a.ID inner join HY_DZ_BorrowOuts_extradefine c on c.AutoID=b.AutoID where c.cbdefine21='" + inMain.body[0].reqId + "'");
-               
+                dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("csource").text = "借出借用单";
+                dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("cbuscode").text = Ufdata.getDataReader(m_ologin.UfDbName,
+                    "select a.cCODE from HY_DZ_BorrowOut a inner join HY_DZ_BorrowOuts b on b.ID=a.ID inner join HY_DZ_BorrowOuts_extradefine c on c.AutoID=b.AutoID where c.cbdefine21='" + inMain.body[0].reqId + "'");
+                //20220915 取原借用借出单的客户编码
+                dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("ccuscode").text = Ufdata.getDataReader(m_ologin.UfDbName,
+                    "select a.bObjectCode from HY_DZ_BorrowOut a inner join HY_DZ_BorrowOuts b on b.ID=a.ID inner join HY_DZ_BorrowOuts_extradefine c on c.AutoID=b.AutoID where c.cbdefine21='" + inMain.body[0].reqId + "'");
+
+                //220 试用机借用
+                dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("crdcode").text = "220";
+                dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("cdepcode").text = Ufdata.getDataReader(m_ologin.UfDbName, 
+                    "select a.cdepcode from HY_DZ_BorrowOut a inner join HY_DZ_BorrowOuts b on b.ID=a.ID inner join HY_DZ_BorrowOuts_extradefine c on c.AutoID=b.AutoID where c.cbdefine21='" + inMain.body[0].reqId + "'");
+
                 dom_head.save(AppDomain.CurrentDomain.BaseDirectory + "Logs\\otherouthead_red111.xml");
                 broker.AssignNormalValue("domhead", dom_head);
                 #endregion

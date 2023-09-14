@@ -46,7 +46,7 @@ namespace HYBorrowOut.UFIDA
                     conn.ConnectionString = m_ologin.UfDbName;
                     conn.Open();
                     //2021-10-18 重复导入控制
-                    strSql = "select * from HY_DZ_BorrowOutBack where cdefine12='" + inMain.head.ccode + "'";
+                    strSql = "select * from HY_DZ_BorrowOut where cdefine12='" + inMain.head.ccode + "'";
                     if (!string.IsNullOrEmpty(Ufdata.getDataReader(m_ologin.UfDbName, strSql)))
                     {
                         strResult = "借出归还单重复导入";
@@ -110,12 +110,13 @@ namespace HYBorrowOut.UFIDA
                             return getErrorOutMain(inMain.companycode, inMain.head.ccode, "222", strResult);
                             break;
                     }
-                    ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("cCODE").text = "JCJY202009010023";// inMain.head.ccode;
-                    ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("cCode").text = "JCJY202009010023";// inMain.head.ccode;
-                    ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("ccode").text = "JCJY202009010023";// inMain.head.ccode;
-                    ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("MycdefineT1").text = "借出借用单(" + "JCJY202009010023" + ")生单";
-
+                    ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("cCODE").text = inMain.head.ccode;
+                    ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("cCode").text = inMain.head.ccode;
+                    ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("ccode").text = inMain.head.ccode;
                     ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("VoucherCode").text = inMain.head.ccode;
+                    ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("MycdefineT1").text = "借出借用单(" + inMain.head.ccode + ")生单";
+
+                    
                     ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("MycdefineT1").text = "借出借用单(" + inMain.head.ccode + ")生单";
                     ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("editprop").text = "A";
                     ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("cdepcode").text = cdepcode;
@@ -130,11 +131,12 @@ namespace HYBorrowOut.UFIDA
                     ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("ddate").text = Convert.ToDateTime(inMain.head.ddate).ToShortDateString();
                     ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("dmDate").text = DateTime.Now.ToShortDateString();
                     string cmemo = "";
-                    if (!string.IsNullOrEmpty(cmemo))
+                    if (!string.IsNullOrEmpty(inMain.head.cmemo))
                     {
                         cmemo=inMain.head.cmemo.ToString();
                     }
                     ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("cmemo").text = cmemo;
+
                     bResult = cls_Borrow_Out.GetBillNumberChecksucceed(ref ohead, ref vouchcode, ref errMsg);
                     
                     if (!string.IsNullOrEmpty(vouchcode))
@@ -243,7 +245,7 @@ namespace HYBorrowOut.UFIDA
                         outData.remsg += "借用借出单[" + vouchcode + "]审核成功,";
                         strResult = JsonHelper.ToJson(inMain);
                         LogHelper.WriteLog(typeof(BorrowReturnEntity), strResult);
-                        strResult = HttpPostHelper.sendInsert("http://127.0.0.1/XylinkU8Interface/api/BorrowTrialSN", strResult);
+                        strResult = HttpPostHelper.sendInsert("http://127.0.0.1/XylinkU8Interface/api/BorrowTrial", strResult);
                         Result reSN = JsonHelper.FromJson<Result>(strResult);
                         outData.u8rdcode = reSN.u8code;
                         if (reSN.recode == "0")
