@@ -34,16 +34,16 @@ namespace HYBorrowOut.UFIDA
                     if (m_ologin == null)
                     {
                         strResult = "帐套" + inMain.companycode + "登录失败";
-                        return getErrorOutMain(inMain.companycode,inMain.head.ordcode, "1111", strResult);
+                        return getErrorOutMain(inMain.companycode,inMain.head.ccode, "1111", strResult);
                     }
                     //2021-10-18 重复导入控制
-                    strSql="select ccode from HY_DZ_BorrowOutBack where cdefine12='" + inMain.head.ordcode + "'";
+                    strSql="select ccode from HY_DZ_BorrowOutBack where cdefine12='" + inMain.head.ccode + "'";
                     string ccode = Ufdata.getDataReader(m_ologin.UfDbName, strSql);
                     if (!string.IsNullOrEmpty(ccode))
                     {
                         strResult = "借出归还单重复导入";
                         LogHelper.WriteLog(typeof(BorrowReturnEntity), strResult);
-                        return getErrorOutMain(inMain.companycode, inMain.head.ordcode, "111", strResult);
+                        return getErrorOutMain(inMain.companycode, inMain.head.ccode, "111", strResult);
                     }
                     HY_DZ_BorrowOutBack.clsBorrowOutSrvClass cosc = new HY_DZ_BorrowOutBack.clsBorrowOutSrvClass();
                     cosc.Init(m_ologin);
@@ -72,7 +72,7 @@ namespace HYBorrowOut.UFIDA
                     //else
                     //{
                     //    strResult = inMain.head.custName + "客户档案不存在";
-                    //    return getErrorOutMain(inMain.companycode, inMain.head.ordcode, "222", strResult);
+                    //    return getErrorOutMain(inMain.companycode, inMain.head.ccode, "222", strResult);
                     //}                    
                     if (!string.IsNullOrEmpty(cpersoncode))
                     {
@@ -81,12 +81,13 @@ namespace HYBorrowOut.UFIDA
                     else
                     {
                         strResult = inMain.head.personName + "人员档案不存在";
-                        return getErrorOutMain(inMain.companycode, inMain.head.ordcode, "222", strResult);
+                        return getErrorOutMain(inMain.companycode, inMain.head.ccode, "222", strResult);
                     }
                     ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("ddate").text =Convert.ToDateTime(inMain.head.ddate).ToShortDateString();
                     ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("dmDate").text = Convert.ToDateTime(inMain.head.ddate).ToShortDateString();
                     ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("cmemo").text = "借出借用单(" + inMain.body[0].oriU8Code + ")生单 ";
-                    ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("cdefine12").text = inMain.head.ordcode;
+                    ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("cdefine12").text = inMain.head.ccode;
+                    ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("cCode").text = inMain.head.ordcode + DateTime.Now.ToString("yyyyMMddHHmmss").Substring(8);
                     //接口2生成的其它入库单类别应该是【借出还回入库】
                     ohead.selectSingleNode("//xml//rs:data//z:row").attributes.getNamedItem("crdcode").text = "104";
                 #endregion
@@ -140,20 +141,20 @@ namespace HYBorrowOut.UFIDA
                     bresult = cosc.SaveVouch(ref ohead, ref obody, insert, ref errMsg, ref iVouchID);
                     if (bresult)
                     {
-                        outData.oacode = inMain.head.ordcode;                        
+                        outData.oacode = inMain.head.ccode;                        
                         errMsg = Ufdata.getDataReader(m_ologin.UfDbName, "select ccode from [dbo].[HY_DZ_BorrowOutBack] where ID=" + iVouchID.ToString() + "");
                         outData.recode = "0";
                         outData.u8code = errMsg;
                         //re.u8code = Ufdata.getDataReader(m_ologin.UfDbName, "select ccode from [dbo].[HY_DZ_BorrowOutBack] where ID=" + iVouchID.ToString() + "");
                         outData.remsg = "借出归还单[" + errMsg + "]导入成功,";
-                        Ufdata.execSqlcommand(m_ologin.UfDbName, "update [dbo].[HY_DZ_BorrowOutBack] set cdefine12='" + inMain.head.ordcode.ToString() 
-                            + "',cdefine13='" + inMain.head.ordcode.ToString() + "' where id=" + iVouchID.ToString());
+                        Ufdata.execSqlcommand(m_ologin.UfDbName, "update [dbo].[HY_DZ_BorrowOutBack] set cdefine12='" + inMain.head.ccode.ToString() 
+                            + "',cdefine13='" + inMain.head.ccode.ToString() + "' where id=" + iVouchID.ToString());
                     }
                     else
                     {
                         strResult = "借出归还单导入失败,"+errMsg;
                         LogHelper.WriteLog(typeof(BorrowReturnEntity), strResult);
-                        return getErrorOutMain(inMain.companycode, inMain.head.ordcode, "999", strResult);
+                        return getErrorOutMain(inMain.companycode, inMain.head.ccode, "999", strResult);
                     }
 
                     //审核借出归还单
@@ -216,7 +217,7 @@ namespace HYBorrowOut.UFIDA
             {
                 LogHelper.WriteLog(typeof(BorrowReturnEntity), ex);
                 strResult =ex.Source.ToString() + " " + ex.Message;
-                return getErrorOutMain(inMain.companycode, inMain.head.ordcode, "9999", strResult);
+                return getErrorOutMain(inMain.companycode, inMain.head.ccode, "9999", strResult);
             }
             
         }

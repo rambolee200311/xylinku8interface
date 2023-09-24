@@ -204,7 +204,9 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AuditOOSOrderController.cs" />
     <Compile Include="Controllers\BomComponentController.cs" />
-    <Compile Include="Controllers\BorrowLedgeController.cs" />
+    <Compile Include="Controllers\BorrowLedge2Controller.cs" />
+    <Compile Include="Controllers\BorrowLedge1Controller.cs" />
+    <Compile Include="Controllers\BorrowLedge3Controller.cs" />
     <Compile Include="Controllers\BorrowoutController.cs" />
     <Compile Include="Controllers\BorrowOutReturnController.cs" />
     <Compile Include="Controllers\BorrowReturnSNController.cs" />
@@ -252,6 +254,7 @@
     <Compile Include="Models\AuditOOSOrder\ClsRequest.cs" />
     <Compile Include="Models\AuditOOSOrder\ClsRequestCode.cs" />
     <Compile Include="Models\Bom\BomComponent.cs" />
+    <Compile Include="Models\BorrowLedger\ClassID.cs" />
     <Compile Include="Models\BorrowLedger\InMain.cs" />
     <Compile Include="Models\BorrowLedger\InU8Code.cs" />
     <Compile Include="Models\BorrowLedger\InU8RowID.cs" />

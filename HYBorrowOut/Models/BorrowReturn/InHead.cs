@@ -22,6 +22,7 @@ namespace HYBorrowOut.Models.BorrowReturn
      */
     public class InHead
     {
+       public String ccode { get; set; }// 20230915 CRM单据编号-U8外部订单号
        public String ordcode{get;set;}// CRM单据编号-U8外部订单号
        public String ddate{get;set;}// 单据⽇期
        public String cmemo{get;set;}// 备注
