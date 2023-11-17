@@ -43,5 +43,10 @@ namespace XylinkU8Interface.Models.BorrowLedger
         public decimal borrowNum { get; set; } // U8借出借⽤单-⾏⼦件产品实际出库数量（借⽤数量，不可以⼤于借出借⽤单产品⾏⼦件的申请借⽤数量）
         public decimal returnNum { get; set; } // U8借出借⽤单-⾏⼦件产品归还数量（归还数量）
         public string reqId { get; set; } // 产品明细唯⼀标识（可能为空，⽆CRM试⽤申请单的情况）
+        //20231115
+        public bool u8Presale { get; set; } // U8预售出库（如果该借出借⽤单对应的其他出库单的出库类别存在“预售机借⽤”，则为true；否则为false
+        public string personCode { get; set; } // U8借出借⽤单的业务员编码
+        public string personName { get; set; } // U8借出借⽤单的业务员名称
+
     }
 }

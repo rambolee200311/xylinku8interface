@@ -175,6 +175,7 @@ namespace HYBorrowOut.UFIDA
                     //生成其他入库单
                     strResult = cosc.PushOtherIn(iVouchID);
                     errMsg = getCCode(strResult);
+                    
                     if (string.IsNullOrEmpty(errMsg))
                     {
                         outData.recode = "882";
@@ -184,6 +185,7 @@ namespace HYBorrowOut.UFIDA
                     }
                     else
                     {
+                        outData.u8rdcode = errMsg;
                         outData.remsg += strResult + ",";
                         //接口2生成的其它入库单类别应该是【104 借出还回入库】
                         Ufdata.execSqlcommand(m_ologin.UfDbName, "update [dbo].[RdRecord08] set crdcode='104'" 

@@ -39,7 +39,23 @@ namespace XylinkU8Interface.UFIDA
                     LogHelper.WriteLog(typeof(BorrowLedgerEntity), inMain.companycode + "账套登录失败！");
                     return outMain;
                 }
-                selectSql = "select a.ID from HY_DZ_BorrowOut a  where 1=1";
+                selectSql = "select distinct a.ID from HY_DZ_BorrowOut a inner join  HY_DZ_BorrowOuts b on a.ID=b.ID";
+
+                string innerSql = @" inner join (select ID,AutoID,sum(outqty) outqty,sum(inqty) inqty from
+                                (select a.ID,a.AutoID,sum(isnull(c.iquantity,0)) outqty,0 inqty from HY_DZ_BorrowOuts a left join RdRecords09 c on a.AutoID=c.iDebitIDs 
+                                where c.id in (select id from RdRecord09 where isnull(dVeriDate,'1900-01-01')!='1900-01-01' )
+                                group by a.ID,a.AutoID
+                                union all
+                                select b.ID,a.UpAutoID AutoID,0 outqty,sum(isnull(c.iquantity,0)) inqty from HY_DZ_BorrowOutBacks a left join  HY_DZ_BorrowOuts b on a.UpAutoID=b.AutoID left join RdRecords08 c on a.AutoID=c.iDebitIDs 
+                                where c.id in (select id from RdRecord08 where isnull(dVeriDate,'1900-01-01')!='1900-01-01' )
+                                group by b.ID,a.UpAutoID) tsum
+                                group by ID,AutoID
+                                having sum(outqty)!=sum(inqty)) c on a.ID=c.ID and b.AutoID=C.AutoID and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01'";
+
+                selectSql += innerSql;
+
+                selectSql += " where 1=1";
+                //selectSql += " and  isnull(b.iqtyout,0)-isnull(b.iqtyback,0)!=0";
                 List<Param> myParams = new List<Param>();
                 //ctype
                 if (String.IsNullOrEmpty(inMain.ctype))
@@ -84,63 +100,22 @@ namespace XylinkU8Interface.UFIDA
                     param2.paramvalue = inMain.onlineTime.ToString();
                     myParams.Add(param2);
                 }
-                LogHelper.WriteLog(typeof(BorrowLedgerEntity), "getDtResult: " + selectSql + whereSql);
-                LogHelper.WriteLog(typeof(BorrowLedgerEntity), "getDtResult params: " + JsonHelper.ToJson(myParams));
-                dtID = Ufdata.getDatatableFromSql(m_ologin.UfDbName, selectSql + whereSql, myParams);
-                //借出借用主表
-                if ((dtID == null) || (dtID.Rows.Count <= 0))
-                {
-                    outMain.companycode = inMain.companycode;
-                    outMain.pages = 0;
-                    outMain.total = 0;
-                    LogHelper.WriteLog(typeof(BorrowLedgerEntity), "返回数据为空！");
-                    return outMain;
-                }
-                else
-                {
-                    foreach (DataRow drID in dtID.Rows)
-                    {
-                        //检查是否全部归还
-                        if (!checkReturnAll(m_ologin.UfDbName, drID["ID"].ToString()))
-                        {
-                            ClassID clsID = new ClassID();
-                            clsID.ID = drID["ID"].ToString();
-                            listClassID.Add(clsID);
-                        }
-                    }
-                }
 
-
-                //借用借出表
-
-                DataTable[] dtResult =new DataTable[listClassID.Count];
-                int iRow = 0;
-                foreach (ClassID clsID in listClassID)
-                {
-                    
-                    selectSql = @"select a.ID,a.cType,a.cCODE,a.bObjectCode,a.ddate,a.cmemo,a.cMaker,a.cHandler,a.dVeriDate,a.iStatus,a.cdefine12,
-                                    b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21
+                selectSql = @"select a.ID,a.cType,a.cCODE,a.bObjectCode,a.ddate,a.cmemo,a.cMaker,a.cHandler,a.dVeriDate,a.iStatus,a.cdefine12,
+                                    b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,g.cRdName,a.cpersoncode,h.cPersonName
                                     from HY_DZ_BorrowOut a 
                                     inner join HY_DZ_BorrowOuts b on a.ID=b.ID
                                     inner join inventory c on b.cinvcode=c.cinvcode
-                                    left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID where a.ID=" + clsID.ID;
-                    dtResult[iRow] = Ufdata.getDatatableFromSql(m_ologin.UfDbName, selectSql);//+ whereSql, myParams);
-                    //合并dtResult
-                    if (iRow != 0)
-                    {
-                        if (dtResult[iRow] != null)
-                        {
-                            if (dtResult[iRow].Rows.Count > 0)
-                            {
-                                foreach (DataRow dr in dtResult[iRow].Rows)
-                                {
-                                    dtResult[0].ImportRow(dr);
-                                }
-                            }
-                        }
-                    }
-                    iRow++;
-                }
+                                    left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID 
+									left join RdRecords09 e on e.iDebitIDs=b.AutoID
+									left join RdRecord09 f on e.ID=f.ID
+									left join Rd_Style g on f.cRdCode=g.cRdCode
+									left join Person h on a.cpersoncode=h.cPersonCode 
+                                    where a.ID in(" + selectSql + whereSql + ") and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01'";
+                DataTable[] dtResult = new DataTable[1];
+                LogHelper.WriteLog(typeof(BorrowLedgerEntity), "getDtResult: " + selectSql);
+                LogHelper.WriteLog(typeof(BorrowLedgerEntity), "getDtResult params: " + JsonHelper.ToJson(myParams));
+                dtResult[0] = Ufdata.getDatatableFromSql(m_ologin.UfDbName, selectSql, myParams);
                 int size = 1;
                 if ((inMain.size != null) && (inMain.size != 0))
                 {
@@ -228,62 +203,24 @@ namespace XylinkU8Interface.UFIDA
                 param2.paramvalue = inMain.onlineTime.ToString();
                 myParams.Add(param2);
 
-                dtID = Ufdata.getDatatableFromSql(m_ologin.UfDbName, selectSql + whereSql, myParams);
-
-                LogHelper.WriteLog(typeof(BorrowLedgerEntity), "getDtResult: " + selectSql + whereSql);
-                LogHelper.WriteLog(typeof(BorrowLedgerEntity), "getDtResult params: " + JsonHelper.ToJson(myParams));
-
-                //借出借用主表
-                if ((dtID == null) || (dtID.Rows.Count <= 0))
-                {
-                    outMain.companycode = inMain.companycode;
-                    outMain.pages = 0;
-                    outMain.total = 0;
-                    LogHelper.WriteLog(typeof(BorrowLedgerEntity), "返回数据为空！");
-                    return outMain;
-                }
-                else
-                {
-                    foreach (DataRow drID in dtID.Rows)
-                    {
-                        //返回全部单据
-                        ClassID clsID = new ClassID();
-                        clsID.ID = drID["ID"].ToString();
-                        listClassID.Add(clsID);
-
-                    }
-                }
-
-
                 //借用借出表
 
-                DataTable[] dtResult = new DataTable[listClassID.Count];
-                int iRow = 0;
-                foreach (ClassID clsID in listClassID)
-                {                    
-                    selectSql = @"select a.ID,a.cType,a.cCODE,a.bObjectCode,a.ddate,a.cmemo,a.cMaker,a.cHandler,a.dVeriDate,a.iStatus,a.cdefine12,
-                                    b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21
-                                    from HY_DZ_BorrowOut a 
-                                    inner join HY_DZ_BorrowOuts b on a.ID=b.ID
-                                    inner join inventory c on b.cinvcode=c.cinvcode
-                                    left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID where a.ID=" + clsID.ID;
-                    dtResult[iRow] = Ufdata.getDatatableFromSql(m_ologin.UfDbName, selectSql);// + whereSql, myParams);
-                    //合并dtResult
-                    if (iRow != 0)
-                    {
-                        if (dtResult[iRow] != null)
-                        {
-                            if (dtResult[iRow].Rows.Count > 0)
-                            {
-                                foreach (DataRow dr in dtResult[iRow].Rows)
-                                {
-                                    dtResult[0].ImportRow(dr);
-                                }
-                            }
-                        }
-                    }
-                    iRow++;
-                }
+                DataTable[] dtResult = new DataTable[1];
+                selectSql = @"select a.ID,a.cType,a.cCODE,a.bObjectCode,a.ddate,a.cmemo,a.cMaker,a.cHandler,a.dVeriDate,a.iStatus,a.cdefine12,
+                                b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,g.cRdName,a.cpersoncode,h.cPersonName
+                                from HY_DZ_BorrowOut a 
+                                inner join HY_DZ_BorrowOuts b on a.ID=b.ID
+                                inner join inventory c on b.cinvcode=c.cinvcode
+                                left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID 
+							    left join RdRecords09 e on e.iDebitIDs=b.AutoID
+							    left join RdRecord09 f on e.ID=f.ID
+							    left join Rd_Style g on f.cRdCode=g.cRdCode
+							    left join Person h on a.cpersoncode=h.cPersonCode 
+                                where a.ID in (" + selectSql + whereSql + ") and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01'";
+                LogHelper.WriteLog(typeof(BorrowLedgerEntity), "getDtResult: " + selectSql);
+                LogHelper.WriteLog(typeof(BorrowLedgerEntity), "getDtResult params: " + JsonHelper.ToJson(myParams));
+                 dtResult[0] = Ufdata.getDatatableFromSql(m_ologin.UfDbName, selectSql, myParams);
+                    
                 int size = 1;
                 if ((inMain.size != null) && (inMain.size != 0))
                 {
@@ -336,7 +273,7 @@ namespace XylinkU8Interface.UFIDA
                     LogHelper.WriteLog(typeof(BorrowLedgerEntity), inMain.companycode + "账套登录失败！");
                     return outMain;
                 }
-                selectSql = "select a.ID,b.AutoID from HY_DZ_BorrowOut a inner join HY_DZ_BorrowOuts b on a.ID=b.ID where 1=1";
+                selectSql = "select a.ID,b.AutoID from HY_DZ_BorrowOut a inner join HY_DZ_BorrowOuts b on a.ID=b.ID where 1=1 and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01'";
                 List<Param> myParams = new List<Param>();
                 //ctype
                 if (String.IsNullOrEmpty(inMain.ctype))
@@ -429,11 +366,16 @@ namespace XylinkU8Interface.UFIDA
                 foreach (ClassID clsID in listClassID)
                 {
                     selectSql = @"select a.ID,a.cType,a.cCODE,a.bObjectCode,a.ddate,a.cmemo,a.cMaker,a.cHandler,a.dVeriDate,a.iStatus,a.cdefine12,
-                                    b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21
+                                    b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,g.cRdName,a.cpersoncode,h.cPersonName
                                     from HY_DZ_BorrowOut a 
                                     inner join HY_DZ_BorrowOuts b on a.ID=b.ID
                                     inner join inventory c on b.cinvcode=c.cinvcode
-                                    left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID where a.ID=" + clsID.ID+" and b.AutoID="+clsID.AutoID;
+                                    left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID 
+							        left join RdRecords09 e on e.iDebitIDs=b.AutoID
+							        left join RdRecord09 f on e.ID=f.ID
+							        left join Rd_Style g on f.cRdCode=g.cRdCode
+							        left join Person h on a.cpersoncode=h.cPersonCode 
+                                    where isnull(a.dVeriDate,'1900-01-01')!='1900-01-01' and a.ID=" + clsID.ID + " and b.AutoID=" + clsID.AutoID;
                     dtResult[iRow] = Ufdata.getDatatableFromSql(m_ologin.UfDbName, selectSql);// + whereSql, myParams);
                     //合并dtResult
                     if (iRow != 0)
@@ -494,6 +436,11 @@ namespace XylinkU8Interface.UFIDA
             tempTable.Columns.Add("borrowNum", Type.GetType("System.Decimal")); // U8借出借⽤单-⾏⼦件产品实际出库数量（借⽤数量，不可以⼤于借出借⽤单产品⾏⼦件的申请借⽤数量）
             tempTable.Columns.Add("returnNum", Type.GetType("System.Decimal"));// U8借出借⽤单-⾏⼦件产品归还数量（归还数量）
             tempTable.Columns.Add("reqId", Type.GetType("System.String")); // 产品明细唯⼀标识（可能为空，⽆CRM试⽤申请单的情况）
+            //20231115 add
+            tempTable.Columns.Add("u8Presale", Type.GetType("System.Boolean"));// U8预售出库（如果该借出借⽤单对应的其他出库单的出库类别存在“预售机借⽤”，则为true；否则为false
+            tempTable.Columns.Add("personCode", Type.GetType("System.String"));// U8借出借⽤单的业务员编码
+            tempTable.Columns.Add("personName", Type.GetType("System.String")); // U8借出借⽤单的业务员名称
+
             return tempTable;
         }
 
@@ -507,7 +454,7 @@ namespace XylinkU8Interface.UFIDA
             {
                 DataTable dtResult = null;
                 List<Param> myParams = new List<Param>();
-                string selectSql = "select a.AutoID,isnull(a.iquantity,0) iQuantity from RdRecords09 a inner join RdRecord09 b on a.ID=b.ID where 1=1";
+                string selectSql = "select a.AutoID,isnull(a.iquantity,0) iQuantity from RdRecords09 a inner join RdRecord09 b on a.ID=b.ID where 1=1 and isnull(b.dVeriDate,'1900-01-01')!='1900-01-01'";
                 string whereSql = "";
 
                 //ctype
@@ -556,7 +503,7 @@ namespace XylinkU8Interface.UFIDA
             {
                 DataTable dtResult = null;
                 List<Param> myParams = new List<Param>();
-                string selectSql = "select a.AutoID,isnull(a.iquantity,0) iQuantity from RdRecords08 a inner join RdRecord08 b on a.ID=b.ID where 1=1";
+                string selectSql = "select a.AutoID,isnull(a.iquantity,0) iQuantity from RdRecords08 a inner join RdRecord08 b on a.ID=b.ID where 1=1 and isnull(b.dVeriDate,'1900-01-01')!='1900-01-01'";
                 string whereSql = "";
 
                 //ctype
@@ -689,8 +636,10 @@ namespace XylinkU8Interface.UFIDA
         /*
          *20230920
          *检查是否全部归还
-         */
-        private static bool checkReturnAll(string UfDbName, string ID)
+          */
+
+        /*
+       private static bool checkReturnAll(string UfDbName, string ID)
         {
             bool result = true;
             string strSql = "";
@@ -744,6 +693,8 @@ namespace XylinkU8Interface.UFIDA
             }
             return result;
         }
+        */
+        
 
         /*
         *20230924
@@ -781,6 +732,16 @@ namespace XylinkU8Interface.UFIDA
                     drTemp["reqId"] = drResult["cbdefine21"].ToString();// 产品明细唯⼀标识（可能为空，⽆CRM试⽤申请单的情况）
 
 
+                    drTemp["personCode"] = drResult["cpersoncode"].ToString();
+                    drTemp["personName"] = drResult["cPersonName"].ToString();
+
+                    drTemp["u8Presale"] = false;
+
+                    if (drResult["cRdName"].ToString().IndexOf("预售机借⽤") > 0)
+                    {
+                        drTemp["u8Presale"] =true;
+                    }
+
                     tempTable.Rows.Add(drTemp);
 
 
@@ -803,12 +764,19 @@ namespace XylinkU8Interface.UFIDA
                         outData.invname = drPaged["invname"].ToString();
                         outData.reqId = drPaged["reqId"].ToString();
 
+                        
                         outData.applyBorrowNum = Convert.ToDecimal(drPaged["applyBorrowNum"]);
                         outData.borrowNum = Convert.ToDecimal(drPaged["borrowNum"]);
                         outData.returnNum = Convert.ToDecimal(drPaged["returnNum"]);
 
                         outData.borrowSncodes = getBorrowSncodes(drPaged["u8RowId"].ToString(), m_ologin.UfDbName);
                         outData.returnSncodes = getReturnSncodes(drPaged["u8RowId"].ToString(), m_ologin.UfDbName);
+
+
+                        //20231115 add
+                        outData.personCode = drPaged["personCode"].ToString();
+                        outData.personName = drPaged["personName"].ToString();
+                        outData.u8Presale = Convert.ToBoolean(drPaged["u8Presale"]);
 
                         outMain.datas.Add(outData);
                     }

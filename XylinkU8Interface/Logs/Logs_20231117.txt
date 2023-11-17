@@ -1,0 +1,198 @@
+2023-11-17 17:51:34,587 [10] ERROR XylinkU8Interface.Controllers.BorrowLedge1Controller - {"companycode":"995","current":21,"size":10,"firstSync":true,"onlineTime":"2020-01-01","ctype":"客户"}
+2023-11-17 17:51:35,849 [10] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - getDtResult: select a.ID,a.cType,a.cCODE,a.bObjectCode,a.ddate,a.cmemo,a.cMaker,a.cHandler,a.dVeriDate,a.iStatus,a.cdefine12,
+                                    b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,g.cRdName,a.cpersoncode,h.cPersonName
+                                    from HY_DZ_BorrowOut a 
+                                    inner join HY_DZ_BorrowOuts b on a.ID=b.ID
+                                    inner join inventory c on b.cinvcode=c.cinvcode
+                                    left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID 
+									left join RdRecords09 e on e.iDebitIDs=b.AutoID
+									left join RdRecord09 f on e.ID=f.ID
+									left join Rd_Style g on f.cRdCode=g.cRdCode
+									left join Person h on a.cpersoncode=h.cPersonCode 
+                                    where a.ID in(select distinct a.ID from HY_DZ_BorrowOut a inner join  HY_DZ_BorrowOuts b on a.ID=b.ID inner join (select ID,AutoID,sum(outqty) outqty,sum(inqty) inqty from
+                                (select a.ID,a.AutoID,sum(isnull(c.iquantity,0)) outqty,0 inqty from HY_DZ_BorrowOuts a left join RdRecords09 c on a.AutoID=c.iDebitIDs 
+                                where c.id in (select id from RdRecord09 where isnull(dVeriDate,'1900-01-01')!='1900-01-01' )
+                                group by a.ID,a.AutoID
+                                union all
+                                select b.ID,a.UpAutoID AutoID,0 outqty,sum(isnull(c.iquantity,0)) inqty from HY_DZ_BorrowOutBacks a left join  HY_DZ_BorrowOuts b on a.UpAutoID=b.AutoID left join RdRecords08 c on a.AutoID=c.iDebitIDs 
+                                where c.id in (select id from RdRecord08 where isnull(dVeriDate,'1900-01-01')!='1900-01-01' )
+                                group by b.ID,a.UpAutoID) tsum
+                                group by ID,AutoID
+                                having sum(outqty)!=sum(inqty)) c on a.ID=c.ID and b.AutoID=C.AutoID and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01' where 1=1 and a.cType=?) and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01'
+2023-11-17 17:51:35,857 [10] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - getDtResult params: [{"paramname":"@ctype","paramtype":200,"paramvalue":"客户"}]
+2023-11-17 17:51:37,497 [10] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - Error
+System.ArgumentException: 列“personCode”不属于表 Table。
+   在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 XylinkU8Interface.UFIDA.BorrowLedgerEntity.getOutMain(clsLogin m_ologin, DataTable dtResultPaged, InMain inMain, OutMain outMainTmp) 位置 c:\App\XylinkU8Interface\XylinkU8Interface\UFIDA\BorrowLedgerEntity.cs:行号 735
+2023-11-17 17:51:37,518 [10] ERROR XylinkU8Interface.Controllers.BorrowLedge1Controller - {"companycode":"995","total":0,"pages":0,"datas":[]}
+2023-11-17 17:51:55,470 [9] ERROR XylinkU8Interface.Controllers.BorrowLedge1Controller - {"companycode":"995","current":21,"size":1,"firstSync":true,"onlineTime":"2020-01-01","ctype":"客户"}
+2023-11-17 17:51:55,747 [9] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - getDtResult: select a.ID,a.cType,a.cCODE,a.bObjectCode,a.ddate,a.cmemo,a.cMaker,a.cHandler,a.dVeriDate,a.iStatus,a.cdefine12,
+                                    b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,g.cRdName,a.cpersoncode,h.cPersonName
+                                    from HY_DZ_BorrowOut a 
+                                    inner join HY_DZ_BorrowOuts b on a.ID=b.ID
+                                    inner join inventory c on b.cinvcode=c.cinvcode
+                                    left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID 
+									left join RdRecords09 e on e.iDebitIDs=b.AutoID
+									left join RdRecord09 f on e.ID=f.ID
+									left join Rd_Style g on f.cRdCode=g.cRdCode
+									left join Person h on a.cpersoncode=h.cPersonCode 
+                                    where a.ID in(select distinct a.ID from HY_DZ_BorrowOut a inner join  HY_DZ_BorrowOuts b on a.ID=b.ID inner join (select ID,AutoID,sum(outqty) outqty,sum(inqty) inqty from
+                                (select a.ID,a.AutoID,sum(isnull(c.iquantity,0)) outqty,0 inqty from HY_DZ_BorrowOuts a left join RdRecords09 c on a.AutoID=c.iDebitIDs 
+                                where c.id in (select id from RdRecord09 where isnull(dVeriDate,'1900-01-01')!='1900-01-01' )
+                                group by a.ID,a.AutoID
+                                union all
+                                select b.ID,a.UpAutoID AutoID,0 outqty,sum(isnull(c.iquantity,0)) inqty from HY_DZ_BorrowOutBacks a left join  HY_DZ_BorrowOuts b on a.UpAutoID=b.AutoID left join RdRecords08 c on a.AutoID=c.iDebitIDs 
+                                where c.id in (select id from RdRecord08 where isnull(dVeriDate,'1900-01-01')!='1900-01-01' )
+                                group by b.ID,a.UpAutoID) tsum
+                                group by ID,AutoID
+                                having sum(outqty)!=sum(inqty)) c on a.ID=c.ID and b.AutoID=C.AutoID and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01' where 1=1 and a.cType=?) and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01'
+2023-11-17 17:51:55,750 [9] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - getDtResult params: [{"paramname":"@ctype","paramtype":200,"paramvalue":"客户"}]
+2023-11-17 17:51:56,910 [9] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - Error
+System.ArgumentException: 列“personCode”不属于表 Table。
+   在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 XylinkU8Interface.UFIDA.BorrowLedgerEntity.getOutMain(clsLogin m_ologin, DataTable dtResultPaged, InMain inMain, OutMain outMainTmp) 位置 c:\App\XylinkU8Interface\XylinkU8Interface\UFIDA\BorrowLedgerEntity.cs:行号 735
+2023-11-17 17:51:56,913 [9] ERROR XylinkU8Interface.Controllers.BorrowLedge1Controller - {"companycode":"995","total":0,"pages":0,"datas":[]}
+2023-11-17 17:52:26,437 [9] ERROR XylinkU8Interface.Controllers.BorrowLedge1Controller - {"companycode":"995","current":21,"size":1,"firstSync":true,"onlineTime":"2020-01-01","ctype":"客户"}
+2023-11-17 17:52:26,744 [9] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - getDtResult: select a.ID,a.cType,a.cCODE,a.bObjectCode,a.ddate,a.cmemo,a.cMaker,a.cHandler,a.dVeriDate,a.iStatus,a.cdefine12,
+                                    b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,g.cRdName,a.cpersoncode,h.cPersonName
+                                    from HY_DZ_BorrowOut a 
+                                    inner join HY_DZ_BorrowOuts b on a.ID=b.ID
+                                    inner join inventory c on b.cinvcode=c.cinvcode
+                                    left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID 
+									left join RdRecords09 e on e.iDebitIDs=b.AutoID
+									left join RdRecord09 f on e.ID=f.ID
+									left join Rd_Style g on f.cRdCode=g.cRdCode
+									left join Person h on a.cpersoncode=h.cPersonCode 
+                                    where a.ID in(select distinct a.ID from HY_DZ_BorrowOut a inner join  HY_DZ_BorrowOuts b on a.ID=b.ID inner join (select ID,AutoID,sum(outqty) outqty,sum(inqty) inqty from
+                                (select a.ID,a.AutoID,sum(isnull(c.iquantity,0)) outqty,0 inqty from HY_DZ_BorrowOuts a left join RdRecords09 c on a.AutoID=c.iDebitIDs 
+                                where c.id in (select id from RdRecord09 where isnull(dVeriDate,'1900-01-01')!='1900-01-01' )
+                                group by a.ID,a.AutoID
+                                union all
+                                select b.ID,a.UpAutoID AutoID,0 outqty,sum(isnull(c.iquantity,0)) inqty from HY_DZ_BorrowOutBacks a left join  HY_DZ_BorrowOuts b on a.UpAutoID=b.AutoID left join RdRecords08 c on a.AutoID=c.iDebitIDs 
+                                where c.id in (select id from RdRecord08 where isnull(dVeriDate,'1900-01-01')!='1900-01-01' )
+                                group by b.ID,a.UpAutoID) tsum
+                                group by ID,AutoID
+                                having sum(outqty)!=sum(inqty)) c on a.ID=c.ID and b.AutoID=C.AutoID and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01' where 1=1 and a.cType=?) and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01'
+2023-11-17 17:52:26,745 [9] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - getDtResult params: [{"paramname":"@ctype","paramtype":200,"paramvalue":"客户"}]
+2023-11-17 17:53:42,696 [10] ERROR XylinkU8Interface.Controllers.BorrowLedge1Controller - {"companycode":"995","current":21,"size":1,"firstSync":true,"onlineTime":"2020-01-01","ctype":"客户"}
+2023-11-17 17:53:43,212 [10] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - getDtResult: select a.ID,a.cType,a.cCODE,a.bObjectCode,a.ddate,a.cmemo,a.cMaker,a.cHandler,a.dVeriDate,a.iStatus,a.cdefine12,
+                                    b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,g.cRdName,a.cpersoncode,h.cPersonName
+                                    from HY_DZ_BorrowOut a 
+                                    inner join HY_DZ_BorrowOuts b on a.ID=b.ID
+                                    inner join inventory c on b.cinvcode=c.cinvcode
+                                    left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID 
+									left join RdRecords09 e on e.iDebitIDs=b.AutoID
+									left join RdRecord09 f on e.ID=f.ID
+									left join Rd_Style g on f.cRdCode=g.cRdCode
+									left join Person h on a.cpersoncode=h.cPersonCode 
+                                    where a.ID in(select distinct a.ID from HY_DZ_BorrowOut a inner join  HY_DZ_BorrowOuts b on a.ID=b.ID inner join (select ID,AutoID,sum(outqty) outqty,sum(inqty) inqty from
+                                (select a.ID,a.AutoID,sum(isnull(c.iquantity,0)) outqty,0 inqty from HY_DZ_BorrowOuts a left join RdRecords09 c on a.AutoID=c.iDebitIDs 
+                                where c.id in (select id from RdRecord09 where isnull(dVeriDate,'1900-01-01')!='1900-01-01' )
+                                group by a.ID,a.AutoID
+                                union all
+                                select b.ID,a.UpAutoID AutoID,0 outqty,sum(isnull(c.iquantity,0)) inqty from HY_DZ_BorrowOutBacks a left join  HY_DZ_BorrowOuts b on a.UpAutoID=b.AutoID left join RdRecords08 c on a.AutoID=c.iDebitIDs 
+                                where c.id in (select id from RdRecord08 where isnull(dVeriDate,'1900-01-01')!='1900-01-01' )
+                                group by b.ID,a.UpAutoID) tsum
+                                group by ID,AutoID
+                                having sum(outqty)!=sum(inqty)) c on a.ID=c.ID and b.AutoID=C.AutoID and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01' where 1=1 and a.cType=?) and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01'
+2023-11-17 17:53:43,219 [10] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - getDtResult params: [{"paramname":"@ctype","paramtype":200,"paramvalue":"客户"}]
+2023-11-17 17:53:49,851 [10] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - Error
+System.ArgumentException: 列“personCode”不属于表 Table。
+   在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 XylinkU8Interface.UFIDA.BorrowLedgerEntity.getOutMain(clsLogin m_ologin, DataTable dtResultPaged, InMain inMain, OutMain outMainTmp) 位置 c:\App\XylinkU8Interface\XylinkU8Interface\UFIDA\BorrowLedgerEntity.cs:行号 735
+2023-11-17 17:53:49,856 [10] ERROR XylinkU8Interface.Controllers.BorrowLedge1Controller - {"companycode":"995","total":0,"pages":0,"datas":[]}
+2023-11-17 17:54:16,123 [10] ERROR XylinkU8Interface.Controllers.BorrowLedge1Controller - {"companycode":"995","current":21,"size":1,"firstSync":true,"onlineTime":"2020-01-01","ctype":"客户"}
+2023-11-17 17:54:16,370 [10] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - getDtResult: select a.ID,a.cType,a.cCODE,a.bObjectCode,a.ddate,a.cmemo,a.cMaker,a.cHandler,a.dVeriDate,a.iStatus,a.cdefine12,
+                                    b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,g.cRdName,a.cpersoncode,h.cPersonName
+                                    from HY_DZ_BorrowOut a 
+                                    inner join HY_DZ_BorrowOuts b on a.ID=b.ID
+                                    inner join inventory c on b.cinvcode=c.cinvcode
+                                    left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID 
+									left join RdRecords09 e on e.iDebitIDs=b.AutoID
+									left join RdRecord09 f on e.ID=f.ID
+									left join Rd_Style g on f.cRdCode=g.cRdCode
+									left join Person h on a.cpersoncode=h.cPersonCode 
+                                    where a.ID in(select distinct a.ID from HY_DZ_BorrowOut a inner join  HY_DZ_BorrowOuts b on a.ID=b.ID inner join (select ID,AutoID,sum(outqty) outqty,sum(inqty) inqty from
+                                (select a.ID,a.AutoID,sum(isnull(c.iquantity,0)) outqty,0 inqty from HY_DZ_BorrowOuts a left join RdRecords09 c on a.AutoID=c.iDebitIDs 
+                                where c.id in (select id from RdRecord09 where isnull(dVeriDate,'1900-01-01')!='1900-01-01' )
+                                group by a.ID,a.AutoID
+                                union all
+                                select b.ID,a.UpAutoID AutoID,0 outqty,sum(isnull(c.iquantity,0)) inqty from HY_DZ_BorrowOutBacks a left join  HY_DZ_BorrowOuts b on a.UpAutoID=b.AutoID left join RdRecords08 c on a.AutoID=c.iDebitIDs 
+                                where c.id in (select id from RdRecord08 where isnull(dVeriDate,'1900-01-01')!='1900-01-01' )
+                                group by b.ID,a.UpAutoID) tsum
+                                group by ID,AutoID
+                                having sum(outqty)!=sum(inqty)) c on a.ID=c.ID and b.AutoID=C.AutoID and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01' where 1=1 and a.cType=?) and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01'
+2023-11-17 17:54:16,372 [10] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - getDtResult params: [{"paramname":"@ctype","paramtype":200,"paramvalue":"客户"}]
+2023-11-17 17:54:50,642 [10] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - Error
+System.ArgumentException: 列“personCode”不属于表 Table。
+   在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 XylinkU8Interface.UFIDA.BorrowLedgerEntity.getOutMain(clsLogin m_ologin, DataTable dtResultPaged, InMain inMain, OutMain outMainTmp) 位置 c:\App\XylinkU8Interface\XylinkU8Interface\UFIDA\BorrowLedgerEntity.cs:行号 735
+2023-11-17 17:54:50,644 [10] ERROR XylinkU8Interface.Controllers.BorrowLedge1Controller - {"companycode":"995","total":0,"pages":0,"datas":[]}
+2023-11-17 17:56:25,265 [10] ERROR XylinkU8Interface.Controllers.BorrowLedge1Controller - {"companycode":"995","current":21,"size":1,"firstSync":true,"onlineTime":"2020-01-01","ctype":"客户"}
+2023-11-17 17:56:25,849 [10] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - getDtResult: select a.ID,a.cType,a.cCODE,a.bObjectCode,a.ddate,a.cmemo,a.cMaker,a.cHandler,a.dVeriDate,a.iStatus,a.cdefine12,
+                                    b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,g.cRdName,a.cpersoncode,h.cPersonName
+                                    from HY_DZ_BorrowOut a 
+                                    inner join HY_DZ_BorrowOuts b on a.ID=b.ID
+                                    inner join inventory c on b.cinvcode=c.cinvcode
+                                    left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID 
+									left join RdRecords09 e on e.iDebitIDs=b.AutoID
+									left join RdRecord09 f on e.ID=f.ID
+									left join Rd_Style g on f.cRdCode=g.cRdCode
+									left join Person h on a.cpersoncode=h.cPersonCode 
+                                    where a.ID in(select distinct a.ID from HY_DZ_BorrowOut a inner join  HY_DZ_BorrowOuts b on a.ID=b.ID inner join (select ID,AutoID,sum(outqty) outqty,sum(inqty) inqty from
+                                (select a.ID,a.AutoID,sum(isnull(c.iquantity,0)) outqty,0 inqty from HY_DZ_BorrowOuts a left join RdRecords09 c on a.AutoID=c.iDebitIDs 
+                                where c.id in (select id from RdRecord09 where isnull(dVeriDate,'1900-01-01')!='1900-01-01' )
+                                group by a.ID,a.AutoID
+                                union all
+                                select b.ID,a.UpAutoID AutoID,0 outqty,sum(isnull(c.iquantity,0)) inqty from HY_DZ_BorrowOutBacks a left join  HY_DZ_BorrowOuts b on a.UpAutoID=b.AutoID left join RdRecords08 c on a.AutoID=c.iDebitIDs 
+                                where c.id in (select id from RdRecord08 where isnull(dVeriDate,'1900-01-01')!='1900-01-01' )
+                                group by b.ID,a.UpAutoID) tsum
+                                group by ID,AutoID
+                                having sum(outqty)!=sum(inqty)) c on a.ID=c.ID and b.AutoID=C.AutoID and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01' where 1=1 and a.cType=?) and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01'
+2023-11-17 17:56:25,861 [10] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - getDtResult params: [{"paramname":"@ctype","paramtype":200,"paramvalue":"客户"}]
+2023-11-17 17:56:57,995 [10] ERROR XylinkU8Interface.Controllers.BorrowLedge1Controller - {"companycode":"995","total":7420,"pages":7420,"datas":[{"u8RowId":"1000000258","u8Code":"SY20180131001","u8Date":"2018-01-31 0:00:00","u8ExtCode":"SY20180131001","invcode":"62080-00402-001","invname":"小鱼全向麦克风MX80","borrowSncodes":[],"returnSncodes":[],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":0.0,"reqId":"","u8Presale":false,"personCode":"000046","personName":"赵翔宇"}]}
+2023-11-17 17:57:23,844 [9] ERROR XylinkU8Interface.Controllers.BorrowLedge1Controller - {"companycode":"995","current":21,"size":10,"firstSync":true,"onlineTime":"2020-01-01","ctype":"客户"}
+2023-11-17 17:57:24,152 [9] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - getDtResult: select a.ID,a.cType,a.cCODE,a.bObjectCode,a.ddate,a.cmemo,a.cMaker,a.cHandler,a.dVeriDate,a.iStatus,a.cdefine12,
+                                    b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,g.cRdName,a.cpersoncode,h.cPersonName
+                                    from HY_DZ_BorrowOut a 
+                                    inner join HY_DZ_BorrowOuts b on a.ID=b.ID
+                                    inner join inventory c on b.cinvcode=c.cinvcode
+                                    left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID 
+									left join RdRecords09 e on e.iDebitIDs=b.AutoID
+									left join RdRecord09 f on e.ID=f.ID
+									left join Rd_Style g on f.cRdCode=g.cRdCode
+									left join Person h on a.cpersoncode=h.cPersonCode 
+                                    where a.ID in(select distinct a.ID from HY_DZ_BorrowOut a inner join  HY_DZ_BorrowOuts b on a.ID=b.ID inner join (select ID,AutoID,sum(outqty) outqty,sum(inqty) inqty from
+                                (select a.ID,a.AutoID,sum(isnull(c.iquantity,0)) outqty,0 inqty from HY_DZ_BorrowOuts a left join RdRecords09 c on a.AutoID=c.iDebitIDs 
+                                where c.id in (select id from RdRecord09 where isnull(dVeriDate,'1900-01-01')!='1900-01-01' )
+                                group by a.ID,a.AutoID
+                                union all
+                                select b.ID,a.UpAutoID AutoID,0 outqty,sum(isnull(c.iquantity,0)) inqty from HY_DZ_BorrowOutBacks a left join  HY_DZ_BorrowOuts b on a.UpAutoID=b.AutoID left join RdRecords08 c on a.AutoID=c.iDebitIDs 
+                                where c.id in (select id from RdRecord08 where isnull(dVeriDate,'1900-01-01')!='1900-01-01' )
+                                group by b.ID,a.UpAutoID) tsum
+                                group by ID,AutoID
+                                having sum(outqty)!=sum(inqty)) c on a.ID=c.ID and b.AutoID=C.AutoID and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01' where 1=1 and a.cType=?) and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01'
+2023-11-17 17:57:24,154 [9] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - getDtResult params: [{"paramname":"@ctype","paramtype":200,"paramvalue":"客户"}]
+2023-11-17 17:57:27,131 [9] ERROR XylinkU8Interface.Controllers.BorrowLedge1Controller - {"companycode":"995","total":7420,"pages":742,"datas":[{"u8RowId":"1000000886","u8Code":"SY20180723003","u8Date":"2018-07-23 0:00:00","u8ExtCode":"SY20180723003","invcode":"62080-00403-003","invname":"摄像头1080P镜头CH80","borrowSncodes":[],"returnSncodes":[{"sncode":"CH80201201090"}],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":1.0000000000,"reqId":"","u8Presale":false,"personCode":"000025","personName":"宋轶巍"},{"u8RowId":"1000000887","u8Code":"SY20180723003","u8Date":"2018-07-23 0:00:00","u8ExtCode":"SY20180723003","invcode":"70060-00501-001","invname":"小鱼易连NE60套装","borrowSncodes":[{"sncode":"7D174202055C235D"}],"returnSncodes":[],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":0.0,"reqId":"","u8Presale":false,"personCode":"000025","personName":"宋轶巍"},{"u8RowId":"1000000888","u8Code":"SY20180723003","u8Date":"2018-07-23 0:00:00","u8ExtCode":"SY20180723003","invcode":"73030-00601-001","invname":"无线传屏器NP30","borrowSncodes":[],"returnSncodes":[],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":0.0,"reqId":"","u8Presale":false,"personCode":"000025","personName":"宋轶巍"},{"u8RowId":"1000000889","u8Code":"SY20180723006","u8Date":"2018-07-23 0:00:00","u8ExtCode":"SY20180723006","invcode":"52040-00225-001","invname":"小鱼易连ME40主机","borrowSncodes":[{"sncode":"5D18160647380561"},{"sncode":"5D1816063A404133"}],"returnSncodes":[],"applyBorrowNum":2.00000000,"borrowNum":2.0000000000,"returnNum":0.0,"reqId":"","u8Presale":false,"personCode":"000219","personName":"吴鹏"},{"u8RowId":"1000000890","u8Code":"SY20180723006","u8Date":"2018-07-23 0:00:00","u8ExtCode":"SY20180723006","invcode":"62080-00402-001","invname":"小鱼全向麦克风MX80","borrowSncodes":[],"returnSncodes":[],"applyBorrowNum":2.00000000,"borrowNum":2.0000000000,"returnNum":0.0,"reqId":"","u8Presale":false,"personCode":"000219","personName":"吴鹏"},{"u8RowId":"1000000891","u8Code":"SY20180723006","u8Date":"2018-07-23 0:00:00","u8ExtCode":"SY20180723006","invcode":"62080-00403-003","invname":"摄像头1080P镜头CH80","borrowSncodes":[{"sncode":"ch80180517420"},{"sncode":"ch80180517359"}],"returnSncodes":[{"sncode":"CH80201201109"},{"sncode":"CH80201201108"}],"applyBorrowNum":2.00000000,"borrowNum":2.0000000000,"returnNum":2.0000000000,"reqId":"","u8Presale":false,"personCode":"000219","personName":"吴鹏"},{"u8RowId":"1000000893","u8Code":"SY20180724001","u8Date":"2018-07-24 0:00:00","u8ExtCode":"SY20180724001","invcode":"60662-00746-001","invname":"折叠支架  （ME20）","borrowSncodes":[],"returnSncodes":[],"applyBorrowNum":2.00000000,"borrowNum":2.0000000000,"returnNum":0.0,"reqId":"","u8Presale":false,"personCode":"000034","personName":"李波"},{"u8RowId":"1000000894","u8Code":"SY20180724001","u8Date":"2018-07-24 0:00:00","u8ExtCode":"SY20180724001","invcode":"62020-00701-001","invname":"小鱼易连ME20套装","borrowSncodes":[{"sncode":"5A1749162470E4B0"},{"sncode":"5A1749163CB43627"}],"returnSncodes":[],"applyBorrowNum":2.00000000,"borrowNum":2.0000000000,"returnNum":0.0,"reqId":"","u8Presale":false,"personCode":"000034","personName":"李波"},{"u8RowId":"1000000906","u8Code":"SY20180730002","u8Date":"2018-07-30 0:00:00","u8ExtCode":"SY20180730002","invcode":"60662-00746-001","invname":"折叠支架  （ME20）","borrowSncodes":[],"returnSncodes":[],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":0.0,"reqId":"","u8Presale":false,"personCode":"000040","personName":"李军"},{"u8RowId":"1000000907","u8Code":"SY20180801001","u8Date":"2018-08-01 0:00:00","u8ExtCode":"SY20180801001","invcode":"10348-00215-001","invname":"ME90无线网卡","borrowSncodes":[],"returnSncodes":[],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":1.0000000000,"reqId":"","u8Presale":false,"personCode":"000188","personName":"张辉旧"}]}
+2023-11-17 17:57:57,725 [9] ERROR XylinkU8Interface.Controllers.BorrowLedge2Controller - {"companycode":"995","current":6,"size":10,"firstSync":false,"onlineTime":"2022-03-30","ctype":"客户"}
+2023-11-17 17:57:57,997 [9] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - getDtResult: select a.ID,a.cType,a.cCODE,a.bObjectCode,a.ddate,a.cmemo,a.cMaker,a.cHandler,a.dVeriDate,a.iStatus,a.cdefine12,
+                                b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,g.cRdName,a.cpersoncode,h.cPersonName
+                                from HY_DZ_BorrowOut a 
+                                inner join HY_DZ_BorrowOuts b on a.ID=b.ID
+                                inner join inventory c on b.cinvcode=c.cinvcode
+                                left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID 
+							    left join RdRecords09 e on e.iDebitIDs=b.AutoID
+							    left join RdRecord09 f on e.ID=f.ID
+							    left join Rd_Style g on f.cRdCode=g.cRdCode
+							    left join Person h on a.cpersoncode=h.cPersonCode 
+                                where a.ID in (select a.ID from HY_DZ_BorrowOut a where 1=1 and a.cType=? and a.ddate>?) and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01'
+2023-11-17 17:57:57,999 [9] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - getDtResult params: [{"paramname":"@ctype","paramtype":200,"paramvalue":"客户"},{"paramname":"@ddate","paramtype":200,"paramvalue":"2022-03-30"}]
+2023-11-17 17:58:00,401 [9] ERROR XylinkU8Interface.Controllers.BorrowLedge2Controller - {"companycode":"995","total":6043,"pages":605,"datas":[{"u8RowId":"1000018286","u8Code":"JCJY202204090012","u8Date":"2022-04-09 0:00:00","u8ExtCode":"SY202204090016","invcode":"60624-04000-095","invname":"AC95摄像机","borrowSncodes":[{"sncode":"CV2147183B2D8DA8"}],"returnSncodes":[{"sncode":"CV2147183B09B968"}],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":1.0000000000,"reqId":"21018997665824775","u8Presale":false,"personCode":"000545","personName":"黄玉芬"},{"u8RowId":"1000018292","u8Code":"JCJY202204090012","u8Date":"2022-04-09 0:00:00","u8ExtCode":"SY202204090016","invcode":"60624-04000-095","invname":"AC95摄像机","borrowSncodes":[{"sncode":"CV2147183B2A4EE0"}],"returnSncodes":[{"sncode":"CV2147183B1EF804"}],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":1.0000000000,"reqId":"21018997666349058","u8Presale":false,"personCode":"000545","personName":"黄玉芬"},{"u8RowId":"1000018298","u8Code":"JCJY202204090012","u8Date":"2022-04-09 0:00:00","u8ExtCode":"SY202204090016","invcode":"60624-04000-095","invname":"AC95摄像机","borrowSncodes":[{"sncode":"CV2147183B2CF988"}],"returnSncodes":[{"sncode":"CV2147183B219564"}],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":1.0000000000,"reqId":"21018997666349064","u8Presale":false,"personCode":"000545","personName":"黄玉芬"},{"u8RowId":"1000018304","u8Code":"JCJY202204090012","u8Date":"2022-04-09 0:00:00","u8ExtCode":"SY202204090016","invcode":"60624-04000-095","invname":"AC95摄像机","borrowSncodes":[{"sncode":"CV2147183B274305"}],"returnSncodes":[{"sncode":"CV2147183B2CF988"}],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":1.0000000000,"reqId":"21018997666873348","u8Presale":false,"personCode":"000545","personName":"黄玉芬"},{"u8RowId":"1000018310","u8Code":"JCJY202204090012","u8Date":"2022-04-09 0:00:00","u8ExtCode":"SY202204090016","invcode":"60624-04000-095","invname":"AC95摄像机","borrowSncodes":[{"sncode":"CV2147183B219564"}],"returnSncodes":[{"sncode":"CV2147183ACFF5BD"}],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":1.0000000000,"reqId":"21018997666873354","u8Presale":false,"personCode":"000545","personName":"黄玉芬"},{"u8RowId":"1000018316","u8Code":"JCJY202204090012","u8Date":"2022-04-09 0:00:00","u8ExtCode":"SY202204090016","invcode":"60624-04000-095","invname":"AC95摄像机","borrowSncodes":[{"sncode":"CV2147183B20A30C"}],"returnSncodes":[{"sncode":"CV2147183B22F875"}],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":1.0000000000,"reqId":"21018997667397636","u8Presale":false,"personCode":"000545","personName":"黄玉芬"},{"u8RowId":"1000018322","u8Code":"JCJY202204090012","u8Date":"2022-04-09 0:00:00","u8ExtCode":"SY202204090016","invcode":"60624-04000-095","invname":"AC95摄像机","borrowSncodes":[{"sncode":"CV2147183B1EF804"}],"returnSncodes":[{"sncode":"CV2147183B06EC24"}],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":1.0000000000,"reqId":"21018997667921921","u8Presale":false,"personCode":"000545","personName":"黄玉芬"},{"u8RowId":"1000018328","u8Code":"JCJY202204090012","u8Date":"2022-04-09 0:00:00","u8ExtCode":"SY202204090016","invcode":"60624-04000-095","invname":"AC95摄像机","borrowSncodes":[{"sncode":"CV2147183B09B968"}],"returnSncodes":[{"sncode":"CV2147183B20A30C"}],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":1.0000000000,"reqId":"21018997667921927","u8Presale":false,"personCode":"000545","personName":"黄玉芬"},{"u8RowId":"1000018334","u8Code":"JCJY202204090012","u8Date":"2022-04-09 0:00:00","u8ExtCode":"SY202204090016","invcode":"60624-04000-095","invname":"AC95摄像机","borrowSncodes":[{"sncode":"CV2147183B128EDC"}],"returnSncodes":[],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":0.0,"reqId":"21018997668446209","u8Presale":false,"personCode":"000545","personName":"黄玉芬"},{"u8RowId":"1000018340","u8Code":"JCJY202204090012","u8Date":"2022-04-09 0:00:00","u8ExtCode":"SY202204090016","invcode":"60624-04000-095","invname":"AC95摄像机","borrowSncodes":[{"sncode":"CV2147183B06EC24"}],"returnSncodes":[],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":0.0,"reqId":"21018997668446215","u8Presale":false,"personCode":"000545","personName":"黄玉芬"}]}
+2023-11-17 17:58:14,330 [9] ERROR XylinkU8Interface.Controllers.BorrowLedge3Controller - {"companycode":"995","current":6,"size":10,"firstSync":false,"ctype":"客户","u8RowIds":[{"u8RowId":"1000017090"},{"u8RowId":"1000017099"}],"u8Codes":[{"u8Code":"SY20220105015"},{"u8Code":"SY20220106009"}]}
+2023-11-17 17:58:14,627 [9] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - getDtResult: select a.ID,b.AutoID from HY_DZ_BorrowOut a inner join HY_DZ_BorrowOuts b on a.ID=b.ID where 1=1 and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01' and a.cType=? and ( (1=0  or a.cCODE='SY20220105015' or a.cCODE='SY20220106009') or  (1=0  or b.AutoID='1000017090' or b.AutoID='1000017099') or 1=0 )
+2023-11-17 17:58:14,630 [9] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - getDtResult params: [{"paramname":"@ctype","paramtype":200,"paramvalue":"客户"}]
+2023-11-17 17:58:16,660 [9] ERROR XylinkU8Interface.Controllers.BorrowLedge3Controller - {"companycode":"995","total":10,"pages":1,"datas":[{"u8RowId":"1000017090","u8Code":"SY20220105003","u8Date":"2022-01-05 0:00:00","u8ExtCode":"SY20220105003","invcode":"73030-00601-001","invname":"无线传屏器NP30","borrowSncodes":[{"sncode":"GA214604BA4678A3"}],"returnSncodes":[{"sncode":"GA214604BA4678A3"}],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":1.0000000000,"reqId":"","u8Presale":false,"personCode":"00343","personName":"孟瑶"},{"u8RowId":"1000017093","u8Code":"SY20220106009","u8Date":"2022-01-06 0:00:00","u8ExtCode":"SY20220106009","invcode":"20662-00093-001","invname":"立放支架组件","borrowSncodes":[],"returnSncodes":[],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":1.0000000000,"reqId":"","u8Presale":false,"personCode":"00320","personName":"汪文飞"},{"u8RowId":"1000017094","u8Code":"SY20220106009","u8Date":"2022-01-06 0:00:00","u8ExtCode":"SY20220106009","invcode":"60624-04000-095","invname":"AC95摄像机","borrowSncodes":[{"sncode":"CV1947180A46D93A"}],"returnSncodes":[{"sncode":"CV1947180A46D93A"}],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":1.0000000000,"reqId":"","u8Presale":false,"personCode":"00320","personName":"汪文飞"},{"u8RowId":"1000017095","u8Code":"SY20220106009","u8Date":"2022-01-06 0:00:00","u8ExtCode":"SY20220106009","invcode":"62060-00290-001","invname":"MX50阵列麦克风","borrowSncodes":[],"returnSncodes":[],"applyBorrowNum":2.00000000,"borrowNum":2.0000000000,"returnNum":2.0000000000,"reqId":"","u8Presale":false,"personCode":"00320","personName":"汪文飞"},{"u8RowId":"1000017096","u8Code":"SY20220106009","u8Date":"2022-01-06 0:00:00","u8ExtCode":"SY20220106009","invcode":"62060-00292-650","invname":"AE650视频会议终端","borrowSncodes":[{"sncode":"1A2123474EC04F5B"}],"returnSncodes":[{"sncode":"1A2123474EC04F5B"}],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":1.0000000000,"reqId":"","u8Presale":false,"personCode":"00320","personName":"汪文飞"},{"u8RowId":"1000017097","u8Code":"SY20220106009","u8Date":"2022-01-06 0:00:00","u8ExtCode":"SY20220106009","invcode":"62080-00402-001","invname":"小鱼全向麦克风MX80","borrowSncodes":[],"returnSncodes":[],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":1.0000000000,"reqId":"","u8Presale":false,"personCode":"00320","personName":"汪文飞"},{"u8RowId":"1000017098","u8Code":"SY20220106009","u8Date":"2022-01-06 0:00:00","u8ExtCode":"SY20220106009","invcode":"70090-00006-001","invname":"小鱼易连AE380主机","borrowSncodes":[{"sncode":"TA2150A0AE1857AF"},{"sncode":"TA2150A0AF807A17"}],"returnSncodes":[{"sncode":"TA2150A0AF807A17"},{"sncode":"TA2150A0AE1857AF"}],"applyBorrowNum":2.00000000,"borrowNum":2.0000000000,"returnNum":2.0000000000,"reqId":"","u8Presale":false,"personCode":"00320","personName":"汪文飞"},{"u8RowId":"1000017099","u8Code":"SY20220106009","u8Date":"2022-01-06 0:00:00","u8ExtCode":"SY20220106009","invcode":"70201-00140-001","invname":"小鱼易连TP650智能会议平板","borrowSncodes":[{"sncode":"QH21500338A067DD"}],"returnSncodes":[],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":0.0,"reqId":"","u8Presale":false,"personCode":"00320","personName":"汪文飞"},{"u8RowId":"1000017100","u8Code":"SY20220106009","u8Date":"2022-01-06 0:00:00","u8ExtCode":"SY20220106009","invcode":"70201-00141-001","invname":"TP650智能会议平板移动支架","borrowSncodes":[],"returnSncodes":[],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":0.0,"reqId":"","u8Presale":false,"personCode":"00320","personName":"汪文飞"},{"u8RowId":"1000017101","u8Code":"SY20220106009","u8Date":"2022-01-06 0:00:00","u8ExtCode":"SY20220106009","invcode":"73030-00601-001","invname":"无线传屏器NP30","borrowSncodes":[{"sncode":"GA18490417339B04"}],"returnSncodes":[{"sncode":"GA18490417339B04"}],"applyBorrowNum":1.00000000,"borrowNum":1.0000000000,"returnNum":1.0000000000,"reqId":"","u8Presale":false,"personCode":"00320","personName":"汪文飞"}]}
