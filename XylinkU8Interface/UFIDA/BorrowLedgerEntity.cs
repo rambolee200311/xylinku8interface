@@ -100,16 +100,17 @@ namespace XylinkU8Interface.UFIDA
                     param2.paramvalue = inMain.onlineTime.ToString();
                     myParams.Add(param2);
                 }
+                //g.cRdName,
+                //									left join RdRecords09 e on e.iDebitIDs=b.AutoID
+                //									left join RdRecord09 f on e.ID=f.ID
+                //									left join Rd_Style g on f.cRdCode=g.cRdCode
 
                 selectSql = @"select a.ID,a.cType,a.cCODE,a.bObjectCode,a.ddate,a.cmemo,a.cMaker,a.cHandler,a.dVeriDate,a.iStatus,a.cdefine12,
-                                    b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,g.cRdName,a.cpersoncode,h.cPersonName
+                                    b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,a.cpersoncode,h.cPersonName
                                     from HY_DZ_BorrowOut a 
                                     inner join HY_DZ_BorrowOuts b on a.ID=b.ID
                                     inner join inventory c on b.cinvcode=c.cinvcode
                                     left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID 
-									left join RdRecords09 e on e.iDebitIDs=b.AutoID
-									left join RdRecord09 f on e.ID=f.ID
-									left join Rd_Style g on f.cRdCode=g.cRdCode
 									left join Person h on a.cpersoncode=h.cPersonCode 
                                     where a.ID in(" + selectSql + whereSql + ") and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01'";
                 DataTable[] dtResult = new DataTable[1];
@@ -204,17 +205,18 @@ namespace XylinkU8Interface.UFIDA
                 myParams.Add(param2);
 
                 //借用借出表
+                //g.cRdName,
+                //                left join RdRecords09 e on e.iDebitIDs=b.AutoID
+                //                left join RdRecord09 f on e.ID=f.ID
+                //                left join Rd_Style g on f.cRdCode=g.cRdCode
 
                 DataTable[] dtResult = new DataTable[1];
                 selectSql = @"select a.ID,a.cType,a.cCODE,a.bObjectCode,a.ddate,a.cmemo,a.cMaker,a.cHandler,a.dVeriDate,a.iStatus,a.cdefine12,
-                                b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,g.cRdName,a.cpersoncode,h.cPersonName
+                                b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,a.cpersoncode,h.cPersonName
                                 from HY_DZ_BorrowOut a 
                                 inner join HY_DZ_BorrowOuts b on a.ID=b.ID
                                 inner join inventory c on b.cinvcode=c.cinvcode
-                                left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID 
-							    left join RdRecords09 e on e.iDebitIDs=b.AutoID
-							    left join RdRecord09 f on e.ID=f.ID
-							    left join Rd_Style g on f.cRdCode=g.cRdCode
+                                left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID
 							    left join Person h on a.cpersoncode=h.cPersonCode 
                                 where a.ID in (" + selectSql + whereSql + ") and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01'";
                 LogHelper.WriteLog(typeof(BorrowLedgerEntity), "getDtResult: " + selectSql);
@@ -365,15 +367,16 @@ namespace XylinkU8Interface.UFIDA
                 int iRow = 0;
                 foreach (ClassID clsID in listClassID)
                 {
+                    //g.cRdName,
+                                    //left join RdRecords09 e on e.iDebitIDs=b.AutoID
+                                    //left join RdRecord09 f on e.ID=f.ID
+                                    //left join Rd_Style g on f.cRdCode=g.cRdCode                   
                     selectSql = @"select a.ID,a.cType,a.cCODE,a.bObjectCode,a.ddate,a.cmemo,a.cMaker,a.cHandler,a.dVeriDate,a.iStatus,a.cdefine12,
-                                    b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,g.cRdName,a.cpersoncode,h.cPersonName
+                                    b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,a.cpersoncode,h.cPersonName
                                     from HY_DZ_BorrowOut a 
                                     inner join HY_DZ_BorrowOuts b on a.ID=b.ID
                                     inner join inventory c on b.cinvcode=c.cinvcode
                                     left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID 
-							        left join RdRecords09 e on e.iDebitIDs=b.AutoID
-							        left join RdRecord09 f on e.ID=f.ID
-							        left join Rd_Style g on f.cRdCode=g.cRdCode
 							        left join Person h on a.cpersoncode=h.cPersonCode 
                                     where isnull(a.dVeriDate,'1900-01-01')!='1900-01-01' and a.ID=" + clsID.ID + " and b.AutoID=" + clsID.AutoID;
                     dtResult[iRow] = Ufdata.getDatatableFromSql(m_ologin.UfDbName, selectSql);// + whereSql, myParams);
@@ -542,7 +545,43 @@ namespace XylinkU8Interface.UFIDA
             }
             return result;
         }
+        //u8Presale
+        private static bool getU8Presale(string autoID, string UfDbName)
+        {
+            bool bresult = false;
+            try
+            {
+                DataTable dtResult = null;
+                List<Param> myParams = new List<Param>();
+                string selectSql = @"select f.id from 	RdRecords09 e 
+								inner join rdrecord09 f on e.id=f.id 
+								inner join rd_style g on f.cRdCode=g.cRdCode 
+								where g.cRdName like ('%预售机借用%')";
+                string whereSql = "";
 
+                //ctype
+                whereSql += " and e.iDebitIDs=?";
+                Param param1 = new Param();
+                param1.paramname = "@autoID";
+                param1.paramtype = OleDbType.VarChar;
+                param1.paramvalue = autoID.ToString();
+                myParams.Add(param1);
+                dtResult = Ufdata.getDatatableFromSql(UfDbName, selectSql + whereSql, myParams);
+                if (dtResult != null)
+                {
+                    if (dtResult.Rows.Count > 0)
+                    {
+                        bresult = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(typeof(BorrowLedgerEntity), ex);
+                return false;
+            }
+            return bresult;
+        }
         /*
          * 取得 U8借出借⽤单-⾏⼦件产品出库SN（是纳⼊序列号管理的才有值
          */
@@ -735,12 +774,12 @@ namespace XylinkU8Interface.UFIDA
                     drTemp["personCode"] = drResult["cpersoncode"].ToString();
                     drTemp["personName"] = drResult["cPersonName"].ToString();
 
-                    drTemp["u8Presale"] = false;
+                    drTemp["u8Presale"] = getU8Presale(drResult["AutoID"].ToString(), m_ologin.UfDbName); ;
 
-                    if (("abc" + drResult["cRdName"].ToString() + "def").IndexOf("预售机借用") >= 0)
-                    {
-                        drTemp["u8Presale"] =true;
-                    }
+                    //if (("abc" + drResult["cRdName"].ToString() + "def").IndexOf("预售机借用") >= 0)
+                    //{
+                    //    drTemp["u8Presale"] =true;
+                    //}
 
                     tempTable.Rows.Add(drTemp);
 
@@ -795,5 +834,6 @@ namespace XylinkU8Interface.UFIDA
             return outMain;
         }
 
+        
     }
 }
