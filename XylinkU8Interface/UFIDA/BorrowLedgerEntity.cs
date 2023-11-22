@@ -737,7 +737,7 @@ namespace XylinkU8Interface.UFIDA
 
                     drTemp["u8Presale"] = false;
 
-                    if (drResult["cRdName"].ToString().IndexOf("预售机借⽤") > 0)
+                    if (("abc" + drResult["cRdName"].ToString() + "def").IndexOf("预售机借用") >= 0)
                     {
                         drTemp["u8Presale"] =true;
                     }

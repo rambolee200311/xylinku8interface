@@ -25,6 +25,7 @@ namespace XylinkU8Interface.UFIDA
                 foreach (STInfoQueryCode code in sq.codes)
                 {  
                     #region//datas
+                    //20231120 增加其他出库单已审核条件
                     strSql = @"select a.ID,a.AutoID,c.cdefine12 ccode,c.cCODE u8code ,a.cInvCode invcode,e.cInvName invname,a.iQuantity num
                                 ,a.cDefine22 excomp,a.cDefine23 exnum,
                                 f.cbdefine4 receiver,
@@ -35,7 +36,7 @@ namespace XylinkU8Interface.UFIDA
                                 d.cbdefine9 recraddress1,
                                 d.cbdefine21 req_id,
                                 h.chdefine35
-                                from rdrecords09 a
+                                from RdRecords09 a
                                 left join HY_DZ_BorrowOuts b on a.iDebitIDs=b.AutoID
                                 left join HY_DZ_BorrowOut c on b.id=c.id
                                 left join HY_DZ_BorrowOuts_extradefine d on b.AutoID=d.AutoID 
@@ -43,7 +44,7 @@ namespace XylinkU8Interface.UFIDA
                                 left join rdrecords09_extradefine f on f.autoid=a.autoid
                                 left join RdRecord09 g on g.id=a.ID
                                 left join RdRecord09_extradefine h on h.ID=g.ID
-                                where c.cdefine12=?";
+                                where isnull(g.dVeriDate,'1900-01-01')!='1900-01-01' and c.cdefine12=?";
                     LogHelper.WriteLog(typeof(STInfoEntity), strSql);
                     List<Param> myParams = new List<Param>();
                     Param param = new Param();
@@ -113,16 +114,18 @@ namespace XylinkU8Interface.UFIDA
 
 
                     #region//retrundatas
+                    //20231120 增加其他入库单已审核条件
                     strSql = @"select  a.ID,a.AutoID,a.cInvCode invcode,a.iQuantity num,g.cbdefine21 req_id
                                 ,e.cdefine12 ccode,c.cCODE u8code,f.cInvName invname
-                                from  rdrecords08 a 
+                                from RdRecords08 a 
                                 left join HY_DZ_BorrowOutBacks b on a.iDebitIDs=b.AutoID
                                 left join HY_DZ_BorrowOutBack c on b.ID=c.ID
                                 left join HY_DZ_BorrowOuts d on b.UpAutoID=d.AutoID
                                 left join HY_DZ_BorrowOut e on d.id=e.id
                                 left join Inventory f on a.cInvCode=f.cInvCode
                                 left join HY_DZ_BorrowOuts_extradefine g on d.AutoID=g.AutoID 
-                                where e.cDefine12=?";
+                                left join RdRecord08 h on h.id=a.ID
+                                where isnull(h.dVeriDate,'1900-01-01')!='1900-01-01' and e.cDefine12=?";
                     LogHelper.WriteLog(typeof(STInfoEntity), strSql);
                     dtResult = Ufdata.getDatatableFromSql(m_ologin.UfDbName, strSql, myParams);
                     if (dtResult != null)

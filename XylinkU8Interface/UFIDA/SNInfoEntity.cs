@@ -56,11 +56,15 @@ namespace XylinkU8Interface.UFIDA
                             data.ccode = dr["ccode"].ToString();
                             data.req_id = dr["req_id"].ToString();
                             //dldetail
+                            //20231120 增加销售出库单已审核条件
+
                             strSql = @"select a.cInvCode invcode,c.cInvName invname,isnull(a.iQuantity,0) outnum,isnull(a.isum,0) isum,b.cDLCode u8code
                                     from DispatchLists a
                                     inner join DispatchList b on a.DLID=b.DLID
                                     inner join inventory c on a.cInvCode=c.cInvCode
-                                    where a.iSOsID=?";
+                                    left join RdRecords09 e on a.iDLsID=e.iDLsID
+									left join RdRecord09 f on e.ID=f.ID    
+                                    where isnull(f.dVeriDate,'1900-01-01')!='1900-01-01' and a.iSOsID=?";
                             List<Param> yourParams = new List<Param>();
                             Param param1 = new Param();
                             param1.paramname = "@iSOsID";
