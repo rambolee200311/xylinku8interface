@@ -46,7 +46,13 @@ namespace XylinkU8Interface.Models.BorrowLedger
         //20231115
         public bool u8Presale { get; set; } // U8预售出库（如果该借出借⽤单对应的其他出库单的出库类别存在“预售机借⽤”，则为true；否则为false
         public string personCode { get; set; } // U8借出借⽤单的业务员编码
-        public string personName { get; set; } // U8借出借⽤单的业务员名称
+        public string personName{ get; set; } // { get; set; } // U8借出借⽤单的业务员名称
+        public decimal iQtyCOver { get; set; } // 累计转耗用数量 
+        public decimal iQtyBack { get; set; } // 累计归还数量 
+        public decimal iQtyCFree { get; set; } // 累计转赠品数量 
+        public decimal iQtyCOut { get; set; } // 累计转借出数量 
+        public decimal iQtyCSale { get; set; } // 累计转销售数量 
+
 
     }
 }

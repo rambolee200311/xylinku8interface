@@ -27,5 +27,6 @@ namespace HYBorrowOut.Models.BorrowTrial
         public String custName { get; set; }// 客户名称
         public String personName { get; set; }// 申请⼈-业务员
         public String ctype { get; set; }//客户
+        public String sendType { get; set; }// U8其他出库单-出库类型（2023-12-07 新增字段）
     }
 }

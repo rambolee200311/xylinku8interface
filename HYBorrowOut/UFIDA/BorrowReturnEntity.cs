@@ -188,7 +188,14 @@ namespace HYBorrowOut.UFIDA
                         outData.u8rdcode = errMsg;
                         outData.remsg += strResult + ",";
                         //接口2生成的其它入库单类别应该是【104 借出还回入库】
-                        Ufdata.execSqlcommand(m_ologin.UfDbName, "update [dbo].[RdRecord08] set crdcode='104'" 
+                        //string rdcode = "104";
+                        // U8其他入库单-入库类型（2023-12-07 新增字段）
+                        string rdcode = rdcode = Ufdata.getDataReader(m_ologin.UfDbName, "select cRdCode from Rd_Style where cRdName='" + inMain.head.recvType + "'");
+                        if (string.IsNullOrEmpty(rdcode))
+                        {
+                            rdcode = "104";
+                        }
+                        Ufdata.execSqlcommand(m_ologin.UfDbName, "update [dbo].[RdRecord08] set crdcode='"+rdcode+"'" 
                             +" where ccode='" + errMsg+"'");
                     }
 

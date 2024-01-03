@@ -98,7 +98,15 @@ namespace XylinkU8Interface.UFIDA
                     "select a.bObjectCode from HY_DZ_BorrowOut a inner join HY_DZ_BorrowOuts b on b.ID=a.ID inner join HY_DZ_BorrowOuts_extradefine c on c.AutoID=b.AutoID where c.cbdefine21='" + inMain.body[0].reqId + "'");
 
                 //220 试用机借用
-                dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("crdcode").text = "220";
+                //dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("crdcode").text = "220";
+                // U8其他出库单-出库类型（2023-12-07 新增字段）
+                string rdcode = Ufdata.getDataReader(m_ologin.UfDbName,"select cRdCode from Rd_Style where cRdName='"+inMain.head.sendType+"'");
+                if (string.IsNullOrEmpty(rdcode))
+                {
+                    rdcode = "220";
+                }
+                dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("crdcode").text = rdcode;
+
                 dom_head.selectSingleNode("//rs:data//z:row").attributes.getNamedItem("cdepcode").text = Ufdata.getDataReader(m_ologin.UfDbName, 
                     "select a.cdepcode from HY_DZ_BorrowOut a inner join HY_DZ_BorrowOuts b on b.ID=a.ID inner join HY_DZ_BorrowOuts_extradefine c on c.AutoID=b.AutoID where c.cbdefine21='" + inMain.body[0].reqId + "'");
 

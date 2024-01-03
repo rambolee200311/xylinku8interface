@@ -107,6 +107,7 @@ namespace XylinkU8Interface.UFIDA
 
                 selectSql = @"select a.ID,a.cType,a.cCODE,a.bObjectCode,a.ddate,a.cmemo,a.cMaker,a.cHandler,a.dVeriDate,a.iStatus,a.cdefine12,
                                     b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,a.cpersoncode,h.cPersonName
+                                    ,isnull(b.iQtyCOver,0) iQtyCOver ,isnull(b.iQtyBack,0) iQtyBack,isnull(b.iQtyCFree,0) iQtyCFree,isnull(b.iQtyCOut,0) iQtyCOut,isnull(b.iQtyCSale,0) iQtyCSale
                                     from HY_DZ_BorrowOut a 
                                     inner join HY_DZ_BorrowOuts b on a.ID=b.ID
                                     inner join inventory c on b.cinvcode=c.cinvcode
@@ -213,6 +214,7 @@ namespace XylinkU8Interface.UFIDA
                 DataTable[] dtResult = new DataTable[1];
                 selectSql = @"select a.ID,a.cType,a.cCODE,a.bObjectCode,a.ddate,a.cmemo,a.cMaker,a.cHandler,a.dVeriDate,a.iStatus,a.cdefine12,
                                 b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,a.cpersoncode,h.cPersonName
+                                ,isnull(b.iQtyCOver,0) iQtyCOver ,isnull(b.iQtyBack,0) iQtyBack,isnull(b.iQtyCFree,0) iQtyCFree,isnull(b.iQtyCOut,0) iQtyCOut,isnull(b.iQtyCSale,0) iQtyCSale
                                 from HY_DZ_BorrowOut a 
                                 inner join HY_DZ_BorrowOuts b on a.ID=b.ID
                                 inner join inventory c on b.cinvcode=c.cinvcode
@@ -373,6 +375,7 @@ namespace XylinkU8Interface.UFIDA
                                     //left join Rd_Style g on f.cRdCode=g.cRdCode                   
                     selectSql = @"select a.ID,a.cType,a.cCODE,a.bObjectCode,a.ddate,a.cmemo,a.cMaker,a.cHandler,a.dVeriDate,a.iStatus,a.cdefine12,
                                     b.AutoID,b.cinvcode,c.cinvname,b.iquantity,d.cbdefine21,a.cpersoncode,h.cPersonName
+                                    ,isnull(b.iQtyCOver,0) iQtyCOver ,isnull(b.iQtyBack,0) iQtyBack,isnull(b.iQtyCFree,0) iQtyCFree,isnull(b.iQtyCOut,0) iQtyCOut,isnull(b.iQtyCSale,0) iQtyCSale
                                     from HY_DZ_BorrowOut a 
                                     inner join HY_DZ_BorrowOuts b on a.ID=b.ID
                                     inner join inventory c on b.cinvcode=c.cinvcode
@@ -444,6 +447,13 @@ namespace XylinkU8Interface.UFIDA
             tempTable.Columns.Add("personCode", Type.GetType("System.String"));// U8借出借⽤单的业务员编码
             tempTable.Columns.Add("personName", Type.GetType("System.String")); // U8借出借⽤单的业务员名称
 
+            //20240103 add
+            tempTable.Columns.Add("iQtyCOver", Type.GetType("System.Decimal")); //累计转耗用数量 
+            tempTable.Columns.Add("iQtyBack", Type.GetType("System.Decimal")); // 累计归还数量 
+            tempTable.Columns.Add("iQtyCFree", Type.GetType("System.Decimal")); // 累计转赠品数量 
+            tempTable.Columns.Add("iQtyCOut", Type.GetType("System.Decimal")); // 累计转借出数量 
+            tempTable.Columns.Add("iQtyCSale", Type.GetType("System.Decimal")); // 累计转销售数量 
+
             return tempTable;
         }
 
@@ -457,7 +467,7 @@ namespace XylinkU8Interface.UFIDA
             {
                 DataTable dtResult = null;
                 List<Param> myParams = new List<Param>();
-                string selectSql = "select a.AutoID,isnull(a.iquantity,0) iQuantity from RdRecords09 a inner join RdRecord09 b on a.ID=b.ID where 1=1 and isnull(b.dVeriDate,'1900-01-01')!='1900-01-01'";
+                string selectSql = "select a.AutoID,isnull(a.iquantity,0) iQuantity from RdRecords09 a inner join RdRecord09 b on a.ID=b.ID where 1=1 and b.cSource='借出借用单' and isnull(b.dVeriDate,'1900-01-01')!='1900-01-01'";
                 string whereSql = "";
 
                 //ctype
@@ -506,7 +516,7 @@ namespace XylinkU8Interface.UFIDA
             {
                 DataTable dtResult = null;
                 List<Param> myParams = new List<Param>();
-                string selectSql = "select a.AutoID,isnull(a.iquantity,0) iQuantity from RdRecords08 a inner join RdRecord08 b on a.ID=b.ID where 1=1 and isnull(b.dVeriDate,'1900-01-01')!='1900-01-01'";
+                string selectSql = "select a.AutoID,isnull(a.iquantity,0) iQuantity from RdRecords08 a inner join RdRecord08 b on a.ID=b.ID where 1=1 and b.cSource='借出归还单' and isnull(b.dVeriDate,'1900-01-01')!='1900-01-01'";
                 string whereSql = "";
 
                 //ctype
@@ -780,6 +790,13 @@ namespace XylinkU8Interface.UFIDA
                     //{
                     //    drTemp["u8Presale"] =true;
                     //}
+                    //2024-01-03 add
+                    drTemp["iQtyCOver"] = Convert.ToDecimal(drResult["iQtyCOver"]);// 累计转耗用数量 
+                    drTemp["iQtyBack"] = Convert.ToDecimal(drResult["iQtyBack"]);// 累计归还数量 
+                    drTemp["iQtyCFree"] = Convert.ToDecimal(drResult["iQtyCFree"]);// 累计转赠品数量 
+                    drTemp["iQtyCOut"] = Convert.ToDecimal(drResult["iQtyCOut"]);// 累计转借出数量 
+                    drTemp["iQtyCSale"] = Convert.ToDecimal(drResult["iQtyCSale"]);// 累计转销售数量 
+
 
                     tempTable.Rows.Add(drTemp);
 
