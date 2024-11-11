@@ -418,6 +418,13 @@ namespace XylinkU8Interface.UFIDA
                     re.recode = "0";
                     re.remsg ="销售发货单/退货单："+Ufdata.getDataReader(m_ologin.UfDbName,"select cdlcode from DispatchList where DLID=" +vNewIDRet);
                     re.u8code =  Ufdata.getDataReader(m_ologin.UfDbName, "select cdlcode from DispatchList where DLID=" + vNewIDRet);
+
+                    //2024-01-16 update bcosting=0
+                    Ufdata.execSqlcommand(m_ologin.UfDbName, @"update DispatchLists set bcosting=0
+                                                                where isnull(cParentCode,'')!='' and isnull(cchildcode,'')=''
+                                                                and cinvcode in (select cinvcode from inventory where bPTOModel=1)
+                                                                and bcosting=1 and dlid=" + vNewIDRet);
+
                     LogHelper.WriteLog(typeof(DispatchReturnEntity), "select cdlcode from DispatchList where DLID=" + vNewIDRet);
                     verify_so(so,ref re, vNewIDRet, dom_head, dom_body, companycode,cexchan);
                 }
@@ -523,6 +530,7 @@ namespace XylinkU8Interface.UFIDA
                 //{
                     xnNow.attributes.getNamedItem("cparentcode").text = guid;
                     xnNow.attributes.getNamedItem("cwhcode").text = "";
+                    xnNow.attributes.getNamedItem("bcosting").text = "False";
                     if ((bService == "0") || (bService.ToLower() == "false"))
                     {
                         xnNow.attributes.getNamedItem("cwhcode").text = cwhcode;

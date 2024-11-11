@@ -144,6 +144,10 @@ namespace XylinkU8Interface.UFIDA
                         xnNow.attributes.getNamedItem("cbdefine5").text = inBody.recvPhone;
                         xnNow.attributes.getNamedItem("cbdefine9").text = inBody.recvAddress;
 
+                        //2024-04-17 bcosting=false
+                        xnNow.attributes.getNamedItem("bcosting").text = "False";
+
+
                         i++;
                         dom_body.selectSingleNode("//rs:data").appendChild(xnNow);
                     }
@@ -253,7 +257,7 @@ namespace XylinkU8Interface.UFIDA
                     修复其他出库单表体自定义项显示业务号和出库单号                       
                     */
 
-                    strSql = "update rdrecords09 set cDefine32=b.cCode,cDefine33=b.cBusCode from rdrecords09 a,rdrecord09 b where a.id=b.ID and  cDefine32 is null and cDefine33 is null and b.cCode='" + result.u8code + "'";
+                    strSql = "update rdrecords09 set cDefine32=b.cCode,cDefine33=b.cBusCode,bcosting=0 from rdrecords09 a,rdrecord09 b where a.id=b.ID and  cDefine32 is null and cDefine33 is null and b.cCode='" + result.u8code + "'";
                     Ufdata.execSqlcommand(m_ologin.UfDbName, strSql);
 
                     //其他出库单SN

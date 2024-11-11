@@ -302,6 +302,10 @@ namespace HYBorrowOut.UFIDA
                 //HY_DZ_BorrowOut.InvokeApiAClass iac = new HY_DZ_BorrowOut.InvokeApiAClass();
                 //LogHelper.WriteLog(typeof(HYBorrowOutEntity), "6");
                 //iac.VoucherAddSave(m_ologin, dom_head, dom_body);
+
+                dom_head.save(AppDomain.CurrentDomain.BaseDirectory + "temp\\borrowout_head" + bo.head.ccode + ".xml");
+                dom_body.save(AppDomain.CurrentDomain.BaseDirectory + "temp\\borrowout_body" + bo.head.ccode + ".xml");
+
                 vouchid = 1;
                 bool bResult = iac.SaveVouch(ref dom_head, ref dom_body, true, ref errMsg, ref vouchid, ref conn);
                 //LogHelper.WriteLog(typeof(HYBorrowOutEntity), "7");
@@ -455,7 +459,9 @@ namespace HYBorrowOut.UFIDA
                         xnNowClone.attributes.getNamedItem("cinvcode").text = dr["cInvCode"].ToString();
                         xnNowClone.attributes.getNamedItem("cinvname").text = dr["cInvName"].ToString();
                         //xnNowClone.attributes.getNamedItem("cinvname").text = dr["cInvName"].ToString();
-                        xnNowClone.attributes.getNamedItem("iquantity").text = (iquantity * Convert.ToDecimal(dr["baseQty"])).ToString();
+                        //20241111 增加四舍五入
+                        decimal iqty=Math.Round( iquantity * Convert.ToDecimal(dr["baseQty"]),2);
+                        xnNowClone.attributes.getNamedItem("iquantity").text = iqty.ToString("#.##");
                         //xnNow.attributes.getNamedItem("ipartid").text = dr["cInvCode"].ToString();
                         //xnNowClone.attributes.getNamedItem("fchildqty").text = dr["baseQty"].ToString();
                         //xnNowClone.attributes.getNamedItem("fchildrate").text = dr["fchildrate"].ToString();

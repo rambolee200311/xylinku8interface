@@ -1,0 +1,10 @@
+2024-05-01 04:34:01,851 [28] ERROR XylinkU8Interface.Controllers.BorrowLedge3Controller - {"companycode":"995","current":1,"size":10,"firstSync":false,"ctype":"¿Í»§","u8RowIds":[{"u8RowId":""}],"u8Codes":[{"u8Code":"JCJY202404290011"}]}
+2024-05-01 04:35:53,377 [10] ERROR XylinkU8Interface.Controllers.BorrowLedge3Controller - {"companycode":"995","current":1,"size":10,"firstSync":false,"ctype":"¿Í»§","u8RowIds":[{"u8RowId":""}],"u8Codes":[{"u8Code":"JCJY202404290011"}]}
+2024-05-01 04:36:44,190 [10] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - 995ÕËÌ×µÇÂ¼Ê§°Ü£¡
+2024-05-01 04:36:44,197 [10] ERROR XylinkU8Interface.Controllers.BorrowLedge3Controller - {"companycode":"995","total":0,"pages":0,"datas":[]}
+2024-05-01 04:37:46,377 [10] ERROR XylinkU8Interface.Controllers.BorrowLedge3Controller - {"companycode":"995","current":1,"size":10,"firstSync":false,"ctype":"¿Í»§","u8RowIds":[{"u8RowId":""}],"u8Codes":[{"u8Code":"JCJY202404290011"}]}
+2024-05-01 04:38:48,357 [10] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - 995ÕËÌ×µÇÂ¼Ê§°Ü£¡
+2024-05-01 04:38:48,359 [10] ERROR XylinkU8Interface.Controllers.BorrowLedge3Controller - {"companycode":"995","total":0,"pages":0,"datas":[]}
+2024-05-01 14:40:57,663 [10] ERROR XylinkU8Interface.Controllers.BorrowLedge3Controller - {"companycode":"995","current":1,"size":10,"firstSync":false,"ctype":"¿Í»§","u8RowIds":[{"u8RowId":""}],"u8Codes":[{"u8Code":"JCJY202404290011"}]}
+2024-05-01 14:41:44,547 [10] ERROR XylinkU8Interface.UFIDA.BorrowLedgerEntity - 995ÕËÌ×µÇÂ¼Ê§°Ü£¡
+2024-05-01 14:41:44,550 [10] ERROR XylinkU8Interface.Controllers.BorrowLedge3Controller - {"companycode":"995","total":0,"pages":0,"datas":[]}

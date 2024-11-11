@@ -40,7 +40,7 @@ namespace XylinkU8Interface.UFIDA
                     return outMain;
                 }
                 selectSql = "select distinct a.ID from HY_DZ_BorrowOut a inner join  HY_DZ_BorrowOuts b on a.ID=b.ID";
-
+                /*
                 string innerSql = @" inner join (select ID,AutoID,sum(outqty) outqty,sum(inqty) inqty from
                                 (select a.ID,a.AutoID,sum(isnull(c.iquantity,0)) outqty,0 inqty from HY_DZ_BorrowOuts a left join RdRecords09 c on a.AutoID=c.iDebitIDs 
                                 where c.id in (select id from RdRecord09 where isnull(dVeriDate,'1900-01-01')!='1900-01-01' )
@@ -50,11 +50,22 @@ namespace XylinkU8Interface.UFIDA
                                 where c.id in (select id from RdRecord08 where isnull(dVeriDate,'1900-01-01')!='1900-01-01' )
                                 group by b.ID,a.UpAutoID) tsum
                                 group by ID,AutoID
-                                having sum(outqty)!=sum(inqty)) c on a.ID=c.ID and b.AutoID=C.AutoID and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01'";
+                                having sum(outqty)!=sum(inqty)) c on a.ID=c.ID and b.AutoID=C.AutoID and isnull(a.dVeriDate,'1900-01-01')!='1900-01-01'";                 
+                 */ 
+                //2024-04-17
+                /*
+                    drTemp["iQtyCOver"] = Convert.ToDecimal(drResult["iQtyCOver"]);// 累计转耗用数量 
+                    drTemp["iQtyBack"] = Convert.ToDecimal(drResult["iQtyBack"]);// 累计归还数量 
+                    drTemp["iQtyCFree"] = Convert.ToDecimal(drResult["iQtyCFree"]);// 累计转赠品数量 
+                    drTemp["iQtyCOut"] = Convert.ToDecimal(drResult["iQtyCOut"]);// 累计转借出数量 
+                    drTemp["iQtyCSale"] = Convert.ToDecimal(drResult["iQtyCSale"]);// 累计转销售数量 
+                    iQtyOut 累计出库数量  
+                 
+                 */
+                //string innerSql = @"isnull(b.iQtyOut,0)-isnull(b.iQtyCOut,0)-isnull(b.iQtyCOver,0)-isnull(b.iQtyCSale,0)- isnull(b.iQtyCFree,0)-isnull(b.iQtyBack,0)=0"
+                //selectSql += innerSql;
 
-                selectSql += innerSql;
-
-                selectSql += " where 1=1";
+                selectSql += " where 1=1" + " and isnull(b.iQtyOut,0)-isnull(b.iQtyCOut,0)-isnull(b.iQtyCOver,0)-isnull(b.iQtyCSale,0)- isnull(b.iQtyCFree,0)-isnull(b.iQtyBack,0)!=0";
                 //selectSql += " and  isnull(b.iqtyout,0)-isnull(b.iqtyback,0)!=0";
                 List<Param> myParams = new List<Param>();
                 //ctype
@@ -833,6 +844,14 @@ namespace XylinkU8Interface.UFIDA
                         outData.personCode = drPaged["personCode"].ToString();
                         outData.personName = drPaged["personName"].ToString();
                         outData.u8Presale = Convert.ToBoolean(drPaged["u8Presale"]);
+
+
+                        //2024-01-03 add
+                        outData.iQtyCOver = Convert.ToDecimal(drPaged["iQtyCOver"]);// 累计转耗用数量 
+                        outData.iQtyBack = Convert.ToDecimal(drPaged["iQtyBack"]);// 累计归还数量 
+                        outData.iQtyCFree = Convert.ToDecimal(drPaged["iQtyCFree"]);// 累计转赠品数量 
+                        outData.iQtyCOut = Convert.ToDecimal(drPaged["iQtyCOut"]);// 累计转借出数量 
+                        outData.iQtyCSale = Convert.ToDecimal(drPaged["iQtyCSale"]);// 累计转销售数量
 
                         outMain.datas.Add(outData);
                     }

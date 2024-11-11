@@ -136,8 +136,8 @@ namespace HYBorrowOut.UFIDA
 
                 #region//process
                     
-                    ohead.save("d:\\borrowoutreturn_head_20210104.xml");
-                    obody.save("d:\\borrowoutreturn_body_20210104.xml");
+                    //ohead.save("d:\\borrowoutreturn_head_20210104.xml");
+                    //obody.save("d:\\borrowoutreturn_body_20210104.xml");
                     bresult = cosc.SaveVouch(ref ohead, ref obody, insert, ref errMsg, ref iVouchID);
                     if (bresult)
                     {
